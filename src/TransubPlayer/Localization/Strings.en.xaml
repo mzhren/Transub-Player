@@ -896,6 +896,7 @@ Continue?</sys:String>
     <sys:String x:Key="Str.Main.Osd.LangSwitch.Ready">Subtitles caught up at playhead</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubVisibleOn">Subtitles: on</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubVisibleOff">Subtitles: off</sys:String>
+    <sys:String x:Key="Str.Main.Osd.SubPos">Subtitle position {0}%</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubDelayHint">Z / X nudge subtitles ±0.5s</sys:String>
     <sys:String x:Key="Str.Main.Osd.WaitFirstZhOffer" xml:space="preserve">Subtitles lag behind the video.
 

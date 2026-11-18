@@ -75,6 +75,8 @@ internal interface IMpvEngine : IDisposable
     void ReloadSubtitle();
     void SetSubVisible(bool visible, bool showOsd = true);
     void ToggleSubVisible();
+    /// <summary>垂直移动字幕（mpv sub-pos：0=顶，100=底）；拖动画面字幕时实时调用。</summary>
+    void SetSubPos(int pos);
 
     Task StartStreamRecordAsync(string outputPath, CancellationToken ct = default);
     Task<StreamRecordStopResult> StopStreamRecordAsync(CancellationToken ct = default);

@@ -1,0 +1,2918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>files</key>
+	<dict>
+		<key>Resources/transub.icns</key>
+		<data>
+		6eN/7FqU0ABMnkCvajf2EHYx+2o=
+		</data>
+	</dict>
+	<key>files2</key>
+	<dict>
+		<key>Frameworks/libSvtAv1Enc.4.3.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			cgbNj1uZGCdw3hVmjzHT2GGcOac=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7206cd8f5b99182770de15668f31d3d8619c39a7"</string>
+		</dict>
+		<key>Frameworks/libarchive.13.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			RoU9J1g8Ez3L3bpmBQbRP3Qt8mc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"46853d27583c133dcbddba660506d13f742df267"</string>
+		</dict>
+		<key>Frameworks/libass.9.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			M39O7qm8bWjWnvvBsXrVnD7BqHw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"337f4eeea9bc6d68d69efbc1b17ad59c3ec1a87c"</string>
+		</dict>
+		<key>Frameworks/libavcodec.63.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			d1MiCgyVxAT+sSjuvy0byGQt22I=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7753220a0c95c404feb128eebf2d1bc8642ddb62"</string>
+		</dict>
+		<key>Frameworks/libavdevice.63.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JpnHpdjeJC9rslZVGbRq+3mRzLk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2699c7a5d8de242f6bb2565519b46afb7991ccb9"</string>
+		</dict>
+		<key>Frameworks/libavfilter.12.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			kXJM00fZnXbl6LbUAizLhJFifW4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"91724cd347d99d76e5e8b6d4022ccb8491627d6e"</string>
+		</dict>
+		<key>Frameworks/libavformat.63.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			VjMm01na3E6EssqtynEHyoU7hiQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"563326d359dadc4e84b2caadca7107ca853b8624"</string>
+		</dict>
+		<key>Frameworks/libavutil.61.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			hOxpsjG23gjQGrt6OoHUGBe8zpY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"84ec69b231b6de08d01abb7a3a81d41817bcce96"</string>
+		</dict>
+		<key>Frameworks/libb2.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			WjVF5PqX8yUkct1XfJ7fmTtrTWM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"5a3545e4fa97f3252472dd577c9edf993b6b4d63"</string>
+		</dict>
+		<key>Frameworks/libbluray.4.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ciHCcwnm2pRKfifoWUuNnmVNJms=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7221c27309e6da944a7e27e8594b8d9e654d266b"</string>
+		</dict>
+		<key>Frameworks/libbrotlicommon.1.2.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			EKDM/EnQBehXKwcXtIc2WLlia+4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"10a0ccfc49d005e8572b0717b4873658b9626bee"</string>
+		</dict>
+		<key>Frameworks/libbrotlidec.1.2.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			M7Vtx90f/AaXCLKOR8ec7xjlMqM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"33b56dc7dd1ffc069708b28e47c79cef18e532a3"</string>
+		</dict>
+		<key>Frameworks/libcrypto.4.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Fz/aOX384N4vCSvw9dNBXzEBAQA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"173fda397dfce0de2f092bf0f5d3415f31010100"</string>
+		</dict>
+		<key>Frameworks/libdav1d.7.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			HHbW3mA5f8AAjOcrsGzKNletnxM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1c76d6de60397fc0008ce72bb06cca3657ad9f13"</string>
+		</dict>
+		<key>Frameworks/libfontconfig.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			tYIY9Lv4X2XBLXWbMy1BJFOJ5Cc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b58218f4bbf85f65c12d759b332d41245389e427"</string>
+		</dict>
+		<key>Frameworks/libfreetype.6.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			+5e9FOGUxP1pkB7wzcrB4jJwTZc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"fb97bd14e194c4fd69901ef0cdcac1e232704d97"</string>
+		</dict>
+		<key>Frameworks/libfribidi.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			6onZoGQeGFZe+Q33B+yynWwOMfQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ea89d9a0641e18565ef90df707ecb29d6c0e31f4"</string>
+		</dict>
+		<key>Frameworks/libglib-2.0.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			LUwSP3O6fN9F9ctfl8hESwLM3/o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2d4c123f73ba7cdf45f5cb5f97c8444b02ccdffa"</string>
+		</dict>
+		<key>Frameworks/libgraphite2.3.3.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			dc020qiKXcU8TQs2I3EnXdy2ISw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"75cd36d2a88a5dc53c4d0b362371275ddcb6212c"</string>
+		</dict>
+		<key>Frameworks/libharfbuzz.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			S2qV/56LQhMuxOI/XAbsUY90LUY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4b6a95ff9e8b42132ec4e23f5c06ec518f742d46"</string>
+		</dict>
+		<key>Frameworks/libintl.8.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			jxNTLQiU3IxixpWJxPNWxerIzYA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8f13532d0894dc8c62c69589c4f356c5eac8cd80"</string>
+		</dict>
+		<key>Frameworks/libjpeg.8.3.2.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			2wu7Z/9hMEnB10448lOgalPfEzQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"db0bbb67ff613049c1d74e38f253a06a53df1334"</string>
+		</dict>
+		<key>Frameworks/liblcms2.2.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			htWykw1A4QJyclRqAcB8cegCY18=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"86d5b2930d40e1027272546a01c07c71e802635f"</string>
+		</dict>
+		<key>Frameworks/libluajit-5.1.2.1.1794386141.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vlHpMOqoUQaV5++SPN88nmqQw9o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"be51e930eaa8510695e7ef923cdf3c9e6a90c3da"</string>
+		</dict>
+		<key>Frameworks/liblz4.1.11.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			tbAuzD5FO5jT7mI8FoL3gaGvzck=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b5b02ecc3e453b98d3ee623c1682f781a1afcdc9"</string>
+		</dict>
+		<key>Frameworks/liblzma.5.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			YKK+39YpWy/KDNrhUcFKc0H/uIA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"60a2bedfd6295b2fca0cdae151c14a7341ffb880"</string>
+		</dict>
+		<key>Frameworks/libmp3lame.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			OVnNymsEAlfBXL4b3exmfNimU3s=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3959cdca6b040257c15cbe1bddec667cd8a6537b"</string>
+		</dict>
+		<key>Frameworks/libmpg123.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aPibj4C4s2qNQ1bh4p70fAk/YLQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"68f89b8f80b8b36a8d4356e1e29ef47c093f60b4"</string>
+		</dict>
+		<key>Frameworks/libmpv.2.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			/Ea/oo7NyyXQZHi1AIw9xaZWNpw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"fc46bfa28ecdcb25d06478b5008c3dc5a656369c"</string>
+		</dict>
+		<key>Frameworks/libmujs.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			42vhR2bgQIPyBSvdLDAwh+PxZY0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e36be14766e04083f2052bdd2c303087e3f1658d"</string>
+		</dict>
+		<key>Frameworks/libopus.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			cRfhJHAjnNbZA3jLevWNfqx84ps=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7117e12470239cd6d90378cb7af58d7eac7ce29b"</string>
+		</dict>
+		<key>Frameworks/libpcre2-8.0.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			UWSc0D0aCQitm/l4hEEQUCGrLlc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"51649cd03d1a0908ad9bf9788441105021ab2e57"</string>
+		</dict>
+		<key>Frameworks/libplacebo.387.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Q1Xa9uats4ytqEkIbJCQ6VlMRHE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4355daf6e6adb38cada849086c9090e9594c4471"</string>
+		</dict>
+		<key>Frameworks/libpng16.16.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			h7EgXkPce2er/kJE1g61GM7tK9s=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"87b1205e43dc7b67abfe4244d60eb518ceed2bdb"</string>
+		</dict>
+		<key>Frameworks/librubberband.3.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			zyvWzgE0ZBfaW6t4LDCQPYkizf4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"cf2bd6ce01346417da5bab782c30903d8922cdfe"</string>
+		</dict>
+		<key>Frameworks/libsamplerate.0.2.2.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5Bsz19k/156610CxpCwH8g5nSFw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e41b33d7d93fd79ebad740b1a42c07f20e67485c"</string>
+		</dict>
+		<key>Frameworks/libshaderc_shared.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			VZZ5OJadHH2a9DTG+3lK5t5QtVs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"55967938969d1c7d9af434c6fb794ae6de50b55b"</string>
+		</dict>
+		<key>Frameworks/libssl.4.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eBi/vFfU9rhZCF10RYeCzsvVvtA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7818bfbc57d4f6b859085d74458782cecbd5bed0"</string>
+		</dict>
+		<key>Frameworks/libswresample.7.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			9DBsNB57rA38oR/zWV7Xn7QhCq4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f4306c341e7bac0dfca11ff3595ed79fb4210aae"</string>
+		</dict>
+		<key>Frameworks/libswscale.10.1.102.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fjV8bojZOGkR9DOtO1cwAEnB9nA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7e357c6e88d9386911f433ad3b57300049c1f670"</string>
+		</dict>
+		<key>Frameworks/libuchardet.0.0.8.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			uX5+7ZeeMHCG8hFiy3/FKIsa7EE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b97e7eed979e307086f21162cb7fc5288b1aec41"</string>
+		</dict>
+		<key>Frameworks/libudfread.3.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aXen0RcC9z0nrMB7EbibLZsqU4I=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6977a7d11702f73d27acc07b11b89b2d9b2a5382"</string>
+		</dict>
+		<key>Frameworks/libunibreak.8.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			z8l0Q6hOyPElLnJuWCywzsXIXSs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"cfc97443a84ec8f1252e726e582cb0cec5c85d2b"</string>
+		</dict>
+		<key>Frameworks/libvmaf.3.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			6BFquzkFFdc331KuHx3vxzLWdaE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e8116abb390515d737df52ae1f1defc732d675a1"</string>
+		</dict>
+		<key>Frameworks/libvpx.12.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			awgwBWAwAaY0vUHs3NptTIckNtM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6b083005603001a634bd41ecdcda6d4c872436d3"</string>
+		</dict>
+		<key>Frameworks/libvulkan.1.4.363.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wF4aEDUFn80wSh8TMuHvIVz/p/M=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c05e1a1035059fcd304a1f1332e1ef215cffa7f3"</string>
+		</dict>
+		<key>Frameworks/libx264.165.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			loO25ys1FbPGdoh8ybc9WzL/8+8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9683b6e72b3515b3c676887cc9b73d5b32fff3ef"</string>
+		</dict>
+		<key>Frameworks/libx265.217.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4CAnbky0LaOHV93iREVyVDr86S8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e020276e4cb42da38757dde2444572543afce92f"</string>
+		</dict>
+		<key>Frameworks/libzimg.2.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			X5hIN/wB3bLOq/VvxBQGsZfpUYs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"5f984837fc01ddb2ceabf56fc41406b197e9518b"</string>
+		</dict>
+		<key>Frameworks/libzstd.1.5.7.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NkHNUj/l4Tyruy/5AsasicMyJTc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3641cd523fe5e13cabbb2ff902c6ac89c3322537"</string>
+		</dict>
+		<key>Frameworks/mpv</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fRMbs7MBhnZsg1Dwk24XYYI5C3E=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7d131bb3b30186766c8350f0936e176182390b71"</string>
+		</dict>
+		<key>MacOS/Avalonia.Base.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			RKGW4boL0R+CaOV9aI3yZom/Lm0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"44a196e1ba0bd11f8268e57d688df26689bf2e6d"</string>
+		</dict>
+		<key>MacOS/Avalonia.Controls.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			q8fAJlF5WJg7y3cSJOLOP9eFLmM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"abc7c026517958983bcb771224e2ce3fd7852e63"</string>
+		</dict>
+		<key>MacOS/Avalonia.DesignerSupport.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aPC6xvMvn9EPfkNl0NhFZOPN1Og=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"68f0bac6f32f9fd10f7e4365d0d84564e3cdd4e8"</string>
+		</dict>
+		<key>MacOS/Avalonia.Desktop.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			nooYZoIqrZu6horoUAVl9aBm3ig=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9e8a1866822aad9bba868ae8500565f5a066de28"</string>
+		</dict>
+		<key>MacOS/Avalonia.Dialogs.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			OXmHTjyXQCXzs6c6biQpvv28sbk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3979874e3c974025f3b3a73a6e2429befdbcb1b9"</string>
+		</dict>
+		<key>MacOS/Avalonia.FreeDesktop.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			zYlglMp/lFs/KV68THldGUqPXEg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"cd896094ca7f945b3f295ebc4c795d194a8f5c48"</string>
+		</dict>
+		<key>MacOS/Avalonia.Markup.Xaml.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JcTxAvU0K5wcD4N5b9HLj/4nXGM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"25c4f102f5342b9c1c0f83796fd1cb8ffe275c63"</string>
+		</dict>
+		<key>MacOS/Avalonia.Markup.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			rZ810MKypI/O7kzuyjKcq4J0JoI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ad9f35d0c2b2a48fceee4ceeca329cab82742682"</string>
+		</dict>
+		<key>MacOS/Avalonia.Metal.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			EY7ieku353jJgTYy8yswau/L8Do=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"118ee27a4bb7e778c9813632f32b306aefcbf03a"</string>
+		</dict>
+		<key>MacOS/Avalonia.MicroCom.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5CtVFP1YvcVCk1/krTTBVxqhMgU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e42b5514fd58bdc542935fe4ad34c1571aa13205"</string>
+		</dict>
+		<key>MacOS/Avalonia.Native.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			r7OYbz6qAmu9eABqp1dFBUBnjbE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"afb3986f3eaa026bbd78006aa757450540678db1"</string>
+		</dict>
+		<key>MacOS/Avalonia.OpenGL.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			3oMQDWS0yRIFyyAsOrvDq8Fm2bQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"de83100d64b4c91205cb202c3abbc3abc166d9b4"</string>
+		</dict>
+		<key>MacOS/Avalonia.Remote.Protocol.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ByguheURbsVbpIIJIMHDcdetBMs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"07282e85e5116ec55ba4820920c1c371d7ad04cb"</string>
+		</dict>
+		<key>MacOS/Avalonia.Skia.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			CSUl/vXTHeUgJU4YpeXuVknW4p8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"092525fef5d31de520254e18a5e5ee5649d6e29f"</string>
+		</dict>
+		<key>MacOS/Avalonia.Themes.Fluent.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			IBq+SkoofQvB/mqVE3HLFnTJqNk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"201abe4a4a287d0bc1fe6a951371cb1674c9a8d9"</string>
+		</dict>
+		<key>MacOS/Avalonia.Vulkan.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			jjB0McKKxITzVQ91H7KbGn4eUjI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8e307431c28ac484f3550f751fb29b1a7e1e5232"</string>
+		</dict>
+		<key>MacOS/Avalonia.Win32.Automation.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5s1iAMjuDLnsosW4PijI0pnNQIw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e6cd6200c8ee0cb9eca2c5b83e28c8d299cd408c"</string>
+		</dict>
+		<key>MacOS/Avalonia.Win32.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			YL6E+qWByOfGcM4xTv6KCr9lZUI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"60be84faa581c8e7c670ce314efe8a0abf656542"</string>
+		</dict>
+		<key>MacOS/Avalonia.X11.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FB5mfHyyJUaAOkqtsv2KmQFx0Ac=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"141e667c7cb22546803a4aadb2fd8a990171d007"</string>
+		</dict>
+		<key>MacOS/Avalonia.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			CE8D+vfWLddT4yR3Z6hlDk6sbGQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"084f03faf7d62dd753e3247767a8650e4eac6c64"</string>
+		</dict>
+		<key>MacOS/HarfBuzzSharp.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			q2ejwTGk+lWORzLsc3BSLBG+P7k=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ab67a3c131a4fa558e4732ec7370522c11be3fb9"</string>
+		</dict>
+		<key>MacOS/MicroCom.Runtime.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Tom1kBprfmJlsSQbXejW7lGKy+Y=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4e89b5901a6b7e6265b1241b5de8d6ee518acbe6"</string>
+		</dict>
+		<key>MacOS/Microsoft.CSharp.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aYzamj4UN1C7DqkPuJSltjbL6LY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"698cda9a3e143750bb0ea90fb894a5b636cbe8b6"</string>
+		</dict>
+		<key>MacOS/Microsoft.Extensions.AI.Abstractions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NQujCu3ltfqBZt9/04GwtAKo/p8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"350ba30aede5b5fa8166df7fd381b0b402a8fe9f"</string>
+		</dict>
+		<key>MacOS/Microsoft.VisualBasic.Core.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fqLqeJQ+bkUL0v5dMZRbZUsYAe0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7ea2ea78943e6e450bd2fe5d31945b654b1801ed"</string>
+		</dict>
+		<key>MacOS/Microsoft.VisualBasic.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FrV4MFLhTAmVAcoF0k7iDN87PKc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"16b5783052e14c099501ca05d24ee20cdf3b3ca7"</string>
+		</dict>
+		<key>MacOS/Microsoft.Win32.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			sXVfg1yPOrFfy2wyeCmJSoQyVaA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b1755f835c8f3ab15fcb6c327829894a843255a0"</string>
+		</dict>
+		<key>MacOS/Microsoft.Win32.Registry.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FvsdjxBSFBuaUQRKnexBAXxJZas=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"16fb1d8f1052141b9a51044a9dec41017c4965ab"</string>
+		</dict>
+		<key>MacOS/SkiaSharp.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			P3cHyq3xNW7XP0OAisES3huTwKo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3f7707caadf1356ed73f43808ac112de1b93c0aa"</string>
+		</dict>
+		<key>MacOS/System.AppContext.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Gd6uWqJKY+QwVl6AX6O+3YKcWio=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"19deae5aa24a63e430565e805fa3bedd829c5a2a"</string>
+		</dict>
+		<key>MacOS/System.Buffers.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			pUmTOrzKQ8uT8BbZh92O3pOKRys=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a549933abcca43cb93f016d987dd8ede938a472b"</string>
+		</dict>
+		<key>MacOS/System.Collections.Concurrent.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			VVxoliTRkTDy07vE2mViz+IjFHw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"555c689624d19130f2d3bbc4da6562cfe223147c"</string>
+		</dict>
+		<key>MacOS/System.Collections.Immutable.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			nim2PDvLPZPdO/um+IpH/ohzBI4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9e29b63c3bcb3d93dd3bfba6f88a47fe8873048e"</string>
+		</dict>
+		<key>MacOS/System.Collections.NonGeneric.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			iajCkOP6SKwkvCfSdeh3TiEIL8U=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"89a8c290e3fa48ac24bc27d275e8774e21082fc5"</string>
+		</dict>
+		<key>MacOS/System.Collections.Specialized.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			E92W4VrfdjPzBhFjvUiV7f0fuaQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"13dd96e15adf7633f3061163bd4895edfd1fb9a4"</string>
+		</dict>
+		<key>MacOS/System.Collections.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Pyw2Jjvf77zZdAZshcmlDKjVjC4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3f2c36263bdfefbcd974066c85c9a50ca8d58c2e"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.Annotations.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			0ePDFnQ7WoSS2W/+ura+aYqGloA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"d1e3c316743b5a8492d96ffebab6be698a869680"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.DataAnnotations.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			XhtKJdzOlIwiTvikN+8RiYnOm/0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"5e1b4a25dcce948c224ef8a437ef118989ce9bfd"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.EventBasedAsync.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			LCjix6uoDCxWoip0FQAoMwbM3/s=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2c28e2c7aba80c2c56a22a741500283306ccdffb"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			7fhv6zpeA3zKsVSKGJuUx7B8EDA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"edf86feb3a5e037ccab1548a189b94c7b07c1030"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.TypeConverter.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			J3t5NRX/d7F4imdZEHMuUHziQxo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"277b793515ff77b1788a675910732e507ce2431a"</string>
+		</dict>
+		<key>MacOS/System.ComponentModel.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			O3un2OTtTzNFVuUwpCBHpgdbdy8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3b7ba7d8e4ed4f334556e530a42047a6075b772f"</string>
+		</dict>
+		<key>MacOS/System.Configuration.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ppLmhbsYrA/gXhuKV49+ce3Izfs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a692e685bb18ac0fe05e1b8a578f7e71edc8cdfb"</string>
+		</dict>
+		<key>MacOS/System.Console.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wdHXvUpOao5HPKCHNZm1aBF9g2o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c1d1d7bd4a4e6a8e473ca0873599b568117d836a"</string>
+		</dict>
+		<key>MacOS/System.Core.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5w1T1f17C5b9Y8OkJ6DlnXpm0EA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e70d53d5fd7b0b96fd63c3a427a0e59d7a66d040"</string>
+		</dict>
+		<key>MacOS/System.Data.Common.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			m4aIAKkFFRlJAsZto4zlrv+4miw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9b868800a90515194902c66da38ce5aeffb89a2c"</string>
+		</dict>
+		<key>MacOS/System.Data.DataSetExtensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vSpDHWXu7amoHwk5pExEU/HwNhE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"bd2a431d65eeeda9a81f0939a44c4453f1f03611"</string>
+		</dict>
+		<key>MacOS/System.Data.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			G5/0n8x4VCmiR+duljfJPAOQfc4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1b9ff49fcc785429a247e76e9637c93c03907dce"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.Contracts.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JBOOST7b4VmaWSYBtQocArs8H00=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"24138e493edbe1599a592601b50a1c02bb3c1f4d"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.Debug.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			loI0pmsjzAsnhETceWjn8Fp3Rbc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"968234a66b23cc0b278444dc7968e7f05a7745b7"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.DiagnosticSource.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			tpqTY4GHW24o1+LBAOpZqf6Mqo4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b69a936381875b6e28d7e2c100ea59a9fe8caa8e"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.FileVersionInfo.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			7g7IOSpa7f0QmqwQoHlyZgac65w=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ee0ec8392a5aedfd109aac10a0797266069ceb9c"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.Process.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			hd+vjcHOGeO+1ohw5ZsZvCu14eQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"85dfaf8dc1ce19e3bed68870e59b19bc2bb5e1e4"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.StackTrace.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			DNJEHNvTVppmRtYsEbmcx9OGQxE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0cd2441cdbd3569a6646d62c11b99cc7d3864311"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.TextWriterTraceListener.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			7zNjGoIDFbJM0qOdnxXO9Ycp89M=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ef33631a820315b24cd2a39d9f15cef58729f3d3"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.Tools.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			bNguvjGKxOL8wS+tneMGUWz5sC8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6cd82ebe318ac4e2fcc12fad9de306516cf9b02f"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.TraceSource.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aGciYk/7qiK29xV2+KBRxnUN33g=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"686722624ffbaa22b6f71576f8a051c6750ddf78"</string>
+		</dict>
+		<key>MacOS/System.Diagnostics.Tracing.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			usGVD+apuneIRI9Jzaps9QsJSno=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"bac1950fe6a9ba7788448f49cdaa6cf50b094a7a"</string>
+		</dict>
+		<key>MacOS/System.Drawing.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4aCBVqjrZfdJ3BvyJOZdCHV3wo4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e1a08156a8eb65f749dc1bf224e65d087577c28e"</string>
+		</dict>
+		<key>MacOS/System.Drawing.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			S5XT8uB63rJX3XhTFsKvE3B2j/w=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4b95d3f2e07adeb257dd785316c2af1370768ffc"</string>
+		</dict>
+		<key>MacOS/System.Dynamic.Runtime.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			TXly3qk1UJsOXibQ55HEDkE/ZJk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4d7972dea935509b0e5e26d0e791c40e413f6499"</string>
+		</dict>
+		<key>MacOS/System.Formats.Asn1.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lHCL4o+lDgZTzd3bjRbRDxCAv58=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"94708be28fa50e0653cddddb8d16d10f1080bf9f"</string>
+		</dict>
+		<key>MacOS/System.Formats.Tar.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aIlwgHi7qRs47miLFTodWDeCVys=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6889708078bba91b38ee688b153a1d583782572b"</string>
+		</dict>
+		<key>MacOS/System.Globalization.Calendars.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			iB8WaZkjy8k+7uZLeVoCFWwloMQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"881f16699923cbc93eeee64b795a02156c25a0c4"</string>
+		</dict>
+		<key>MacOS/System.Globalization.Extensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			AeiOzjf1Sx8krAosw+fft0hYaUs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"01e88ece37f54b1f24ac0a2cc3e7dfb74858694b"</string>
+		</dict>
+		<key>MacOS/System.Globalization.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5Kj1tmuwvnjDUvm6wUKEv6O9hmg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e4a8f5b66bb0be78c352f9bac14284bfa3bd8668"</string>
+		</dict>
+		<key>MacOS/System.IO.Compression.Brotli.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			AXeQQDK368Ev4c8xaNlA0BwaLFo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0177904032b7ebc12fe1cf3168d940d01c1a2c5a"</string>
+		</dict>
+		<key>MacOS/System.IO.Compression.FileSystem.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			gan79xRuVaFba24ke97EFypzLy8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"81a9fbf7146e55a15b6b6e247bdec4172a732f2f"</string>
+		</dict>
+		<key>MacOS/System.IO.Compression.ZipFile.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			S3a9aZboxE4+1gmiNIgKdW7/2IM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4b76bd6996e8c44e3ed609a234880a756effd883"</string>
+		</dict>
+		<key>MacOS/System.IO.Compression.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			gTYDhHcAKBag7y0AhjBNdhumeWk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8136038477002816a0ef2d0086304d761ba67969"</string>
+		</dict>
+		<key>MacOS/System.IO.FileSystem.AccessControl.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Vfhn6TI0+KtIGaklVmpPB8MA4s8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"55f867e93234f8ab4819a925566a4f07c300e2cf"</string>
+		</dict>
+		<key>MacOS/System.IO.FileSystem.DriveInfo.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			QKLEexE6osUbvCwvQMB5PRayuXQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"40a2c47b113aa2c51bbc2c2f40c0793d16b2b974"</string>
+		</dict>
+		<key>MacOS/System.IO.FileSystem.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			MqaXOYPf0nOTKvCHA9LN48sp8WM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"32a6973983dfd273932af08703d2cde3cb29f163"</string>
+		</dict>
+		<key>MacOS/System.IO.FileSystem.Watcher.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			txFwGeviXC1vGw6kljzOereyDR4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b7117019ebe25c2d6f1b0ea4963cce7ab7b20d1e"</string>
+		</dict>
+		<key>MacOS/System.IO.FileSystem.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			yEQ16BkAAqi5XLCz5Kp5OxYdDlM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c84435e8190002a8b95cb0b3e4aa793b161d0e53"</string>
+		</dict>
+		<key>MacOS/System.IO.IsolatedStorage.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aJSVvJvkrfZmpcCrWGCrsha2RXs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"689495bc9be4adf666a5c0ab5860abb216b6457b"</string>
+		</dict>
+		<key>MacOS/System.IO.MemoryMappedFiles.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			YVFWfexLCDAydJLcU83xmgDtS5k=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6151567dec4b0830327492dc53cdf19a00ed4b99"</string>
+		</dict>
+		<key>MacOS/System.IO.Pipelines.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			f5LbhMf2rcQaA4zEp3AEWAJd3N4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7f92db84c7f6adc41a038cc4a7700458025ddcde"</string>
+		</dict>
+		<key>MacOS/System.IO.Pipes.AccessControl.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NBGps9+uJSWmDtDVmpDeiJoVflQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3411a9b3dfae2525a60ed0d59a90de889a157e54"</string>
+		</dict>
+		<key>MacOS/System.IO.Pipes.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			DAssDjQyTdsiOq6l1OecDndiddo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0c0b2c0e34324ddb223aaea5d4e79c0e776275da"</string>
+		</dict>
+		<key>MacOS/System.IO.UnmanagedMemoryStream.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			cOuaiJKL03pkvzTssjlfiupgl7o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"70eb9a88928bd37a64bf34ecb2395f8aea6097ba"</string>
+		</dict>
+		<key>MacOS/System.IO.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fE/c7U80122qCHOabHOKu4xnp3Q=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7c4fdced4f34d76daa08739a6c738abb8c67a774"</string>
+		</dict>
+		<key>MacOS/System.Linq.AsyncEnumerable.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4hiOYhVPGtrNTjjJP/vxj3yF+oc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e2188e62154f1adacd4e38c93ffbf18f7c85fa87"</string>
+		</dict>
+		<key>MacOS/System.Linq.Expressions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			iAILOOaJcuzcuAF9nzjQ6ZuSADQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"88020b38e68972ecdcb8017d9f38d0e99b920034"</string>
+		</dict>
+		<key>MacOS/System.Linq.Parallel.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lrcqeZPh6d8He+NYegILovMcZQ4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"96b72a7993e1e9df077be3587a020ba2f31c650e"</string>
+		</dict>
+		<key>MacOS/System.Linq.Queryable.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			+nJe4rKocgpBcLcuF20pus5T/tc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"fa725ee2b2a8720a4170b72e176d29bace53fed7"</string>
+		</dict>
+		<key>MacOS/System.Linq.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			kBGMc8Pmjq8BejyePCyoDQIZm7E=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"90118c73c3e68eaf017a3c9e3c2ca80d02199bb1"</string>
+		</dict>
+		<key>MacOS/System.Memory.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			hjq+zBWW5S0tnAO0LkP6pa2My2k=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"863abecc1596e52d2d9c03b42e43faa5ad8ccb69"</string>
+		</dict>
+		<key>MacOS/System.Net.Http.Json.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			rZeUSJdHj1NTmUV9GtLp+XiDrZs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ad97944897478f535399457d1ad2e9f97883ad9b"</string>
+		</dict>
+		<key>MacOS/System.Net.Http.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vIDjouSgjU/T/eBQ4xvftiNTbSM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"bc80e3a2e4a08d4fd3fde050e31bdfb623536d23"</string>
+		</dict>
+		<key>MacOS/System.Net.HttpListener.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			LAoZ4w+/7s88U0YVTw9ZQ+63iL0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2c0a19e30fbfeecf3c5346154f0f5943eeb788bd"</string>
+		</dict>
+		<key>MacOS/System.Net.Mail.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			SgWGDAGC56+eWUxB7r6A6vthxDQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4a05860c0182e7af9e594c41eebe80eafb61c434"</string>
+		</dict>
+		<key>MacOS/System.Net.NameResolution.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			z0XOENtm5/HU0VHQXYQVaIUxDqU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"cf45ce10db66e7f1d4d151d05d84156885310ea5"</string>
+		</dict>
+		<key>MacOS/System.Net.NetworkInformation.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lq0KFMbQer3WguT2mjohQQqzxJs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"96ad0a14c6d07abdd682e4f69a3a21410ab3c49b"</string>
+		</dict>
+		<key>MacOS/System.Net.Ping.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			nnALDJCUSt6aESdVWrAsQe2IXSo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9e700b0c90944ade9a1127555ab02c41ed885d2a"</string>
+		</dict>
+		<key>MacOS/System.Net.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			uQcQOcg5Kw6i41Tj3EhIBUcj1cM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b9071039c8392b0ea2e354e3dc4848054723d5c3"</string>
+		</dict>
+		<key>MacOS/System.Net.Quic.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			22xj3JtGADXa4w/iSrkpKjfpo7Q=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"db6c63dc9b460035dae30fe24ab9292a37e9a3b4"</string>
+		</dict>
+		<key>MacOS/System.Net.Requests.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			SUTURfUt8xambGKAUj0Zm3hSpKY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4944d445f52df316a66c6280523d199b7852a4a6"</string>
+		</dict>
+		<key>MacOS/System.Net.Security.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			k4TQQ+rUaq3w5chaZvDHdNB0FFw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9384d043ead46aadf0e5c85a66f0c774d074145c"</string>
+		</dict>
+		<key>MacOS/System.Net.ServerSentEvents.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			MRT+z2w6E2trUGc0y0sN62A42iw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3114fecf6c3a136b6b506734cb4b0deb6038da2c"</string>
+		</dict>
+		<key>MacOS/System.Net.ServicePoint.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			pJFXZcC39hDkODMW4bo2GIRoB3E=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a4915765c0b7f610e4383316e1ba361884680771"</string>
+		</dict>
+		<key>MacOS/System.Net.Sockets.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Vg+jRVVDCASLyHCNMu8z/U0+eUM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"560fa345554308048bc8708d32ef33fd4d3e7943"</string>
+		</dict>
+		<key>MacOS/System.Net.WebClient.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			IdtbYbylYZOrfGR58kNNpkD3QV4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"21db5b61bca56193ab7c6479f2434da640f7415e"</string>
+		</dict>
+		<key>MacOS/System.Net.WebHeaderCollection.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			I4YxgzHFlDPpjrBmJ146GF9qDPo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2386318331c59433e98eb066275e3a185f6a0cfa"</string>
+		</dict>
+		<key>MacOS/System.Net.WebProxy.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			J7FvVMUaqMknk12EcruaM/TCqJw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"27b16f54c51aa8c927935d8472bb9a33f4c2a89c"</string>
+		</dict>
+		<key>MacOS/System.Net.WebSockets.Client.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			BzQR8Sl6paaKoGbbrzrUJaUnxz0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"073411f1297aa5a68aa066dbaf3ad425a527c73d"</string>
+		</dict>
+		<key>MacOS/System.Net.WebSockets.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			E+nSjgH005AENrS9miWKcnmDh18=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"13e9d28e01f4d3900436b4bd9a258a727983875f"</string>
+		</dict>
+		<key>MacOS/System.Net.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FwtDd6tmb65CLQgtTrAl27vkUTM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"170b4377ab666fae422d082d4eb025dbbbe45133"</string>
+		</dict>
+		<key>MacOS/System.Numerics.Vectors.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ZD92RBpBTTU9zZzM6vkDAFR+Ah0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"643f76441a414d353dcd9ccceaf90300547e021d"</string>
+		</dict>
+		<key>MacOS/System.Numerics.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			KZeviy8f0Y+AuvhHbGZZ7/Ocd30=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2997af8b2f1fd18f80baf8476c6659eff39c777d"</string>
+		</dict>
+		<key>MacOS/System.ObjectModel.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Ji/A37jASxwSC5HMUv2bYuJHv0Y=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"262fc0dfb8c04b1c120b91cc52fd9b62e247bf46"</string>
+		</dict>
+		<key>MacOS/System.Private.CoreLib.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			x6O8OUyHRprviV0yERr5DaEb2lI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c7a3bc394c87469aef895d32111af90da11bda52"</string>
+		</dict>
+		<key>MacOS/System.Private.DataContractSerialization.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			gsQnFfjn+9ODFCNTDFJbQCAnwrk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"82c42715f8e7fbd3831423530c525b402027c2b9"</string>
+		</dict>
+		<key>MacOS/System.Private.Uri.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ZZdRcohTsaqIMqZkC9M7gD+D2pg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"659751728853b1aa8832a6640bd33b803f83da98"</string>
+		</dict>
+		<key>MacOS/System.Private.Xml.Linq.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lIh8dGBgtf2GAQcu7zivZ9EK2us=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"94887c746060b5fd8601072eef38af67d10adaeb"</string>
+		</dict>
+		<key>MacOS/System.Private.Xml.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JUPCYannFeI1v6Sh2BteVOFAqi8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2543c261a9e715e235bfa4a1d81b5e54e140aa2f"</string>
+		</dict>
+		<key>MacOS/System.Reflection.DispatchProxy.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			dpEIuSCnqjXMJPo/MHwGEfJQ3Ng=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"769108b920a7aa35cc24fa3f307c0611f250dcd8"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Emit.ILGeneration.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			n1hmrDxIiSaPbXFOlkt2DGaJqMs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9f5866ac3c4889268f6d714e964b760c6689a8cb"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Emit.Lightweight.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ahEOoWD6t966UfU63n/9vcl3Wc4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6a110ea160fab7deba51f53ade7ffdbdc97759ce"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Emit.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			1UU7CtWB+JoHifBS81hfX6DvcAY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"d5453b0ad581f89a0789f052f3585f5fa0ef7006"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Extensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			anrYsBjklsfOPgqp9jX/IV2N7Bc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6a7ad8b018e496c7ce3e0aa9f635ff215d8dec17"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Metadata.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			bum/jbRwNYy2XUUplWNjVAhie3Q=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6ee9bf8db470358cb65d45299563635408627b74"</string>
+		</dict>
+		<key>MacOS/System.Reflection.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			OPD/kd4G+S4xIY3ij1EerF0fOnk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"38f0ff91de06f92e31218de28f511eac5d1f3a79"</string>
+		</dict>
+		<key>MacOS/System.Reflection.TypeExtensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			n27umwsXHrSfnfxVV30NJ0W7/QE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9f6eee9b0b171eb49f9dfc55577d0d2745bbfd01"</string>
+		</dict>
+		<key>MacOS/System.Reflection.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			YIri88EglHIFjRx/FZrkJQYSmkM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"608ae2f3c1209472058d1c7f159ae42506129a43"</string>
+		</dict>
+		<key>MacOS/System.Resources.Reader.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			zKIxk25KV6PRjlQPfHAvevzeaUk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"cca231936e4a57a3d18e540f7c702f7afcde6949"</string>
+		</dict>
+		<key>MacOS/System.Resources.ResourceManager.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			p8cCm9+0Iuf6wIHQJUiEQw4TdxQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a7c7029bdfb422e7fac081d0254884430e137714"</string>
+		</dict>
+		<key>MacOS/System.Resources.Writer.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			yAEC9xlue57fcTsyNdcRM1HETzg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c80102f7196e7b9edf713b3235d7113351c44f38"</string>
+		</dict>
+		<key>MacOS/System.Runtime.CompilerServices.Unsafe.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			LeqD8PpozpbnKqwblcvsTdfzH5g=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2dea83f0fa68ce96e72aac1b95cbec4dd7f31f98"</string>
+		</dict>
+		<key>MacOS/System.Runtime.CompilerServices.VisualC.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			khzTkM/dk3wqPf9GoFdsJg1u3D0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"921cd390cfdd937c2a3dff46a0576c260d6edc3d"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Extensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Th6W1be3d3fGwDtKuQZYCpHbvL8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4e1e96d5b7b77777c6c03b4ab906580a91dbbcbf"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Handles.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4fdLnwwuuJiarEIewOoUjX9Vtxc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e1f74b9f0c2eb8989aac421ec0ea148d7f55b717"</string>
+		</dict>
+		<key>MacOS/System.Runtime.InteropServices.JavaScript.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			G2WgsVeNXQ9ZupJDPk9KDBk6BnU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1b65a0b1578d5d0f59ba92433e4f4a0c193a0675"</string>
+		</dict>
+		<key>MacOS/System.Runtime.InteropServices.RuntimeInformation.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5MbASZz6NRVNw9PxahfmnfJ/VZw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e4c6c0499cfa35154dc3d3f16a17e69df27f559c"</string>
+		</dict>
+		<key>MacOS/System.Runtime.InteropServices.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aJz8OvzaK/bHDuoW9EJIF6mgDDg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"689cfc3afcda2bf6c70eea16f4424817a9a00c38"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Intrinsics.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ZWxDrp9X3ATWBnp4h0UZIoRqRk8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"656c43ae9f57dc04d6067a7887451922846a464f"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Loader.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eCjZPh7boMEHOlKN6oLXGQxfbTs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7828d93e1edba0c1073a528dea82d7190c5f6d3b"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Numerics.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			8gADeUK1NiCANQzasuWweZ1f690=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f200037942b5362080350cdab2e5b0799d5febdd"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Serialization.Formatters.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			guO5xSACwtB3vbQimsQUx0TF1OU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"82e3b9c52002c2d077bdb4229ac414c744c5d4e5"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Serialization.Json.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			deJpVkLlTt3CUFOIBD5IYlOtq74=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"75e2695642e54eddc2505388043e486253adabbe"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Serialization.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eViL+Ju+dAwgjqTSN7EMsFBtenw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"79588bf89bbe740c208ea4d237b10cb0506d7a7c"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Serialization.Xml.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			I1gSY5ZdQcjRj53uAoj1t0SPH9s=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"23581263965d41c8d18f9dee0288f5b7448f1fdb"</string>
+		</dict>
+		<key>MacOS/System.Runtime.Serialization.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			oZdUXBdgbiRYhR8FUKdwLQvJYMY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a197545c17606e2458851f0550a7702d0bc960c6"</string>
+		</dict>
+		<key>MacOS/System.Runtime.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eHOOX/0wBy9sbKwgOzVvU3p8+mE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"78738e5ffd30072f6c6cac203b356f537a7cfa61"</string>
+		</dict>
+		<key>MacOS/System.Security.AccessControl.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			/We7oXAYzC5GOUgZcrGjwl9eD38=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"fd67bba17018cc2e4639481972b1a3c25f5e0f7f"</string>
+		</dict>
+		<key>MacOS/System.Security.Claims.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Vid673hGolHeKdjZ0xKQYT4hfZ4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"56277aef7846a251de29d8d9d31290613e217d9e"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.Algorithms.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			8oiZmi9rwRB7i+JzmxxTKQ/BvSc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f288999a2f6bc1107b8be2739b1c53290fc1bd27"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.Cng.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vU3uP14DY2+Fl7HCXH+kKyREv9A=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"bd4dee3f5e03636f8597b1c25c7fa42b2444bfd0"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.Csp.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			j7KJy2lJAbJxrrJOLt5Ohif9B04=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8fb289cb694901b271aeb24e2ede4e8627fd074e"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.Encoding.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			K2AzhIT2Cia3D7As1Mr6NYV5WfY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2b60338484f60a26b70fb02cd4cafa35857959f6"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.OpenSsl.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NjZVyKnQztKjnb51LCL+mw3qaxM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"363655c8a9d0ced2a39dbe752c22fe9b0dea6b13"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.Primitives.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			apK+ovRCZVzzUj8OrRDCNiiqIno=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6a92bea2f442655cf3523f0ead10c23628aa227a"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.X509Certificates.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			9pQ8ul0yX9r5FvulGJ8tr6LW9Bw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f6943cba5d325fdaf916fba5189f2dafa2d6f41c"</string>
+		</dict>
+		<key>MacOS/System.Security.Cryptography.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			gbDhQlB8j6OkykRxW3aPooyYlBk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"81b0e142507c8fa3a4ca44715b768fa28c989419"</string>
+		</dict>
+		<key>MacOS/System.Security.Principal.Windows.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			kA9JOhShc2Oi8YjePMxWQsQuDCM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"900f493a14a17363a2f188de3ccc5642c42e0c23"</string>
+		</dict>
+		<key>MacOS/System.Security.Principal.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Mp2UWKxH3excsrR62s3L/kyXAc4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"329d9458ac47ddec5cb2b47adacdcbfe4c9701ce"</string>
+		</dict>
+		<key>MacOS/System.Security.SecureString.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			IkCxBTIZpPNy5zxZBs3mCYOPv7E=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2240b1053219a4f372e73c5906cde609838fbfb1"</string>
+		</dict>
+		<key>MacOS/System.Security.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JJalm1PeDeuwtkIfqfT3DDTGn5U=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2496a59b53de0debb0b6421fa9f4f70c34c69f95"</string>
+		</dict>
+		<key>MacOS/System.ServiceModel.Web.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			w+U3YI6ZG4vk8OGZWPGG/Ku3leQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c3e537608e991b8be4f0e19958f186fcabb795e4"</string>
+		</dict>
+		<key>MacOS/System.ServiceProcess.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			oaB8ouXl1rWlFyfH4zUb8aq+OH4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a1a07ca2e5e5d6b5a51727c7e3351bf1aabe387e"</string>
+		</dict>
+		<key>MacOS/System.Text.Encoding.CodePages.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			PO9vV6UYOewLFqPNx0kd8qhGqhA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3cef6f57a51839ec0b16a3cdc7491df2a846aa10"</string>
+		</dict>
+		<key>MacOS/System.Text.Encoding.Extensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lS3zdbsYLl7v7T6B+EZr1FxUYzk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"952df375bb182e5eefed3e81f8466bd45c546339"</string>
+		</dict>
+		<key>MacOS/System.Text.Encoding.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			7BtzZZ53RAUEOH+E3Pt7CwTPiX4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ec1b73659e77440504387f84dcfb7b0b04cf897e"</string>
+		</dict>
+		<key>MacOS/System.Text.Encodings.Web.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JEenQ0tIKb+6ILAirYh+BtgpNnY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2447a7434b4829bfba20b022ad887e06d8293676"</string>
+		</dict>
+		<key>MacOS/System.Text.Json.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			MDsm5TqPaQZ01lSV3rmjkodVHRY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"303b26e53a8f690674d65495deb9a39287551d16"</string>
+		</dict>
+		<key>MacOS/System.Text.RegularExpressions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			8yLA5TJywu05s7CgZShxXmUlAzA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f322c0e53272c2ed39b3b0a06528715e65250330"</string>
+		</dict>
+		<key>MacOS/System.Threading.AccessControl.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			r6//HrnJOhO+3zTqO6rsFlxBrlM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"afafff1eb9c93a13bedf34ea3baaec165c41ae53"</string>
+		</dict>
+		<key>MacOS/System.Threading.Channels.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			8AQHGoHdtDI8SNeGRE1YqLkbvw8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f004071a81ddb4323c48d786444d58a8b91bbf0f"</string>
+		</dict>
+		<key>MacOS/System.Threading.Overlapped.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			DgZiqcXh2dFthWp0FIdz6QlkGKU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0e0662a9c5e1d9d16d856a74148773e9096418a5"</string>
+		</dict>
+		<key>MacOS/System.Threading.Tasks.Dataflow.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			AdGBJHNe84/tJqY6RXjjKMkMOq8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"01d18124735ef38fed26a63a4578e328c90c3aaf"</string>
+		</dict>
+		<key>MacOS/System.Threading.Tasks.Extensions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fnuZQyi2wFeQGneBJhR7J2dHPH8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7e7b994328b6c057901a778126147b2767473c7f"</string>
+		</dict>
+		<key>MacOS/System.Threading.Tasks.Parallel.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Fnvwo16Kjv4xyzCreulCxbfL+0U=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"167bf0a35e8a8efe31cb30ab7ae942c5b7cbfb45"</string>
+		</dict>
+		<key>MacOS/System.Threading.Tasks.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			n9n7kUJ4LVF7JHus9AQele9Kqso=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9fd9fb9142782d517b247bacf4041e95ef4aaaca"</string>
+		</dict>
+		<key>MacOS/System.Threading.Thread.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			hJDllg0dsW9hj0DRg4COwUFMOxI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8490e5960d1db16f618f40d183808ec1414c3b12"</string>
+		</dict>
+		<key>MacOS/System.Threading.ThreadPool.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Am3qchzcGUCYiRjmbAmYkJmIpLg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"026dea721cdc1940988918e66c0998909988a4b8"</string>
+		</dict>
+		<key>MacOS/System.Threading.Timer.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			TuPb5i/2MTg5Q4IyM1hAJp7RyT0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4ee3dbe62ff6313839438232335840269ed1c93d"</string>
+		</dict>
+		<key>MacOS/System.Threading.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			RKMpDt7kL3Aat6fnX6+tT3SVSa4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"44a3290edee42f701ab7a7e75fafad4f749549ae"</string>
+		</dict>
+		<key>MacOS/System.Transactions.Local.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			1u7KtwTtgkH5lrJj4CLprAK5JVw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"d6eecab704ed8241f996b263e022e9ac02b9255c"</string>
+		</dict>
+		<key>MacOS/System.Transactions.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NRanFlUd4r0rrns8qRG5NnqJoRQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3516a716551de2bd2bae7b3ca911b9367a89a114"</string>
+		</dict>
+		<key>MacOS/System.ValueTuple.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NXBDXmU1CgoQhk5BuaoS774qsmg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3570435e65350a0a10864e41b9aa12efbe2ab268"</string>
+		</dict>
+		<key>MacOS/System.Web.HttpUtility.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			/Fe2smmHPUVgwSR3PfK96z7jgpk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"fc57b6b269873d4560c124773df2bdeb3ee38299"</string>
+		</dict>
+		<key>MacOS/System.Web.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			myEQLCML2MkojCPf2hZoZpjElBQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9b21102c230bd8c9288c23dfda16686698c49414"</string>
+		</dict>
+		<key>MacOS/System.Windows.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ulOXevsgNCPE6Y2y5XBVJ7MXdSo=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ba53977afb203423c4e98db2e5705527b317752a"</string>
+		</dict>
+		<key>MacOS/System.Xml.Linq.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Rkt+j3kaNe0i/+Akp14mWunS8vc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"464b7e8f791a35ed22ffe024a75e265ae9d2f2f7"</string>
+		</dict>
+		<key>MacOS/System.Xml.ReaderWriter.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ixuYC/iKZRQYDfMlzjzFdERg/hM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8b1b980bf88a6514180df325ce3cc5744460fe13"</string>
+		</dict>
+		<key>MacOS/System.Xml.Serialization.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vmeBnxybmXrX34lTTc481u8n814=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"be67819f1c9b997ad7df89534dce3cd6ef27f35e"</string>
+		</dict>
+		<key>MacOS/System.Xml.XDocument.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			QgkSnL+uregKj/BQVRi1ZAwLKbs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4209129cbfaeade80a8ff0505518b5640c0b29bb"</string>
+		</dict>
+		<key>MacOS/System.Xml.XPath.XDocument.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FJvNnF4OIqY8ISUwWjsqvF4/mm8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"149bcd9c5e0e22a63c2125305a3b2abc5e3f9a6f"</string>
+		</dict>
+		<key>MacOS/System.Xml.XPath.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			VPwmWkJFAtLyeqAtdt5sJyAtjvQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"54fc265a424502d2f27aa02d76de6c27202d8ef4"</string>
+		</dict>
+		<key>MacOS/System.Xml.XmlDocument.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			MzwCKhfjYB909JH4uNb89YceaFc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"333c022a17e3601f74f491f8b8d6fcf5871e6857"</string>
+		</dict>
+		<key>MacOS/System.Xml.XmlSerializer.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			293Tj/tg+VxLoHJMNfW7xXznPpA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"dbddd38ffb60f95c4ba0724c35f5bbc57ce73e90"</string>
+		</dict>
+		<key>MacOS/System.Xml.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			NnCO4DuABRbhDQLmaRqIKE2+BH0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"36708ee03b800516e10d02e6691a88284dbe047d"</string>
+		</dict>
+		<key>MacOS/System.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			BOoRjqRzjauSUkcdkN9df15i8cI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"04ea118ea4738dab9252471d90df5d7f5e62f1c2"</string>
+		</dict>
+		<key>MacOS/Tmds.DBus.Protocol.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ziqBcESycqrVgtg3KkRcAOgpHvU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ce2a817044b272aad582d8372a445c00e8291ef5"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.Core.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			u52wbWF3jWNf57ZNl9r5Sn0qxY4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"bb9db06d61778d635fe7b64d97daf94a7d2ac58e"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.Core.pdb</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5aGeCUiIeMXCtY2VzJoUGQuE77g=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e5a19e09488878c5c2b58d95cc9a14190b84efb8"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.bin</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			2/cdDgMCqKSrANDAesfej+QNhhw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"dbf71d0e0302a8a4ab00d0c07ac7de8fe40d861c"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.deps.json</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			S4AaAHvHpa3UIMLtmNRe1z9rzBc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4b801a007bc7a5add420c2ed98d45ed73f6bcc17"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JJkXmpGx7bxqvimYSSHk3rGXCSA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2499179a91b1edbc6abe29984921e4deb1970920"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.pdb</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			D6VMS2BGhSOAF5YE6t++PW+ymjs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0fa54c4b6046852380179604eadfbe3d6fb29a3b"</string>
+		</dict>
+		<key>MacOS/TransubPlayer.runtimeconfig.json</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wm1hXrKA3fPOdkSBfNufLf8pcwQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c26d615eb280ddf3ce7644817cdb9f2dff297304"</string>
+		</dict>
+		<key>MacOS/Whisper.net.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			tK6gf8nPmrIssaaANNUvEpG4I1o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b4aea07fc9cf9ab22cb1a68034d52f1291b8235a"</string>
+		</dict>
+		<key>MacOS/WindowsBase.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			SN2JDIF1hOlpZLGevVw1tB18GG8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"48dd890c817584e96964b19ebd5c35b41d7c186f"</string>
+		</dict>
+		<key>MacOS/createdump</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eUAeCZIzb1hbvSYizMjPyVVNCvw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"79401e0992336f585bbd2622ccc8cfc9554d0afc"</string>
+		</dict>
+		<key>MacOS/ggml-metal.metal</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			9ARS6Edg5+/eeTVQ5UDwY0sqxIw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f40452e84760e7efde793550e540f0634b2ac48c"</string>
+		</dict>
+		<key>MacOS/libAvaloniaNative.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wGTz9uWtKaLmJEN/VzpcLb0v0HU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c064f3f6e5ad29a2e624437f573a5c2dbd2fd075" or cdhash H"0748858aca9d393edfbdc451274b540f65f11933"</string>
+		</dict>
+		<key>MacOS/libHarfBuzzSharp.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4qx6ERzUFdbGhuY2ld70Y1ujmgA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e2ac7a111cd415d6c686e63695def4635ba39a00" or cdhash H"9524eb70f08721b918063363a885fc16eb5b14a4"</string>
+		</dict>
+		<key>MacOS/libSkiaSharp.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			0VzVT7ToeYaEXdfnsBXnWn6H0rY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"57239217dc5824ea6641553bf9fb9afeb63379c4" or cdhash H"d15cd54fb4e87986845dd7e7b015e75a7e87d2b6" or cdhash H"8cfe2d7c395ffc40601d18cf13472653cebca468" or cdhash H"cefc8c065f108198743a766a81cdf9978395d420"</string>
+		</dict>
+		<key>MacOS/libSystem.Globalization.Native.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JWeHB0GkGfjxNiAz7myjsd7ApHc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"2567870741a419f8f1362033ee6ca3b1dec0a477"</string>
+		</dict>
+		<key>MacOS/libSystem.IO.Compression.Native.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			hlSC7wX9S4jdOV5RrRX/QStUWe4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"865482ef05fd4b88dd395e51ad15ff412b5459ee"</string>
+		</dict>
+		<key>MacOS/libSystem.Native.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			bV2T/zcCNUgG1b1dzb+appLh5ag=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6d5d93ff3702354806d5bd5dcdbf9aa692e1e5a8"</string>
+		</dict>
+		<key>MacOS/libSystem.Net.Security.Native.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			9H1MwJBf4gI1bEz2Okg9/iewIKY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"f47d4cc0905fe202356c4cf63a483dfe27b020a6"</string>
+		</dict>
+		<key>MacOS/libSystem.Security.Cryptography.Native.Apple.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			RIpJx/OP2EEoyNRwPa0GP+JvfyM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"448a49c7f38fd84128c8d4703dad063fe26f7f23"</string>
+		</dict>
+		<key>MacOS/libclrgc.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wAWOcVmfSDiYyhi8XeZkHMXq6q8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c0058e71599f483898ca18bc5de6641cc5eaeaaf"</string>
+		</dict>
+		<key>MacOS/libclrgcexp.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			UTUXQM11txHaNilzQUUWw3ne3S8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"51351740cd75b711da362973414516c379dedd2f"</string>
+		</dict>
+		<key>MacOS/libclrjit.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			bWefWEFV8X/E1vjfv5DetOf9AX4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6d679f584155f17fc4d6f8dfbf90deb4e7fd017e"</string>
+		</dict>
+		<key>MacOS/libcoreclr.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			2OOi+CXysn0oQ8aR4kx3vaI0oJA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"d8e3a2f825f2b27d2843c691e24c77bda234a090"</string>
+		</dict>
+		<key>MacOS/libhostfxr.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			3Hw6u4IGeTqSXmcQhBZebLUMVOQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"dc7c3abb8206793a925e671084165e6cb50c54e4"</string>
+		</dict>
+		<key>MacOS/libhostpolicy.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JErcy2F2nTfL5N6ay6yYdTwkqOw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"244adccb61769d37cbe4de9acbac98753c24a8ec"</string>
+		</dict>
+		<key>MacOS/libmscordaccore.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			lDNoVP4AtaqiSMf30iOoLrjad0E=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"94336854fe00b5aaa248c7f7d223a82eb8da7741"</string>
+		</dict>
+		<key>MacOS/libmscordbi.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			xq5ZZvoAUo9EBAE+Cx+vBVkA+Ag=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c6ae5966fa00528f4404013e0b1faf055900f808"</string>
+		</dict>
+		<key>MacOS/mpv</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			pXZMx7SSU5C7wgYnvzo3tsKb3no=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a5764cc7b4925390bbc20627bf3a37b6c29bde7a"</string>
+		</dict>
+		<key>MacOS/mscorlib.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			wwrPceMpQwGDjiw2zj61odtV56w=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c30acf71e3294301838e2c36ce3eb5a1db55e7ac"</string>
+		</dict>
+		<key>MacOS/netstandard.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			H9uBcVaYN/b4e9DLysHZqWtdN1U=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1fdb8171569837f6f87bd0cbcac1d9a96b5d3755"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm/libggml-base-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			thzifmSEGzNSKVbhotzDPjEVP6Y=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b61ce27e64841b33522956e1a2dcc33e31153fa6"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm/libggml-cpu-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			yLVNs7bYuN7/V4aH7Taq0k9aM+A=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c8b54db3b6d8b8deff578687ed36aad24f5a33e0"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm/libggml-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			SZjvET4bhC27JHox6aDuM9hWX28=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4998ef113e1b842dbb247a31e9a0ee33d8565f6f"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm/libwhisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			D19QUzcQBo5GiW/m+WspTV1QXCc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0f5f50533710068e46896fe6f96b294d5d505c27"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm64/libggml-base-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			ulaHw41xSQm6hSKOcgFSBTNSxn8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"ba5687c38d714909ba85228e720152053352c67f"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm64/libggml-cpu-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			FjnNt+z7hZhEOuOyH9KdamQ4AeU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1639cdb7ecfb8598443ae3b21fd29d6a643801e5"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm64/libggml-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			xWsZ8J8/FoR3nfsTaT5+TmL137w=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c56b19f09f3f1684779dfb13693e7e4e62f5dfbc"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-arm64/libwhisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			fnzmuPJAHgPytvj6pStTxCR+FCg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"7e7ce6b8f2401e03f2b6f8faa52b53c4247e1428"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-x64/libggml-base-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			nIgncDxGZYfNFju+02MHy6+yA+o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9c8827703c466587cd163bbed36307cbafb203ea"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-x64/libggml-cpu-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			5Lh9d/T9OTesJaayOF9ALQPXAws=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e4b87d77f4fd3937ac25a6b2385f402d03d7030b"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-x64/libggml-whisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			j7bMVED8TFhQmhG2Eo6+1By6Ao8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8fb6cc5440fc4c58509a11b6128ebed41cba028f"</string>
+		</dict>
+		<key>MacOS/runtimes/linux-x64/libwhisper.so</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			CPsL8NdiHnFnxmGnJToINHI4qNU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"08fb0bf0d7621e7167c661a7253a08347238a8d5"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libggml-base-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4QQuLyWZ5pTsYX8mbYvbhGJc3rg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e1042e2f2599e694ec617f266d8bdb84625cdeb8"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libggml-blas-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			s1fgxClio57/mwHV3GtqG0hOpig=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b357e0c42962a39eff9b01d5dc6b6a1b484ea628"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libggml-cpu-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			isWrdHvK4m61iOWOEBJhhtgERBQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8ac5ab747bcae26eb588e58e10126186d8044414"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libggml-metal-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			DUWim5QTRxFXz4q+7pKjPAdksMs=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"0d45a29b9413471157cf8abeee92a33c0764b0cb"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libggml-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			2AGxurOu1twPM5e9hN+wkEwqFnY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"d801b1bab3aed6dc0f3397bd84dfb0904c2a1676"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-arm64/libwhisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			aZsnNj441W07YsYECA6/sLvp87M=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"699b27363e38d56d3b62c604080ebfb0bbe9f3b3"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-x64/libggml-base-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			mYik0hpAoOOi/q4APMX20ghAsag=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9988a4d21a40a0e3a2feae003cc5f6d20840b1a8"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-x64/libggml-blas-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			a70VqD5wC+ilfdsPllYlkOnV4yU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"6bbd15a83e700be8a57ddb0f96562590e9d5e325"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-x64/libggml-cpu-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			3zO6HfDq0IPlYvD1zqvf9Olze8o=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"df33ba1df0ead083e562f0f5ceabdff4e9737bca"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-x64/libggml-whisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			GQWpOnC5O9BoSlSvYP/QtZJ0ysw=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"1905a93a70b93bd0684a54af60ffd0b59274cacc"</string>
+		</dict>
+		<key>MacOS/runtimes/macos-x64/libwhisper.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4SjZDdf3HeIc6GOxhEjX0LJqv/k=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e128d90dd7f71de21ce863b18448d7d0b26abff9"</string>
+		</dict>
+		<key>MacOS/runtimes/win-arm64/ggml-base-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			+utrJ+0FPBWxnY+63s4NVwtyxfY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"faeb6b27ed053c15b19d8fbadece0d570b72c5f6"</string>
+		</dict>
+		<key>MacOS/runtimes/win-arm64/ggml-cpu-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Qj3lXbm1qr2aocpHF0Lv+3KCCUQ=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"423de55db9b5aabd9aa1ca471742effb72820944"</string>
+		</dict>
+		<key>MacOS/runtimes/win-arm64/ggml-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			vvxPy3JOYOVgRsDo8/PMqeg7STM=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"befc4fcb724e60e56046c0e8f3f3cca9e83b4933"</string>
+		</dict>
+		<key>MacOS/runtimes/win-arm64/whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			2sUpF9Wo1m7oBjLDIvsFWtiMXY4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"dac52917d5a8d66ee80632c322fb055ad88c5d8e"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x64/ggml-base-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			pNG6PWxTUNc/AxTWa0Wlw4nHSbg=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a4d1ba3d6c5350d73f0314d66b45a5c389c749b8"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x64/ggml-cpu-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Ol02OoHSWeRYsonpePxKz1pNblc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"3a5d363a81d259e458b289e978fc4acf5a4d6e57"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x64/ggml-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			s3K98Nj3F6o+WN5YGi//Yt+pK6Q=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b372bdf0d8f717aa3e58de581a2fff62dfa92ba4"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x64/whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			dI2NUto3Dsr/EU+rs9z+kruCVv4=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"748d8d52da370ecaff114fabb3dcfe92bb8256fe"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x86/ggml-base-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			tLZwL2c1HLDzSljrtLEfZbS+4xk=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b4b6702f67351cb0f34a58ebb4b11f65b4bee319"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x86/ggml-cpu-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JGAc0Z0u+2BNGVN5nJxDpFmnKOA=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"24601cd19d2efb604d1953799c9c43a459a728e0"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x86/ggml-whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			Swxkc91rxfboJ3/EbrK3vJ2D+p0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4b0c6473dd6bc5f6e8277fc46eb2b7bc9d83fa9d"</string>
+		</dict>
+		<key>MacOS/runtimes/win-x86/whisper.dll</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			SmeMsF/mvCU5N+cjL2CXoymtkoI=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"4a678cb05fe6bc253937e7232f6097a329ad9282"</string>
+		</dict>
+		<key>Resources/transub.icns</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rxaWNvK1tgVLt0Hoe/umljhV0WJlh+Gx5AG51D6F+pk=
+			</data>
+		</dict>
+	</dict>
+	<key>rules</key>
+	<dict>
+		<key>^Resources/</key>
+		<true/>
+		<key>^Resources/.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^Resources/.*\.lproj/locversion.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
+		</dict>
+		<key>^version.plist$</key>
+		<true/>
+	</dict>
+	<key>rules2</key>
+	<dict>
+		<key>.*\.dSYM($|/)</key>
+		<dict>
+			<key>weight</key>
+			<real>11</real>
+		</dict>
+		<key>^(.*/)?\.DS_Store$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>2000</real>
+		</dict>
+		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
+		<dict>
+			<key>nested</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
+		</dict>
+		<key>^.*</key>
+		<true/>
+		<key>^Info\.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^PkgInfo$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^Resources/</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^Resources/.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^Resources/.*\.lproj/locversion.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
+		</dict>
+		<key>^[^/]+$</key>
+		<dict>
+			<key>nested</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
+		</dict>
+		<key>^embedded\.provisionprofile$</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^version\.plist$</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+	</dict>
+</dict>
+</plist>

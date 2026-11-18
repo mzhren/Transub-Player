@@ -896,6 +896,7 @@
     <sys:String x:Key="Str.Main.Osd.LangSwitch.Ready">再生位置で字幕が追いつきました</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubVisibleOn">字幕：オン</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubVisibleOff">字幕：オフ</sys:String>
+    <sys:String x:Key="Str.Main.Osd.SubPos">字幕位置 {0}%</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubDelayHint">Z / X で字幕を ±0.5s 調整</sys:String>
     <sys:String x:Key="Str.Main.Osd.WaitFirstZhOffer" xml:space="preserve">字幕は映像より遅れます。
 

@@ -115,6 +115,8 @@ public sealed class AppSettings
     public bool SubBold { get; set; } = true;
     public int SubBorderSize { get; set; } = 2;
     public int SubMarginY { get; set; } = 36;
+    /// <summary>mpv sub-pos：0=顶部，100=底部。在画面上垂直拖动字幕会更新此值。</summary>
+    public int SubPos { get; set; } = 100;
     /// <summary>Positive = subtitles appear later (mpv sub-delay).</summary>
     public double SubDelaySec { get; set; }
     /// <summary>Kept in sync with <see cref="SubtitleMode"/> ≠ off. Visibility is owned by display mode.</summary>
@@ -325,6 +327,7 @@ public sealed class AppSettings
         SubBold = copy.SubBold;
         SubBorderSize = copy.SubBorderSize;
         SubMarginY = copy.SubMarginY;
+        SubPos = copy.SubPos;
         SubDelaySec = copy.SubDelaySec;
         SubVisibleOnStart = copy.SubVisibleOnStart;
         SubtitleSource = copy.SubtitleSource;

@@ -31,6 +31,11 @@ public partial class MainWindow : Window, IPreviewHost
     private DispatcherTimer? _uiTimer;
     private DispatcherTimer? _chromeHideTimer;
     private bool _seekDragging;
+    private bool _subDragActive;
+    private bool _subDragMoved;
+    private double _subDragStartY;
+    private int _subDragStartPos;
+    private int _subDragLastPos;
     private bool _pickerOpen;
     private bool _ended;
     private bool _uiReady;
@@ -158,7 +163,10 @@ public partial class MainWindow : Window, IPreviewHost
         SeekSlider.AddHandler(InputElement.PointerCaptureLostEvent, OnSeekPointerDoneCapture,
             RoutingStrategies.Bubble, handledEventsToo: true);
         TitleBar.PointerPressed += OnTitleBarPointerPressed;
+        Video.PointerPressed += OnVideoPointerPressed;
+        Video.PointerMoved += OnVideoPointerMoved;
         Video.PointerReleased += OnVideoPointerReleased;
+        Video.PointerCaptureLost += OnVideoPointerCaptureLost;
         Video.DoubleTapped += OnVideoDoubleTapped;
 
         DragDrop.SetAllowDrop(this, true);
@@ -435,9 +443,49 @@ public partial class MainWindow : Window, IPreviewHost
     private void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)
         => BeginMoveDrag(e);
 
+    private void OnVideoPointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(_preview.MediaPath) || _pickerOpen)
+            return;
+        if (!e.GetCurrentPoint(Video).Properties.IsLeftButtonPressed)
+            return;
+        _subDragActive = true;
+        _subDragMoved = false;
+        _subDragStartY = e.GetCurrentPoint(Video).Position.Y;
+        _subDragStartPos = _subDragLastPos = Math.Clamp(_settings.SubPos, 0, 100);
+        e.Pointer.Capture(Video);
+        Video.Cursor = new Cursor(StandardCursorType.SizeNorthSouth);
+    }
+
+    private void OnVideoPointerMoved(object? sender, PointerEventArgs e)
+    {
+        if (!_subDragActive)
+            return;
+        var dy = e.GetCurrentPoint(Video).Position.Y - _subDragStartY;
+        if (!_subDragMoved && Math.Abs(dy) < 6)
+            return;
+        _subDragMoved = true;
+        var h = Video.Bounds.Height;
+        if (h <= 0)
+            return;
+        // 向上拖 → 字幕上移（sub-pos 变小），整个画面高度对应 0-100
+        var pos = Math.Clamp((int)Math.Round(_subDragStartPos + dy / h * 100), 0, 100);
+        if (pos != _subDragLastPos)
+        {
+            _subDragLastPos = pos;
+            _preview.Engine?.SetSubPos(pos);
+        }
+    }
+
+    private void OnVideoPointerCaptureLost(object? sender, PointerCaptureLostEventArgs e)
+        => FinishSubDrag();
+
     private void OnVideoPointerReleased(object? sender, PointerReleasedEventArgs e)
     {
         if (e.InitialPressMouseButton != MouseButton.Left)
+            return;
+        // 拖动过字幕位置：本次松开不触发播放/暂停
+        if (FinishSubDrag())
             return;
         // 未加载视频时点击画面中间 → 直接弹出视频选择
         if (string.IsNullOrEmpty(_preview.MediaPath))
@@ -447,6 +495,22 @@ public partial class MainWindow : Window, IPreviewHost
             return;
         }
         _preview.TogglePause();
+    }
+
+    /// <summary>结束字幕拖动：确实拖动过 → 持久化位置并 OSD 反馈，返回 true。</summary>
+    private bool FinishSubDrag()
+    {
+        Video.Cursor = Cursor.Default;
+        if (!_subDragActive)
+            return false;
+        _subDragActive = false;
+        if (!_subDragMoved)
+            return false;
+        _subDragMoved = false;
+        _settings.SubPos = _subDragLastPos;
+        _settings.SaveSoon();
+        ShowOsd(Loc.Format("Main.Osd.SubPos", _subDragLastPos));
+        return true;
     }
 
     private void OnVideoDoubleTapped(object? sender, TappedEventArgs e)

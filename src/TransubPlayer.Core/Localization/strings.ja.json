@@ -857,6 +857,7 @@
 "Str.Main.Osd.LangSwitch.Ready":"再生位置で字幕が追いつきました",
 "Str.Main.Osd.SubVisibleOn":"字幕：オン",
 "Str.Main.Osd.SubVisibleOff":"字幕：オフ",
+"Str.Main.Osd.SubPos":"字幕位置 {0}%",
 "Str.Main.Osd.SubDelayHint":"Z / X で字幕を ±0.5s 調整",
 "Str.Main.Osd.WaitFirstZhOffer":"字幕は映像より遅れます。\n\n次回は約 1 分の訳文を待ってから自動再生しますか？\n（設定 → 一般で変更できます）",
 "Str.Main.Osd.ExternalSubTip":"サイドカー読み込み済み · 「原文抽出を使う」をタップ",

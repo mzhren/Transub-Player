@@ -353,6 +353,9 @@ internal sealed class MpvLibPlayer : IMpvEngine
     public void SetSubDelay(double seconds)
         => SetProperty("sub-delay", Math.Clamp(seconds, -30, 30));
 
+    public void SetSubPos(int pos)
+        => SetProperty("sub-pos", (double)Math.Clamp(pos, 0, 100));
+
     public void ApplySubtitleSettings(AppSettings settings)
     {
         var font = MacSubFont(settings.SubFont);
@@ -361,6 +364,7 @@ internal sealed class MpvLibPlayer : IMpvEngine
         SetProperty("sub-bold", settings.SubBold);
         SetProperty("sub-border-size", (double)Math.Clamp(settings.SubBorderSize, 0, 8));
         SetProperty("sub-margin-y", (double)Math.Clamp(settings.SubMarginY, 0, 200));
+        SetSubPos(settings.SubPos);
         SetSubDelay(settings.SubDelaySec);
         SetPropertyString("osd-font", font);
         ReloadSubtitle();

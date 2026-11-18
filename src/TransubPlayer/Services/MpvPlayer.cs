@@ -567,6 +567,9 @@ internal sealed class MpvPlayer : IMpvEngine
     public void SetSubDelay(double seconds)
         => SetProperty("sub-delay", Math.Clamp(seconds, -30, 30));
 
+    public void SetSubPos(int pos)
+        => SetProperty("sub-pos", Math.Clamp(pos, 0, 100));
+
     public void ApplySubtitleSettings(AppSettings settings)
     {
         var font = string.IsNullOrWhiteSpace(settings.SubFont) ? "Microsoft YaHei" : settings.SubFont.Trim();
@@ -578,6 +581,7 @@ internal sealed class MpvPlayer : IMpvEngine
         SetProperty("sub-bold", settings.SubBold);
         SetProperty("sub-border-size", border);
         SetProperty("sub-margin-y", margin);
+        SetSubPos(settings.SubPos);
         SetSubDelay(settings.SubDelaySec);
         SetProperty("osd-font", font);
         // Visibility is owned by PreviewController display mode — do not apply SubVisibleOnStart here.
