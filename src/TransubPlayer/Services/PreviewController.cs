@@ -47,6 +47,8 @@ internal sealed class PreviewController : IDisposable
     private string? _sidecarCacheMediaPath;
     /// <summary>Sensed source lang for this media while settings stay auto; survives <see cref="ResolveScene"/>.</summary>
     private string? _sessionSensedLanguage;
+    /// <summary>按语言对自动解析的生效翻译模型；设置里的 TranslateModelId 仍是用户默认选择。</summary>
+    private string _effectiveMtModelId = "";
     private int _onlineSubtitleBusy;
     private CancellationTokenSource? _previewRunCts;
     private CancellationTokenSource _lifetimeCts = new();
@@ -347,6 +349,12 @@ internal sealed class PreviewController : IDisposable
     public MtRoute ActiveMtRoute =>
         MtRoute.Resolve(MtSourceLanguage(), _settings.TranslateTarget, ActiveScene.ContentProfile);
 
+    /// <summary>当前生效翻译模型：可能与设置选择不同（按语言对自动切换，见 <see cref="RefreshEffectiveMtModel"/>）。</summary>
+    public string EffectiveTranslateModelId
+        => string.IsNullOrWhiteSpace(_effectiveMtModelId)
+            ? TranslateModels.Normalize(_settings.TranslateModelId)
+            : _effectiveMtModelId;
+
     /// <summary>Concrete source lang for MT — avoid <c>auto</c> when cues / sense / filename already imply one.</summary>
     private string MtSourceLanguage()
     {
@@ -518,6 +526,7 @@ internal sealed class PreviewController : IDisposable
             ApplySub,
             () => _mpv.ReloadSubtitle(),
             () => BuildStatusLine(),
+            () => EffectiveTranslateModelId,
             OnZhFrontierProgress,
             OnZhTranslationFailed);
         _mpv.Log += log;
@@ -1688,6 +1697,7 @@ internal sealed class PreviewController : IDisposable
             // Sense before cache / MT so Murasaki (JA-only) does not run under unresolved Auto.
             await MaybeSenseSourceLanguageAsync(mediaPath, gen, ct).ConfigureAwait(false);
             ThrowIfStaleMedia(gen);
+            RefreshEffectiveMtModel(announce: true);
 
             if (!partialRestart && PreviewPaths.HasReadyAsr(mediaPath))
             {
@@ -2579,6 +2589,9 @@ internal sealed class PreviewController : IDisposable
         if (string.IsNullOrWhiteSpace(MediaPath) || UsingExistingSub)
             return;
 
+        // 路由（源/目标语言）可能已变，先按新语言对重解析生效模型再判断是否可翻
+        RefreshEffectiveMtModel(announce: true);
+
         if (refreshOutputPaths)
             RefreshTranslatedOutputPaths();
 
@@ -3179,12 +3192,31 @@ internal sealed class PreviewController : IDisposable
         MtRoute.WantsTranslation(ActiveMtRoute)
         && _settings.TranslateEnabled
         && !_mtDisabledForSession
-        && TranslateModels.SupportsRoute(_settings.TranslateModelId, ActiveMtRoute);
+        && TranslateModels.SupportsRoute(EffectiveTranslateModelId, ActiveMtRoute);
 
     private bool MtRouteUnsupportedByModel =>
         _settings.TranslateEnabled
         && MtRoute.WantsTranslation(ActiveMtRoute)
-        && !TranslateModels.SupportsRoute(_settings.TranslateModelId, ActiveMtRoute);
+        && !TranslateModels.SupportsRoute(EffectiveTranslateModelId, ActiveMtRoute);
+
+    /// <summary>按当前语言对重新解析生效翻译模型；切换时 OSD 告知（设置中的默认选择不变）。</summary>
+    private void RefreshEffectiveMtModel(bool announce)
+    {
+        var previous = EffectiveTranslateModelId;
+        var resolved = TranslateModels.ResolveForRoute(
+            _settings.TranslateModelId,
+            ActiveMtRoute,
+            id => ManagedLlmInstaller.HasGgufForModel(AppPaths.ResolveAdvancedLlmInstallRoot(_settings), id))
+            ?? previous;
+        _effectiveMtModelId = TranslateModels.Normalize(resolved);
+        if (!string.Equals(_effectiveMtModelId, previous, StringComparison.OrdinalIgnoreCase))
+        {
+            _log("翻译模型按语言对自动切换 · " + Loc.Get(TranslateModels.LabelKey(_effectiveMtModelId)));
+            if (announce)
+                ShowOsd(Loc.Format("Main.Osd.MtModelSwap", Loc.Get(TranslateModels.LabelKey(_effectiveMtModelId))), 3200);
+            StateChanged?.Invoke();
+        }
+    }
 
     /// <summary>Display modes that expect translated lines (not source-only / off).</summary>
     private bool WantsTranslatedDisplay
@@ -4117,7 +4149,7 @@ internal sealed class PreviewController : IDisposable
                     // Settings / KickEnsureTranslate may change TranslateModelId while ready.
                     var path = _llama?.ModelPath;
                     var modelMismatch = path is not null
-                        && !TranslateModels.MatchesFamily(path, _settings.TranslateModelId);
+                        && !TranslateModels.MatchesFamily(path, EffectiveTranslateModelId);
                     if (modelMismatch && _llama is not null)
                     {
                         _log("翻译模型已切换，正在重启 llama-server · " + Path.GetFileName(path));
@@ -4150,7 +4182,8 @@ internal sealed class PreviewController : IDisposable
                         _log,
                         ct,
                         PreferredGgufs,
-                        preferCpu: asrHoldsGpu && !forceGpuRestart)
+                        preferCpu: asrHoldsGpu && !forceGpuRestart,
+                        modelIdOverride: EffectiveTranslateModelId)
                     .ConfigureAwait(false);
                 if (_disposed != 0) return;
                 _settings.TranslateUrl = llama.BaseUrl;

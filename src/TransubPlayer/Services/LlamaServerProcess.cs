@@ -101,12 +101,14 @@ internal sealed class LlamaServerProcess : IDisposable
         Action<string>? log,
         CancellationToken ct,
         IReadOnlyList<string>? preferredModels = null,
-        bool preferCpu = false)
+        bool preferCpu = false,
+        string? modelIdOverride = null)
     {
         await StartGate.WaitAsync(ct).ConfigureAwait(false);
         try
         {
-            await EnsureRunningLockedAsync(settings, log, ct, preferredModels, preferCpu).ConfigureAwait(false);
+            await EnsureRunningLockedAsync(settings, log, ct, preferredModels, preferCpu, modelIdOverride)
+                .ConfigureAwait(false);
         }
         finally
         {
@@ -119,9 +121,10 @@ internal sealed class LlamaServerProcess : IDisposable
         Action<string>? log,
         CancellationToken ct,
         IReadOnlyList<string>? preferredModels,
-        bool preferCpu)
+        bool preferCpu,
+        string? modelIdOverride)
     {
-        var modelId = TranslateModels.Normalize(settings.TranslateModelId);
+        var modelId = TranslateModels.Normalize(modelIdOverride ?? settings.TranslateModelId);
         var preferred = preferredModels is { Count: > 0 }
             ? preferredModels
             : TranslateModels.PreferredFilenamesFor(modelId);

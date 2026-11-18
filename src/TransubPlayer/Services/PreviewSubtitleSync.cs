@@ -25,6 +25,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
     private readonly Action<string, bool> _applySub;
     private readonly Action _reloadSub;
     private readonly Func<string> _buildStatusLine;
+    private readonly Func<string> _getTranslateModelId;
     private readonly Action? _onZhFrontierProgress;
     private readonly Action? _onZhTranslationFailed;
 
@@ -73,6 +74,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
         Action<string, bool> applySub,
         Action reloadSub,
         Func<string> buildStatusLine,
+        Func<string> getTranslateModelId,
         Action? onZhFrontierProgress = null,
         Action? onZhTranslationFailed = null)
     {
@@ -91,6 +93,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
         _applySub = applySub;
         _reloadSub = reloadSub;
         _buildStatusLine = buildStatusLine;
+        _getTranslateModelId = getTranslateModelId;
         _onZhFrontierProgress = onZhFrontierProgress;
         _onZhTranslationFailed = onZhTranslationFailed;
     }
@@ -457,7 +460,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
             var route = _getMtRoute();
             var profile = _getContentProfile();
             var raw = await translate.TranslateBatchAsync(
-                pending.Select(c => c.Text).ToList(), mtCt, route, profile, _settings.TranslateModelId).ConfigureAwait(false);
+                pending.Select(c => c.Text).ToList(), mtCt, route, profile, _getTranslateModelId()).ConfigureAwait(false);
             if (_disposed || mtCt.IsCancellationRequested || !ReferenceEquals(mtCts, _mtCts)) return;
             var map = TranslateClient.ParseNumbered(raw, pending.Count);
             if (map.Count == 0)

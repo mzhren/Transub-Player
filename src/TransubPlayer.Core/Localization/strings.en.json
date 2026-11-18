@@ -858,6 +858,7 @@
 "Str.Main.Osd.SubVisibleOn":"Subtitles: on",
 "Str.Main.Osd.SubVisibleOff":"Subtitles: off",
 "Str.Main.Osd.SubPos":"Subtitle position {0}%",
+"Str.Main.Osd.MtModelSwap":"Translation model auto-switched for this language pair · {0}",
 "Str.Main.Osd.SubDelayHint":"Z / X nudge subtitles ±0.5s",
 "Str.Main.Osd.WaitFirstZhOffer":"Subtitles lag behind the video.\n\nWait for about 1 minute of translation before auto-play next time?\n(You can change this under Settings → General)",
 "Str.Main.Osd.ExternalSubTip":"Sidecar loaded · tap 「Use source extraction」",

@@ -858,6 +858,7 @@
 "Str.Main.Osd.SubVisibleOn":"자막: 켬",
 "Str.Main.Osd.SubVisibleOff":"자막: 끔",
 "Str.Main.Osd.SubPos":"자막 위치 {0}%",
+"Str.Main.Osd.MtModelSwap":"언어 쌍에 맞춰 번역 모델 자동 전환 · {0}",
 "Str.Main.Osd.SubDelayHint":"Z / X로 자막 ±0.5초 조절",
 "Str.Main.Osd.WaitFirstZhOffer":"자막이 영상보다 늦습니다.\n\n다음에 열 때 번역이 약 1분 쌓일 때까지 기다렸다가 자동 재생할까요?\n(설정 → 일반에서 바꿀 수 있습니다)",
 "Str.Main.Osd.ExternalSubTip":"외부 자막을 불러옴 · 「원문 추출 사용」을 누르세요",

@@ -94,6 +94,28 @@ internal static class TranslateModels
         return src == SourceLanguages.Ja;
     }
 
+    /// <summary>
+    /// 按语言对解析生效模型（不改动用户设置的选择），返回 null 表示沿用用户选择：
+    /// Murasaki 遇到非日→中路由时自动改用 TranslateGemma（全覆盖，避免"不支持"卡死）；
+    /// JA→ZH 且用户选 TranslateGemma 时优先已安装的 Murasaki（ACGN 专用质量更好）。
+    /// </summary>
+    public static string? ResolveForRoute(string? selectedId, MtRoute route, Func<string?, bool> isInstalled)
+    {
+        if (route.IsOff)
+            return null;
+        var selected = Normalize(selectedId);
+        if (IsTranslateGemma(selected)
+            && SourceLanguages.Normalize(route.Source) == SourceLanguages.Ja
+            && TranslateTargets.IsChinese(route.Target)
+            && isInstalled(Murasaki4B))
+            return Murasaki4B;
+        if (IsMurasaki(selected)
+            && !SupportsRoute(selected, route)
+            && isInstalled(TranslateGemma4B))
+            return TranslateGemma4B;
+        return null;
+    }
+
     public static string LabelKey(string? modelId)
         => IsMurasaki(modelId) ? "TranslateModel.Murasaki" : "TranslateModel.TranslateGemma";
 
