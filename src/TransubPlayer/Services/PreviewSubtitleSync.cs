@@ -29,6 +29,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
     private readonly Action? _onZhTranslationFailed;
 
     private FileSystemWatcher? _watcher;
+    private System.Timers.Timer? _macPollTimer;
     private System.Timers.Timer? _debounce;
     private System.Timers.Timer? _deferredReload;
     private CancellationTokenSource _mtCts = new();
@@ -467,7 +468,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
                 for (var i = 0; i < pending.Count; i++)
                 {
                     if (!map.TryGetValue(i + 1, out var zh) || string.IsNullOrWhiteSpace(zh)) continue;
-                    zh = PreviewTextSanitize.SanitizeMt(zh, pending[i].Text, _settings, profile);
+                    zh = PreviewTextSanitize.SanitizeMt(zh, pending[i].Text, _settings, profile, _getMtRoute().Target);
                     if (string.IsNullOrWhiteSpace(zh))
                     {
                         // Model refused / sanitized to placeholder — mark skip, keep source on screen.
@@ -475,7 +476,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
                         continue;
                     }
 
-                    if (PreviewTextSanitize.LooksLikeWrongTargetScript(zh, _settings.TranslateTarget))
+                    if (PreviewTextSanitize.LooksLikeWrongTargetScript(zh, _getMtRoute().Target ?? _settings.TranslateTarget))
                     {
                         _log("翻译模型返回与目标语言不符的文本，已跳过");
                         _mtSkip[Key(pending[i])] = 1;
@@ -551,6 +552,10 @@ internal sealed class PreviewSubtitleSync : IDisposable
 
     public void StopWatching()
     {
+        _macPollTimer?.Stop();
+        _macPollTimer?.Dispose();
+        _macPollTimer = null;
+
         if (_watcher is not null)
         {
             try { _watcher.EnableRaisingEvents = false; } catch { /* ignore */ }
@@ -875,6 +880,18 @@ internal sealed class PreviewSubtitleSync : IDisposable
         };
         _watcher.Changed += (_, _) => bounce();
         _watcher.Created += (_, _) => bounce();
+        if (OperatingSystem.IsMacOS())
+        {
+            // macOS 的 FileSystemWatcher 对 ASR 任务的高频同文件重写经常丢事件，
+            // 用 2 秒轮询兜底（与 FSW 并存，OnSrtChanged 幂等）。
+            _macPollTimer = new System.Timers.Timer(2000) { AutoReset = true };
+            _macPollTimer.Elapsed += (_, _) =>
+            {
+                try { OnSrtChanged(srtPath); }
+                catch (Exception ex) { _log(ex.Message); }
+            };
+            _macPollTimer.Start();
+        }
         _watcher.EnableRaisingEvents = true;
         if (File.Exists(srtPath))
             OnSrtChanged(srtPath);

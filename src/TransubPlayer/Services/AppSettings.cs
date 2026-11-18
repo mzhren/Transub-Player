@@ -36,7 +36,7 @@ public sealed class AppSettings
     /// <summary>Incremental preview MT via local translation model. Default on; falls back to source if llama-server is down.</summary>
     public bool TranslateEnabled { get; set; } = true;
     /// <summary>Preview translation language: zh (default) | en | ja | ko.</summary>
-    public string TranslateTarget { get; set; } = TranslateTargets.Zh;
+    public string TranslateTarget { get; set; } = TranslateTargets.Auto;
     /// <summary>
     /// Local MT GGUF preference: <c>translategemma-4b-q4</c> (default) or <c>murasaki-4b-iq4xs</c>.
     /// </summary>

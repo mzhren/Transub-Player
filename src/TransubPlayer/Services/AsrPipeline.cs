@@ -52,6 +52,8 @@ internal sealed class AsrPipeline : IDisposable
         _settings = settings;
         _status = status;
         _log = log;
+        // 立即解析：组件安装对话框可能在 EnsureReadyAsync 之前触发模型下载
+        _modelsRoot = AsrModelStore.ResolveModelsRoot(settings);
     }
 
     public Task EnsureReadyAsync(CancellationToken ct)
@@ -106,7 +108,11 @@ internal sealed class AsrPipeline : IDisposable
         {
             ct.ThrowIfCancellationRequested();
             if (string.Equals(ModelPicker.InstallTarget(id), ModelPicker.Turbo, StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrWhiteSpace(_modelsRoot))
+                    _modelsRoot = AsrModelStore.ResolveModelsRoot(_settings);
                 return AsrModelStore.EnsureTurboAsync(_modelsRoot, _settings.HfEndpoint, _status, _log, ct);
+            }
         }
 
         return Task.CompletedTask;

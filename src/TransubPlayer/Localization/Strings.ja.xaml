@@ -772,6 +772,8 @@
     <sys:String x:Key="Str.Main.Status.SeekNoSubtitleYetPlain">字幕はまだ準備できていません · お待ちください</sys:String>
     <sys:String x:Key="Str.Main.Status.FirstCueEtaSuffix">最初の字幕まで約 {0} 秒</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionRestored">前回の視聴を復元 · {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.ResumePreview">未完了の字幕生成を検出 · {0} から再開</sys:String>
+    <sys:String x:Key="Str.Main.Status.VolumeOsd">音量 {0}%</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionDelay">遅延 {0}{1:0.0}s</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionSensed">感知 {0}</sys:String>
     <sys:String x:Key="Str.Main.Status.FallbackSource.Mt">原文を表示 · 翻訳失敗または未準備（1 でレイアウト再試行）</sys:String>
@@ -786,6 +788,7 @@
     <sys:String x:Key="Str.Main.Osd.SourceLangRemembered">保存した感知を使用：{0}</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogIntro">現在の設定には追加コンポーネントが必要です。</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogFallback">認識には whisper turbo と GPU が必要；ないと字幕を抽出できません。翻訳は後からインストールできます。</sys:String>
+    <sys:String x:Key="Str.Main.Deps.Installed">インストール完了</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogHint">先に認識をインストールして字幕を取得；訳文は後から翻訳を追加。</sys:String>
     <sys:String x:Key="Str.Main.Osd.UsingFastPreview">{0} 高速原文抽出を使用中</sys:String>
     <sys:String x:Key="Str.Main.Osd.AsrFallback.NotInstalled">「{0}」未準備 · {1} を使用</sys:String>
@@ -983,6 +986,7 @@
     <sys:String x:Key="Str.Settings.TranslateTarget">訳文言語</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Hint">既定は UI 言語に従い、いつでも変更可。簡体／繁体／en／ja／ko は同一翻訳モデルを共有（既定パック外）。</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Zh">簡体字中国語</sys:String>
+    <sys:String x:Key="Str.Settings.TranslateTarget.Auto">自動（中国語ソース→英語、その他→中国語）</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.ZhHant">繁体字中国語</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.En">英語</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Ja">日本語</sys:String>

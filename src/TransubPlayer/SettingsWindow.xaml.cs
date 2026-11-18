@@ -127,6 +127,7 @@ public partial class SettingsWindow : Window
 
     private static LabeledOption[] BuildTranslateTargetOptions() =>
     [
+        new(Loc.Get("Settings.TranslateTarget.Auto"), TranslateTargets.Auto),
         new(Loc.Get("Settings.TranslateTarget.Zh"), TranslateTargets.Zh),
         new(Loc.Get("Settings.TranslateTarget.ZhHant"), TranslateTargets.ZhHant),
         new(Loc.Get("Settings.TranslateTarget.En"), TranslateTargets.En),

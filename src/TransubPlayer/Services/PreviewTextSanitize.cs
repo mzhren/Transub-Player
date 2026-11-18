@@ -121,9 +121,9 @@ internal static class PreviewTextSanitize
     }
 
     /// <summary>Sanitize one MT line against its source.</summary>
-    public static string SanitizeMt(string zh, string source, AppSettings settings, string? contentProfile = null)
+    public static string SanitizeMt(string zh, string source, AppSettings settings, string? contentProfile = null, string? translateTarget = null)
     {
-        var toZh = TranslateTargets.IsChinese(settings);
+        var toZh = TranslateTargets.IsChinese(translateTarget ?? settings.TranslateTarget);
         if (!settings.TextSanitizeEnabled)
         {
             var raw = (zh ?? "").Trim();

@@ -14,6 +14,11 @@ internal readonly record struct MtRoute(string? Source, string? Target, string C
     {
         var src = SourceLanguages.Normalize(sourceLanguage);
         var tgt = TranslateTargets.Normalize(translateTarget);
+        // 目标 auto：源为中文 → 译英语；其它（含未知）→ 译中文
+        if (tgt == TranslateTargets.Auto)
+            tgt = string.Equals(src, SourceLanguages.Zh, StringComparison.OrdinalIgnoreCase)
+                ? TranslateTargets.En
+                : TranslateTargets.Zh;
         // auto source: still translate with generic prompts (model sees text).
         // zh → zh-Hant is NOT identity (script conversion).
         if (src != SourceLanguages.Auto && IsIdentityRoute(src, tgt))

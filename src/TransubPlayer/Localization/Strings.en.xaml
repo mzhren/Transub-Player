@@ -254,7 +254,6 @@ Open Settings now?</sys:String>
     <sys:String x:Key="Str.Lan.Status.CacheLoaded">Loaded local subtitle cache</sys:String>
     <sys:String x:Key="Str.Lan.Status.ExternalSub">Using sidecar subtitle · {0}</sys:String>
     <sys:String x:Key="Str.Lan.Status.MtFailed">Translation unavailable · {0}</sys:String>
-    <sys:String x:Key="Str.Lan.Status.MtFailed">Translation unavailable · {0}</sys:String>
     <sys:String x:Key="Str.Lan.Status.ReuseSameFile">Same file as desktop · reusing subtitle cache</sys:String>
     <sys:String x:Key="Str.Lan.Status.DesktopPaused">Phone ASR running · desktop preview paused ({0})</sys:String>
     <sys:String x:Key="Str.Lan.Status.DesktopSameFileAsr">Same file as desktop · finishing extraction</sys:String>
@@ -773,6 +772,8 @@ Continue?</sys:String>
     <sys:String x:Key="Str.Main.Status.SeekNoSubtitleYetPlain">Subtitles not ready yet · please wait</sys:String>
     <sys:String x:Key="Str.Main.Status.FirstCueEtaSuffix">first cue in about {0}s</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionRestored">Restored last watch · {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.ResumePreview">Incomplete subtitle generation found · resuming from {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.VolumeOsd">Volume {0}%</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionDelay">delay {0}{1:0.0}s</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionSensed">sensed {0}</sys:String>
     <sys:String x:Key="Str.Main.Status.FallbackSource.Mt">Showing source · translation failed or not ready (press 1 to retry layout)</sys:String>
@@ -787,6 +788,7 @@ Continue?</sys:String>
     <sys:String x:Key="Str.Main.Osd.SourceLangRemembered">Using saved sense: {0}</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogIntro">Extra components are needed for the current settings.</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogFallback">Recognition needs whisper turbo and a GPU; without them, subtitles cannot be extracted. Translation can be installed later.</sys:String>
+    <sys:String x:Key="Str.Main.Deps.Installed">Installation finished</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogHint">Install recognition first to get subtitles; add translation later for translated text.</sys:String>
     <sys:String x:Key="Str.Main.Osd.UsingFastPreview">Using {0} fast source extraction</sys:String>
     <sys:String x:Key="Str.Main.Osd.AsrFallback.NotInstalled">「{0}」 not ready · using {1}</sys:String>
@@ -984,6 +986,7 @@ speed [ / ] · fullscreen F/F11/Enter · top T · help F1</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget">Translation language</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Hint">Defaults follow the UI language; change anytime. Simplified/Traditional/en/ja/ko share one translation model, not in the default pack.</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Zh">Simplified Chinese</sys:String>
+    <sys:String x:Key="Str.Settings.TranslateTarget.Auto">Auto (Chinese source → English, others → Chinese)</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.ZhHant">Traditional Chinese</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.En">English</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Ja">Japanese</sys:String>

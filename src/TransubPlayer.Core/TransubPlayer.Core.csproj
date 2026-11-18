@@ -1,0 +1,120 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    TransubPlayer.Core — 跨平台服务层（macOS 移植 Phase 1）。
+
+    策略：通过 Compile Include 链接 WPF 工程内的共享服务源文件（单一事实来源），
+    Windows 构建路径完全不受影响；Windows 专属服务（托盘/文件关联/单实例/窗口chrome/
+    MarkOfTheWeb/更新安装器等）不进入本工程。
+
+    说明：链接文件在 Windows 机器上有完整构建验证，本工程只新增 mac 分支文件。
+    任何对链接文件的修改必须在 Windows 上重新验证 WPF 构建。
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TransubPlayer</RootNamespace>
+    <Version>1.6.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0" />
+    <PackageReference Include="Whisper.net" Version="1.9.1-preview1" />
+    <PackageReference Include="Whisper.net.Runtime" Version="1.9.1-preview1" />
+    <PackageReference Include="Whisper.net.Runtime.Metal" Version="1.9.1-preview1" />
+  </ItemGroup>
+
+  <!-- 本地化字符串 JSON（由 Strings.*.xaml 生成）。
+       LogicalName 必须显式指定：strings.zh-Hans.json 这类 "名称.文化.扩展" 文件名会被
+       MSBuild 误判为本地化资源而拆进卫星程序集，导致主程序集拿不到资源。 -->
+  <ItemGroup>
+    <EmbeddedResource Include="Localization/strings.zh-Hans.json" WithCulture="false" LogicalName="TransubPlayer.Localization.strings.zh-Hans.json" />
+    <EmbeddedResource Include="Localization/strings.en.json" WithCulture="false" LogicalName="TransubPlayer.Localization.strings.en.json" />
+    <EmbeddedResource Include="Localization/strings.ja.json" WithCulture="false" LogicalName="TransubPlayer.Localization.strings.ja.json" />
+    <EmbeddedResource Include="Localization/strings.ko.json" WithCulture="false" LogicalName="TransubPlayer.Localization.strings.ko.json" />
+  </ItemGroup>
+
+  <!-- 共享服务（自 WPF 工程链接，保持单一事实来源） -->
+  <ItemGroup>
+    <Compile Include="../TransubPlayer/Services/AppPaths.cs" Link="Shared/AppPaths.cs" />
+    <Compile Include="../TransubPlayer/Services/AppSettings.cs" Link="Shared/AppSettings.cs" />
+    <Compile Include="../TransubPlayer/Services/PlayerLog.cs" Link="Shared/PlayerLog.cs" />
+    <Compile Include="../TransubPlayer/Services/MediaFileTypes.cs" Link="Shared/MediaFileTypes.cs" />
+    <Compile Include="../TransubPlayer/Services/MediaTimeFormat.cs" Link="Shared/MediaTimeFormat.cs" />
+    <Compile Include="../TransubPlayer/Services/MediaSourceHelper.cs" Link="Shared/MediaSourceHelper.cs" />
+    <Compile Include="../TransubPlayer/Services/PlaylistFileParser.cs" Link="Shared/PlaylistFileParser.cs" />
+    <Compile Include="../TransubPlayer/Services/PlaybackQueue.cs" Link="Shared/PlaybackQueue.cs" />
+    <Compile Include="../TransubPlayer/Services/PlaybackPositionStore.cs" Link="Shared/PlaybackPositionStore.cs" />
+    <Compile Include="../TransubPlayer/Services/RecentFiles.cs" Link="Shared/RecentFiles.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleFile.cs" Link="Shared/SubtitleFile.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleDisplayMode.cs" Link="Shared/SubtitleDisplayMode.cs" />
+    <Compile Include="../TransubPlayer/Services/SourceLanguages.cs" Link="Shared/SourceLanguages.cs" />
+    <Compile Include="../TransubPlayer/Services/TranslateTargets.cs" Link="Shared/TranslateTargets.cs" />
+    <Compile Include="../TransubPlayer/Services/TranslateModels.cs" Link="Shared/TranslateModels.cs" />
+    <Compile Include="../TransubPlayer/Services/ModelPicker.cs" Link="Shared/ModelPicker.cs" />
+    <Compile Include="../TransubPlayer/Services/HfEndpoints.cs" Link="Shared/HfEndpoints.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrQualities.cs" Link="Shared/AsrQualities.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrBackend.cs" Link="Shared/AsrBackend.cs" />
+    <Compile Include="../TransubPlayer/Services/LlamaServerProcess.cs" Link="Shared/LlamaServerProcess.cs" />
+    <Compile Include="../TransubPlayer/Services/TransubInstall.cs" Link="Shared/TransubInstall.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleSourceKind.cs" Link="Shared/SubtitleSourceKind.cs" />
+    <Compile Include="../TransubPlayer/Services/LiveFavoriteEntry.cs" Link="Shared/LiveFavoriteEntry.cs" />
+    <Compile Include="../TransubPlayer/Services/RuntimePacks.cs" Link="Shared/RuntimePacks.cs" />
+    <Compile Include="../TransubPlayer/Services/MtRoute.cs" Link="Shared/MtRoute.cs" />
+    <Compile Include="../TransubPlayer/Services/ManagedLlmInstaller.cs" Link="Shared/ManagedLlmInstaller.cs" />
+    <Compile Include="../TransubPlayer/Services/AppUpdateEndpoints.cs" Link="Shared/AppUpdateEndpoints.cs" />
+    <Compile Include="../TransubPlayer/Services/LocalHttp.cs" Link="Shared/LocalHttp.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrModelIntegrity.cs" Link="Shared/AsrModelIntegrity.cs" />
+    <Compile Include="../TransubPlayer/Services/ModelDownloadActivity.cs" Link="Shared/ModelDownloadActivity.cs" />
+    <Compile Include="../TransubPlayer/Services/RemoteFileDownloader.cs" Link="Shared/RemoteFileDownloader.cs" />
+    <Compile Include="../TransubPlayer/Services/DownloadProgressUi.cs" Link="Shared/DownloadProgressUi.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrModelStore.cs" Link="Shared/AsrModelStore.cs" />
+    <Compile Include="../TransubPlayer/Services/PresetReadiness.cs" Link="Shared/PresetReadiness.cs" />
+    <Compile Include="../TransubPlayer/Services/PreviewTextSanitize.cs" Link="Shared/PreviewTextSanitize.cs" />
+    <Compile Include="../TransubPlayer/Services/StreamMediaResolver.cs" Link="Shared/StreamMediaResolver.cs" />
+    <Compile Include="../TransubPlayer/Services/TransubSharedAssets.cs" Link="Shared/TransubSharedAssets.cs" />
+    <Compile Include="../TransubPlayer/Services/MtTrainedRemapLexicon.cs" Link="Shared/MtTrainedRemapLexicon.cs" />
+    <Compile Include="../TransubPlayer/Services/AvGlossaryLexicon.cs" Link="Shared/AvGlossaryLexicon.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleGlossaryStore.cs" Link="Shared/SubtitleGlossaryStore.cs" />
+    <Compile Include="../TransubPlayer/Services/JaAsrDomainLexicon.cs" Link="Shared/JaAsrDomainLexicon.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatConnect.cs" Link="Shared/StripchatConnect.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatHlsPlaylist.cs" Link="Shared/StripchatHlsPlaylist.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatHlsProxy.cs" Link="Shared/StripchatHlsProxy.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatLiveCdn.cs" Link="Shared/StripchatLiveCdn.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatMouflonDecoder.cs" Link="Shared/StripchatMouflonDecoder.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatMouflonKeys.cs" Link="Shared/StripchatMouflonKeys.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatRoomStatus.cs" Link="Shared/StripchatRoomStatus.cs" />
+    <Compile Include="../TransubPlayer/Services/StripchatStreamResolver.cs" Link="Shared/StripchatStreamResolver.cs" />
+    <Compile Include="../TransubPlayer/Localization/UiLanguages.cs" Link="Shared/UiLanguages.cs" />
+    <Compile Include="../TransubPlayer/Services/IMpvEngine.cs" Link="Shared/IMpvEngine.cs" />
+    <Compile Include="../TransubPlayer/Services/IPreviewHost.cs" Link="Shared/IPreviewHost.cs" />
+    <Compile Include="../TransubPlayer/Services/PreviewController.cs" Link="Shared/PreviewController.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrPipeline.cs" Link="Shared/AsrPipeline.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrAudioExtract.cs" Link="Shared/AsrAudioExtract.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrJobRequest.cs" Link="Shared/AsrJobRequest.cs" />
+    <Compile Include="../TransubPlayer/Services/AsrRuntime.cs" Link="Shared/AsrRuntime.cs" />
+    <Compile Include="../TransubPlayer/Services/EngineLocator.cs" Link="Shared/EngineLocator.cs" />
+    <Compile Include="../TransubPlayer/Services/EngineCapabilities.cs" Link="Shared/EngineCapabilities.cs" />
+    <Compile Include="../TransubPlayer/Services/TranslateClient.cs" Link="Shared/TranslateClient.cs" />
+    <Compile Include="../TransubPlayer/Services/PlaylistPrefetch.cs" Link="Shared/PlaylistPrefetch.cs" />
+    <Compile Include="../TransubPlayer/Services/PrefetchUiState.cs" Link="Shared/PrefetchUiState.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleCoverageTracker.cs" Link="Shared/SubtitleCoverageTracker.cs" />
+    <Compile Include="../TransubPlayer/Services/PreviewSubtitleSync.cs" Link="Shared/PreviewSubtitleSync.cs" />
+    <Compile Include="../TransubPlayer/Services/FinishedSubtitleMonitor.cs" Link="Shared/FinishedSubtitleMonitor.cs" />
+    <Compile Include="../TransubPlayer/Services/SceneProfiles.cs" Link="Shared/SceneProfiles.cs" />
+    <Compile Include="../TransubPlayer/Services/SourceLanguageSense.cs" Link="Shared/SourceLanguageSense.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleCatClient.cs" Link="Shared/SubtitleCatClient.cs" />
+    <Compile Include="../TransubPlayer/Services/SubtitleCatModels.cs" Link="Shared/SubtitleCatModels.cs" />
+    <Compile Include="../TransubPlayer/Services/StreamRecord.cs" Link="Shared/StreamRecord.cs" />
+    <Compile Include="../TransubPlayer/Services/FirstRunHelp.cs" Link="Shared/FirstRunHelp.cs" />
+    <Compile Include="../TransubPlayer/Services/MediaSearchQuery.cs" Link="Shared/MediaSearchQuery.cs" />
+    <Compile Include="../TransubPlayer/Services/PreviewPaths.cs" Link="Shared/PreviewPaths.cs" />
+    <Compile Include="../TransubPlayer/Services/UserTips.cs" Link="Shared/UserTips.cs" />
+    <Compile Include="../TransubPlayer/Services/TranslateTargetUi.cs" Link="Shared/TranslateTargetUi.cs" />
+    <Compile Include="../TransubPlayer/Services/PresetDependencyInstaller.cs" Link="Shared/PresetDependencyInstaller.cs" />
+    <Compile Include="../TransubPlayer/Services/ModelManualInstall.cs" Link="Shared/ModelManualInstall.cs" />
+  </ItemGroup>
+
+</Project>

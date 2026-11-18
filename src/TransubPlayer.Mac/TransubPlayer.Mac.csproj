@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TransubPlayer.Mac</RootNamespace>
+    <AssemblyName>TransubPlayer</AssemblyName>
+    <Version>1.6.0</Version>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SatelliteResourceLanguages>none</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/app.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TransubPlayer.Core/TransubPlayer.Core.csproj" />
+    <PackageReference Include="Avalonia" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.*" />
+  </ItemGroup>
+
+</Project>

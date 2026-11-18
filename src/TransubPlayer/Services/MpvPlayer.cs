@@ -8,7 +8,7 @@ using TransubPlayer.Localization;
 
 namespace TransubPlayer.Services;
 
-internal sealed class MpvPlayer : IDisposable
+internal sealed class MpvPlayer : IMpvEngine
 {
     private Process? _process;
     private NamedPipeClientStream? _pipe;

@@ -16,6 +16,13 @@ internal static class ManagedLlmCatalog
     /// <summary>Latest llama.cpp release tag that ships win-vulkan-x64 (pinned at implement time).</summary>
     public const string LlamaCppTag = "b10679";
 
+    /// <summary>llama.cpp tag used for the macOS arm64 build (ships bin-macos-arm64).</summary>
+    public const string LlamaCppTagMac = "b12383";
+
+    /// <summary>llama-server binary name on this OS.</summary>
+    public static string LlamaServerBinaryName
+        => OperatingSystem.IsMacOS() ? "llama-server" : "llama-server.exe";
+
     /// <summary>GGUF must reach this fraction of <see cref="ManagedGgufSpec.SizeHintMb"/> to count as complete.</summary>
     public const double GgufCompleteSizeRatio = 0.7;
 
@@ -49,7 +56,9 @@ internal static class ManagedLlmCatalog
     public static long AnyGgufMinBytes => MinGgufBytes(TranslateGemma4B);
 
     public static string LlamaServerZipUrl =>
-        $"https://github.com/ggml-org/llama.cpp/releases/download/{LlamaCppTag}/llama-{LlamaCppTag}-bin-win-vulkan-x64.zip";
+        OperatingSystem.IsMacOS()
+            ? $"https://github.com/ggml-org/llama.cpp/releases/download/{LlamaCppTagMac}/llama-{LlamaCppTagMac}-bin-macos-arm64.tar.gz"
+            : $"https://github.com/ggml-org/llama.cpp/releases/download/{LlamaCppTag}/llama-{LlamaCppTag}-bin-win-vulkan-x64.zip";
 
     public static string ApplyHfMirror(string url, string? hfEndpoint)
     {
@@ -85,10 +94,10 @@ internal static class ManagedLlmInstaller
         if (root is null) return false;
         var runtime = Path.Combine(root, "runtime");
         if (!Directory.Exists(runtime)) return false;
-        if (File.Exists(Path.Combine(runtime, "llama-server.exe"))) return true;
+        if (File.Exists(Path.Combine(runtime, ManagedLlmCatalog.LlamaServerBinaryName))) return true;
         try
         {
-            return Directory.EnumerateFiles(runtime, "llama-server.exe", SearchOption.AllDirectories).Any();
+            return Directory.EnumerateFiles(runtime, ManagedLlmCatalog.LlamaServerBinaryName, SearchOption.AllDirectories).Any();
         }
         catch
         {
@@ -242,7 +251,7 @@ internal static class ManagedLlmInstaller
             var root = AppPaths.ResolveAdvancedLlmInstallRoot(settings);
             var runtimeDir = AppPaths.ResolveAdvancedLlmRuntimeDir(settings);
             Directory.CreateDirectory(runtimeDir);
-            var zipPath = Path.Combine(root, "llama-server-vulkan.zip");
+            var zipPath = Path.Combine(root, OperatingSystem.IsMacOS() ? "llama-server-macos.tar.gz" : "llama-server-vulkan.zip");
             status("正在下载翻译运行时 llama-server（约 32 MB）…");
             log("下载 " + ManagedLlmCatalog.LlamaServerZipUrl);
             await DownloadFileAsync(ManagedLlmCatalog.LlamaServerZipUrl, zipPath, status, token, minCompleteBytes: 20_000_000)
@@ -253,12 +262,31 @@ internal static class ManagedLlmInstaller
             if (Directory.Exists(extractTemp))
                 Directory.Delete(extractTemp, recursive: true);
             Directory.CreateDirectory(extractTemp);
-            ZipFile.ExtractToDirectory(zipPath, extractTemp, overwriteFiles: true);
+            if (OperatingSystem.IsMacOS())
+            {
+                // macOS 资产是 tar.gz（内含 llama-server 及 ggml dylib）
+                var psi = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "/usr/bin/tar",
+                    ArgumentList = { "-xzf", zipPath, "-C", extractTemp },
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                };
+                using var tar = System.Diagnostics.Process.Start(psi)
+                    ?? throw new InvalidOperationException("无法启动 tar 解压 llama-server。");
+                await tar.WaitForExitAsync(CancellationToken.None).ConfigureAwait(false);
+                if (tar.ExitCode != 0)
+                    throw new InvalidOperationException($"tar 解压 llama-server 失败（exit {tar.ExitCode}）。");
+            }
+            else
+            {
+                ZipFile.ExtractToDirectory(zipPath, extractTemp, overwriteFiles: true);
+            }
 
-            var exe = Directory.EnumerateFiles(extractTemp, "llama-server.exe", SearchOption.AllDirectories).FirstOrDefault()
-                ?? throw new InvalidOperationException("压缩包内未找到 llama-server.exe。");
+            var exe = Directory.EnumerateFiles(extractTemp, ManagedLlmCatalog.LlamaServerBinaryName, SearchOption.AllDirectories).FirstOrDefault()
+                ?? throw new InvalidOperationException("压缩包内未找到 llama-server。");
             var exeDir = Path.GetDirectoryName(exe)
-                ?? throw new InvalidOperationException("无法解析 llama-server.exe 所在目录。");
+                ?? throw new InvalidOperationException("无法解析 llama-server 所在目录。");
             foreach (var file in Directory.EnumerateFiles(exeDir, "*", SearchOption.TopDirectoryOnly))
             {
                 var dest = Path.Combine(runtimeDir, Path.GetFileName(file));
@@ -268,7 +296,7 @@ internal static class ManagedLlmInstaller
             try { File.Delete(zipPath); } catch { /* ignore */ }
             try { Directory.Delete(extractTemp, recursive: true); } catch { /* ignore */ }
 
-            if (!File.Exists(Path.Combine(runtimeDir, "llama-server.exe")))
+            if (!File.Exists(Path.Combine(runtimeDir, ManagedLlmCatalog.LlamaServerBinaryName)))
                 throw new InvalidOperationException("llama-server 安装失败。");
             status("翻译运行时已安装");
             log("llama-server → " + runtimeDir);

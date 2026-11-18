@@ -178,7 +178,7 @@ internal sealed class LlamaServerProcess : IDisposable
         ExePath = FindServerExe(root);
         ModelPath = FindModel(root, preferred, modelId);
         if (ExePath is null)
-            throw new InvalidOperationException($"未找到 llama-server.exe：{Path.Combine(root, "runtime")}");
+            throw new InvalidOperationException($"未找到 {ManagedLlmCatalog.LlamaServerBinaryName}：{Path.Combine(root, "runtime")}");
         if (ModelPath is null)
             throw new InvalidOperationException($"未找到可用 GGUF：{Path.Combine(root, "models")}");
 
@@ -206,7 +206,8 @@ internal sealed class LlamaServerProcess : IDisposable
         var exe = ExePath ?? throw new InvalidOperationException("llama-server 路径未解析");
         var model = ModelPath ?? throw new InvalidOperationException("翻译 GGUF 路径未解析");
         Exception? last = null;
-        var nglOrder = preferCpu ? new[] { 0, 20, 40 } : new[] { 99, 40, 20, 0 };
+        // macOS 统一内存：ASR 不会挤占 GPU 显存，始终 Metal 优先
+        var nglOrder = !OperatingSystem.IsMacOS() && preferCpu ? new[] { 0, 20, 40 } : new[] { 99, 40, 20, 0 };
         foreach (var ngl in nglOrder)
         {
             ct.ThrowIfCancellationRequested();
@@ -525,11 +526,11 @@ internal sealed class LlamaServerProcess : IDisposable
 
     private static string? FindServerExe(string root)
     {
-        var direct = Path.Combine(root, "runtime", "llama-server.exe");
+        var direct = Path.Combine(root, "runtime", ManagedLlmCatalog.LlamaServerBinaryName);
         if (File.Exists(direct)) return direct;
         try
         {
-            return Directory.EnumerateFiles(Path.Combine(root, "runtime"), "llama-server.exe", SearchOption.AllDirectories)
+            return Directory.EnumerateFiles(Path.Combine(root, "runtime"), ManagedLlmCatalog.LlamaServerBinaryName, SearchOption.AllDirectories)
                 .FirstOrDefault();
         }
         catch

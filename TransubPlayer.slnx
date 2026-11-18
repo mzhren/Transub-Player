@@ -1,5 +1,8 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/TransubPlayer/TransubPlayer.csproj" />
+    <Project Path="src/TransubPlayer.Core/TransubPlayer.Core.csproj" />
+    <Project Path="src/TransubPlayer.Mac/TransubPlayer.Mac.csproj" />
+    <Project Path="src/TransubPlayer.Core.Tests/TransubPlayer.Core.Tests.csproj" />
   </Folder>
 </Solution>

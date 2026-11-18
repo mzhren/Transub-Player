@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TransubPlayer.Mac.Dialogs.ModelSetupDialog"
+        Title="组件安装"
+        Width="580" Height="400"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#1E1E1E">
+  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto,Auto" Margin="16">
+    <TextBlock Grid.Row="0" x:Name="Headline" FontSize="15" FontWeight="SemiBold"
+               TextWrapping="Wrap" Text="需要下载或安装组件" />
+    <TextBlock Grid.Row="1" FontSize="12" Foreground="#BBBBBB" TextWrapping="Wrap"
+               Margin="0,6,0,10" Text="识别装好后即可出字幕；翻译模型可稍后补齐。" />
+    <ListBox Grid.Row="2" x:Name="GapList" MinHeight="110" />
+    <ProgressBar Grid.Row="3" x:Name="Progress" Minimum="0" Maximum="100" Height="6"
+                 Margin="0,10,0,6" />
+    <TextBlock Grid.Row="4" x:Name="ProgressText" FontSize="12" Foreground="#BBBBBB"
+               TextWrapping="Wrap" Margin="0,0,0,4" Text="…" />
+    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+      <Button x:Name="BtnManual" Content="手动安装" Click="OnManualClick" />
+      <Button x:Name="BtnCancel" Content="取消安装" Click="OnCancelClick" />
+      <Button x:Name="BtnInstall" Content="自动安装" Click="OnInstallClick" />
+    </StackPanel>
+  </Grid>
+</Window>

@@ -1,0 +1,168 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TransubPlayer.Mac.Views"
+        x:Class="TransubPlayer.Mac.MainWindow"
+        Title="Transub Player"
+        Width="1280" Height="680"
+        MinWidth="900" MinHeight="520"
+        Background="#0A0A0A">
+
+  <Window.Styles>
+    <Style Selector="Button">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="#D8D8D8" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="BorderBrush" Value="#3C3C3C" />
+      <Setter Property="CornerRadius" Value="4" />
+      <Setter Property="Padding" Value="8,4" />
+      <Setter Property="MinHeight" Value="30" />
+    </Style>
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="#262626" />
+      <Setter Property="BorderBrush" Value="#4A4A4A" />
+    </Style>
+    <Style Selector="Button.TextBtn">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="10,4" />
+    </Style>
+    <Style Selector="Button.TextBtn:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="#262626" />
+      <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    <Style Selector="Button.ModeActive">
+      <Setter Property="BorderBrush" Value="#F0A93B" />
+      <Setter Property="Foreground" Value="#F0A93B" />
+    </Style>
+    <Style Selector="TextBlock">
+      <Setter Property="Foreground" Value="#E0E0E0" />
+    </Style>
+    <Style Selector="TextBox">
+      <Setter Property="Foreground" Value="#EAEAEA" />
+    </Style>
+    <Style Selector="NumericUpDown">
+      <Setter Property="Foreground" Value="#EAEAEA" />
+    </Style>
+    <Style Selector="ComboBox">
+      <Setter Property="Foreground" Value="#EAEAEA" />
+    </Style>
+    <Style Selector="CheckBox">
+      <Setter Property="Foreground" Value="#EAEAEA" />
+    </Style>
+    <Style Selector="ListBoxItem">
+      <Setter Property="Foreground" Value="#D0D0D0" />
+      <Setter Property="Padding" Value="8,4" />
+    </Style>
+  </Window.Styles>
+
+  <Grid RowDefinitions="40,*,Auto,Auto">
+    <!-- ══ 标题栏 ══ -->
+    <Border x:Name="TitleBar" Grid.Row="0" Background="#0D0D0D"
+            BorderBrush="#242424" BorderThickness="0,0,0,1" Height="40">
+      <Grid Margin="84,0,12,0" ColumnDefinitions="Auto,*,Auto">
+        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+          <Image x:Name="TitleBarIcon" Width="22" Height="22" />
+          <TextBlock Text="Transub Player" VerticalAlignment="Center" FontWeight="SemiBold" />
+        </StackPanel>
+        <TextBlock Grid.Column="1" x:Name="TitleLabel" VerticalAlignment="Center" Margin="14,0,0,0"
+                   Foreground="#9A9A9A" TextTrimming="CharacterEllipsis" Text="—" />
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+          <Button Classes="TextBtn" x:Name="BtnOpen" Content="打开" Click="OnOpenClick" />
+          <Button Classes="TextBtn" x:Name="BtnSub" Content="字幕" Click="OnSubtitleClick" />
+          <Button Classes="TextBtn" x:Name="BtnPlaylist" Content="列表" Click="OnPlaylistClick" />
+          <Button Classes="TextBtn" x:Name="BtnSettings" Content="⚙" MinWidth="34" Click="OnSettingsClick" />
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <!-- ══ 视频区 ══ -->
+    <Panel Grid.Row="1">
+      <local:MpvVideoView x:Name="Video" />
+      <TextBlock x:Name="OsdLabel" IsVisible="False" HorizontalAlignment="Center"
+                 VerticalAlignment="Bottom" Margin="0,0,0,110"
+                 Background="#B3101010" Padding="10,5" FontSize="14" />
+      <TextBlock x:Name="EmptyHint" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Foreground="#666666" FontSize="15" Text="点击此处或拖入视频文件开始播放 · Cmd+O 打开" />
+
+      <!-- 引导卡片：生成中 / 等待首批译文 -->
+      <Border x:Name="GuideCard" IsVisible="False" HorizontalAlignment="Center"
+              VerticalAlignment="Center" Background="#D81C1C1C" CornerRadius="10"
+              Padding="34,22" MaxWidth="480">
+        <StackPanel Spacing="10" HorizontalAlignment="Center">
+          <TextBlock x:Name="GuideTitle" FontSize="17" FontWeight="SemiBold"
+                     Foreground="#FFFFFF" HorizontalAlignment="Center" TextWrapping="Wrap" />
+          <TextBlock x:Name="GuideAmberLine" FontSize="13" Foreground="#F0A93B"
+                     HorizontalAlignment="Center" TextWrapping="Wrap" />
+          <TextBlock x:Name="GuideDetail" FontSize="12" Foreground="#A8A8A8"
+                     HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+          <Button x:Name="BtnSkipWait" Content="不等了，立即播放" Margin="0,6,0,0"
+                  HorizontalAlignment="Center" Click="OnSkipWaitClick" />
+        </StackPanel>
+      </Border>
+    </Panel>
+
+    <!-- ══ 控制条 ══ -->
+    <Border Grid.Row="2" Background="#161616" BorderBrush="#242424" BorderThickness="0,1,0,0"
+            Padding="12,6,12,8">
+      <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="2">
+        <!-- 行1：时间 + 进度 + 总时长 -->
+        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TimeCur" VerticalAlignment="Center"
+                   FontSize="11" Foreground="#9A9A9A" Text="00:00" />
+        <Slider Grid.Row="0" Grid.Column="1" x:Name="SeekSlider" Minimum="0" Maximum="100"
+                Margin="10,0" MinHeight="18" />
+        <TextBlock Grid.Row="0" Grid.Column="2" x:Name="TimeDur" VerticalAlignment="Center"
+                   FontSize="11" Foreground="#9A9A9A" Text="00:00" />
+
+        <!-- 行2：走带控制 / 状态 / 右侧功能 -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="3"
+              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="6">
+          <Button x:Name="BtnPrev" Grid.Column="0" Content="⏮" Classes="TextBtn" MinWidth="30"
+                  Click="OnPrevClick" />
+          <Button x:Name="BtnPlay" Grid.Column="1" Content="▶" Classes="TextBtn" MinWidth="34"
+                  Click="OnPlayPauseClick" />
+          <Button x:Name="BtnStop" Grid.Column="2" Content="⏹" Classes="TextBtn" MinWidth="30"
+                  Click="OnStopClick" />
+          <Button x:Name="BtnNext" Grid.Column="3" Content="⏭" Classes="TextBtn" MinWidth="30"
+                  Click="OnNextClick" />
+          <Button x:Name="BtnMute" Grid.Column="4" Content="🔊" Classes="TextBtn" MinWidth="32"
+                  Click="OnMuteClick" />
+          <Slider x:Name="VolumeSlider" Grid.Column="5" Width="90" Minimum="0" Maximum="130"
+                  Value="50" VerticalAlignment="Center" ValueChanged="OnVolumeChanged" />
+          <TextBlock Grid.Column="6" x:Name="VolLabel" Text="50" VerticalAlignment="Center"
+                     FontSize="11" Foreground="#9A9A9A" MinWidth="22" />
+          <Button Grid.Column="7" x:Name="BtnSpeed" Content="1x" Classes="TextBtn" MinWidth="34"
+                  Click="OnSpeedClick" />
+
+          <TextBlock Grid.Column="8" x:Name="PipelineLabel" VerticalAlignment="Center"
+                     FontSize="11" Foreground="#8A8A8A" TextTrimming="CharacterEllipsis"
+                     TextAlignment="Center" Text="…" />
+
+          <ComboBox Grid.Column="9" x:Name="CmbSourceLang" MinWidth="96" FontSize="12"
+                    SelectionChanged="OnSourceLangChanged" VerticalAlignment="Center" />
+          <ComboBox Grid.Column="10" x:Name="CmbTranslateTarget" MinWidth="84" FontSize="12"
+                    SelectionChanged="OnTargetChanged" VerticalAlignment="Center" />
+          <Button Grid.Column="11" x:Name="BtnModeZh" Content="译文" Classes="TextBtn" Click="OnModeZhClick" />
+          <Button Grid.Column="12" x:Name="BtnModeSource" Content="原文" Classes="TextBtn" Click="OnModeSourceClick" />
+          <Button Grid.Column="13" x:Name="BtnModeDual" Content="双语" Classes="TextBtn" Click="OnModeDualClick" />
+          <Button Grid.Column="14" x:Name="BtnShot" Content="📷" Classes="TextBtn" MinWidth="32"
+                  Click="OnScreenshotClick" />
+          <Button Grid.Column="15" x:Name="BtnFullscreen" Content="⛶" Classes="TextBtn" MinWidth="32"
+                  Click="OnFullscreenClick" />
+        </Grid>
+      </Grid>
+    </Border>
+
+    <!-- ══ 播放列表 ══ -->
+    <Border x:Name="PlaylistPanel" Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Width="280" IsVisible="False"
+            Background="#141414" BorderBrush="#242424" BorderThickness="1,0,0,0">
+      <Grid RowDefinitions="Auto,*,Auto" Margin="8,6">
+        <TextBlock Grid.Row="0" Text="播放列表" FontWeight="SemiBold" Margin="4,4,0,8" />
+        <ListBox x:Name="PlaylistList" Grid.Row="1"
+                 DoubleTapped="OnPlaylistItemActivate" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,6,0,0" Spacing="6">
+          <Button Content="清空" Click="OnPlaylistClearClick" />
+          <Button Content="移除" Click="OnPlaylistRemoveClick" />
+        </StackPanel>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>

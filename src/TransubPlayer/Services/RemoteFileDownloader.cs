@@ -17,6 +17,8 @@ internal static class RemoteFileDownloader
         "https://ghfast.top/",
         "https://gh-proxy.com/",
         "https://mirror.ghproxy.com/",
+        "https://ghproxy.net/",
+        "https://github.moeyy.xyz/",
     ];
 
     private static readonly Lazy<HttpClient> SharedHttp = new(CreateClient);

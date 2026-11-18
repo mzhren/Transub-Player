@@ -1,5 +1,5 @@
 using System.IO;
-using TransubPlayer.Controls;
+
 using TransubPlayer.Localization;
 
 namespace TransubPlayer.Services;
@@ -9,8 +9,8 @@ internal sealed class PreviewController : IDisposable
     private readonly AppSettings _settings;
     private readonly Action<string> _status;
     private readonly Action<string> _log;
-    private readonly MpvHost _host;
-    private readonly MpvPlayer _mpv = new();
+    private readonly IPreviewHost _host;
+    private readonly IMpvEngine _mpv = MpvEngineFactory.Create();
     private readonly PreviewSubtitleSync _subs;
     private readonly AsrPipeline _engine;
     private LlamaServerProcess? _llama;
@@ -28,6 +28,8 @@ internal sealed class PreviewController : IDisposable
     private bool _retranslatingActive;
     private double _nextPreviewStartFrom;
     private IReadOnlyList<Cue>? _nextPreviewSeedCues;
+    /// <summary>未完成生成续传：原文/译文 sidecar 路径（Zh 可空——译文走默认预览缓存）。</summary>
+    private (string Source, string? Zh)? _resumeOutputPaths;
     private const double AsrChunkStepSec = 88; // AsrPipeline ChunkSec - ChunkOverlapSec
     private bool _resumeAfterModeWait;
     private CoverageWaitReason _coverageWaitReason = CoverageWaitReason.None;
@@ -93,6 +95,163 @@ internal sealed class PreviewController : IDisposable
         DisplayMode,
         LanguageSwitch,
     }
+
+    /// <summary>
+    /// 播放引擎实例（Windows: MpvPlayer / macOS: MpvLibPlayer）。
+    /// PreviewController 拥有其生命周期；UI 仅在初始化渲染层时需要引用（macOS render context）。
+    /// </summary>
+    /// <summary>ASR 管线实例（供模型管理/预置包安装 UI 使用）。</summary>
+    public AsrPipeline AsrEngine => _engine;
+
+    /// <summary>
+    /// 把本媒体生成的字幕（原文 + 译文）保存到视频同目录：
+    /// 原文 <c>视频名.srt</c>，译文 <c>视频名.目标语言.srt</c>。
+    /// 已存在的同名文件不覆盖（避免破坏用户自带字幕）；流媒体/无字幕时跳过。
+    /// 下次打开时按现有 sidecar 优先逻辑直接加载。
+    /// </summary>
+    private sealed record PreviewResumeInfo(string SourcePath, string? TranslatedPath, double AsrFrontier);
+
+    /// <summary>
+    /// 检测"本应用导出的未完成字幕"：存在 .transub.json 元数据且 complete=false，
+    /// 且当前命中的 existing 恰好是我们导出的文件（原文或译文）。
+    /// 用户自带的字幕（无元数据）永远走普通外挂路径。
+    /// </summary>
+    private PreviewResumeInfo? TryLoadIncompleteResume(string mediaPath, string? existing)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(existing)) return null;
+            var dir = Path.GetDirectoryName(Path.GetFullPath(mediaPath));
+            if (string.IsNullOrWhiteSpace(dir)) return null;
+
+            var metaPath = Path.Combine(dir, Path.GetFileNameWithoutExtension(mediaPath) + ".transub.json");
+            if (!File.Exists(metaPath)) return null;
+
+            using var stream = File.OpenRead(metaPath);
+            using var doc = JsonDocument.Parse(stream);
+            var root = doc.RootElement;
+            if (root.TryGetProperty("complete", out var c) && c.ValueKind == JsonValueKind.True)
+                return null;
+
+            if (!root.TryGetProperty("source", out var srcEl)) return null;
+            var sourceName = srcEl.GetString();
+            if (string.IsNullOrWhiteSpace(sourceName)) return null;
+            var sourcePath = Path.Combine(dir, sourceName);
+            if (!File.Exists(sourcePath)) return null;
+
+            string? translatedPath = null;
+            if (root.TryGetProperty("translatedFile", out var tEl) && tEl.ValueKind == JsonValueKind.String)
+            {
+                var tp = Path.Combine(dir, tEl.GetString() ?? "");
+                if (File.Exists(tp)) translatedPath = tp;
+            }
+
+            var ours = string.Equals(existing, sourcePath, StringComparison.OrdinalIgnoreCase)
+                       || (translatedPath is not null
+                           && string.Equals(existing, translatedPath, StringComparison.OrdinalIgnoreCase));
+            if (!ours) return null;
+
+            if (!root.TryGetProperty("asrFrontier", out var fEl) || fEl.ValueKind != JsonValueKind.Number)
+                return null;
+            var frontier = fEl.GetDouble();
+            if (frontier < 2) return null; // 几乎为零的进度没有续传价值
+
+            return new PreviewResumeInfo(sourcePath, translatedPath, frontier);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    /// <summary>续传时把预览输出重定向到视频目录的 sidecar 文件；否则走默认预览缓存。</summary>
+    public IReadOnlyList<string> ExportGeneratedSidecars()
+    {
+        var saved = new List<string>();
+        try
+        {
+            if (string.IsNullOrWhiteSpace(MediaPath)
+                || IsStreamPlayback
+                || CueCount == 0
+                || MediaSourceHelper.IsNonLocalMedia(MediaPath))
+                return saved;
+
+            var dir = Path.GetDirectoryName(Path.GetFullPath(MediaPath));
+            if (string.IsNullOrWhiteSpace(dir) || !Directory.Exists(dir))
+                return saved;
+
+            var baseName = Path.GetFileNameWithoutExtension(MediaPath);
+            var ownsSource = !UsingExistingSub; // ASR 生成的原文才落盘；用户自带字幕不动
+
+            // 元数据：标记这些 sidecar 是本应用生成的（未完成时驱动续传；完成后删除）
+            var metaPath = Path.Combine(dir, baseName + ".transub.json");
+            // 完成的权威信号：ASR 任务跑完（asr-done 标记）+ 译文覆盖全部 cue。
+            // 视频尾部常见无语音段（片尾曲/淡出），frontier 未必到达 Duration-2。
+            var complete = PreviewPaths.HasReadyAsr(MediaPath)
+                && CueCount > 0
+                && TranslatedCount >= CueCount;
+
+            if (ownsSource)
+            {
+                var srcPath = Path.Combine(dir, baseName + ".srt");
+                SubtitleFile.WriteSrt(srcPath, SnapshotCues(), chinese: false);
+                saved.Add(srcPath);
+            }
+
+            if (TranslatedCount > 0)
+            {
+                var tgt = EffectiveTranslateTarget;
+                var tgtPath = Path.Combine(dir, $"{baseName}.{tgt}.srt");
+                SubtitleFile.WriteSrt(tgtPath, SnapshotCues(), chinese: true);
+                saved.Add(tgtPath);
+            }
+
+            try
+            {
+                if (complete)
+                {
+                    if (File.Exists(metaPath))
+                        File.Delete(metaPath); // 生成完整 → sidecar 就是普通成片，去掉续传标记
+                }
+                else
+                {
+                    var meta = new
+                    {
+                        version = 1,
+                        complete = false,
+                        duration = Duration,
+                        target = EffectiveTranslateTarget,
+                        cues = CueCount,
+                        translated = TranslatedCount,
+                        asrFrontier = SubFrontier,
+                        zhFrontier = ZhFrontier,
+                        source = baseName + ".srt",
+                        translatedFile = TranslatedCount > 0 ? baseName + "." + EffectiveTranslateTarget + ".srt" : null,
+                        updatedAt = DateTimeOffset.Now.ToString("o"),
+                    };
+                    File.WriteAllText(metaPath,
+                        JsonSerializer.Serialize(meta, new JsonSerializerOptions { WriteIndented = true }));
+                }
+            }
+            catch
+            {
+                // 元数据写失败不影响字幕导出
+            }
+
+            if (saved.Count > 0)
+            {
+                SubtitleFile.InvalidateDirectoryListingCache();
+                _log("字幕已保存到视频目录 · " + string.Join(" , ", saved.Select(Path.GetFileName)));
+            }
+        }
+        catch (Exception ex)
+        {
+            _log("字幕保存失败 · " + ex.Message);
+        }
+        return saved;
+    }
+
+    public IMpvEngine Engine => _mpv;
 
     public string? MediaPath { get; private set; }
     public bool UsingExistingSub { get; private set; }
@@ -177,6 +336,14 @@ internal sealed class PreviewController : IDisposable
     public SceneProfile? MatchedScene { get; private set; }
     /// <summary>Concrete lang from short-window audio LID this session; null if skipped or not adopted.</summary>
     public string? SensedSourceLanguage { get; private set; }
+    /// <summary>
+    /// 解析后的实际翻译目标语言：设置值为 auto 时按源语言定向（源中文→英，其它→中）。
+    /// 预览文件命名与语向相关清理均应使用本值而非原始设置。
+    /// </summary>
+    public string EffectiveTranslateTarget
+        => MtRoute.Resolve(MtSourceLanguage(), _settings.TranslateTarget, ActiveScene.ContentProfile).Target
+           ?? TranslateTargets.Zh;
+
     public MtRoute ActiveMtRoute =>
         MtRoute.Resolve(MtSourceLanguage(), _settings.TranslateTarget, ActiveScene.ContentProfile);
 
@@ -312,12 +479,25 @@ internal sealed class PreviewController : IDisposable
     /// <summary>English UI + English source: true=install MT, false=ASR only, null=dismiss.</summary>
     public Func<Task<bool?>>? OfferEnglishSourceChoiceAsync { get; set; }
 
-    public PreviewController(AppSettings settings, MpvHost host, Action<string> status, Action<string> log)
+    public PreviewController(AppSettings settings, IPreviewHost host, Action<string> status, Action<string> log)
     {
         _settings = settings;
         _host = host;
         _status = status;
         _log = log;
+        try
+        {
+            PlayerLog.Write(
+                "paths · cwd=" + Environment.CurrentDirectory
+                + " · appData=" + AppPaths.AppDataDir
+                + " · modelsRoot=" + AsrModelStore.ResolveModelsRoot(settings)
+                + " · llmRoot=" + AppPaths.AdvancedLlmDir
+                + " · portable=" + AppPaths.IsPortable + " · devTree=" + AppPaths.IsDevTree);
+        }
+        catch (Exception ex)
+        {
+            PlayerLog.Write("paths probe failed · " + ex.Message);
+        }
         _displayMode = SubtitleDisplayModeUtil.Parse(settings.SubtitleMode);
         if (SubtitleDisplayModeUtil.IsContentMode(_displayMode))
             _lastContentMode = _displayMode;
@@ -375,6 +555,7 @@ internal sealed class PreviewController : IDisposable
             _playbackEnded = ended && !remote && !IsStreamPlayback;
             if (!ended || remote)
                 return;
+            ExportGeneratedSidecars();
             MediaEnded?.Invoke();
         };
         _mpv.VideoSizeChanged += (w, h) =>
@@ -526,10 +707,10 @@ internal sealed class PreviewController : IDisposable
         var mpv = MpvLocator.Find()
             ?? throw new MpvMissingException();
         _host.EnsureHandle();
-        await _host.Dispatcher.InvokeAsync(() => { });
+        await _host.DispatcherInvokeAsync(() => { });
         await _mpv.StartAsync(mpv, _host.Hwnd, _settings, CancellationToken.None, initialMedia, httpHeaders, autoPlay)
             .ConfigureAwait(false);
-        await _host.Dispatcher.InvokeAsync(() => _host.HookEmbeddedChildren());
+        await _host.DispatcherInvokeAsync(() => _host.HookEmbeddedChildren());
         // Live spawn already has volume/speed on argv + local fields synced in StartAsync.
         // Avoid extra IPC right after open (light-IPC live path is demuxer-sensitive).
         if (string.IsNullOrWhiteSpace(initialMedia))
@@ -729,7 +910,7 @@ internal sealed class PreviewController : IDisposable
                 _log("直播 URL → " + playPath);
                 if (!await EnsureLoadIntoMpvAsync(playPath, streamAutoPlay, _streamHeaders, osdName).ConfigureAwait(false))
                     throw new InvalidOperationException(Loc.Get("Main.Status.MpvLoadFailed"));
-                await _host.Dispatcher.InvokeAsync(() => _host.HookEmbeddedChildren());
+                await _host.DispatcherInvokeAsync(() => _host.HookEmbeddedChildren());
                 if (streamAutoPlay)
                     _mpv.SetPause(false);
                 Paused = !streamAutoPlay;
@@ -819,6 +1000,27 @@ internal sealed class PreviewController : IDisposable
                 existing = onlineFetched;
 
             ThrowIfStaleMedia(gen, ct);
+
+            // 未完成的本机生成字幕（有续传标记）→ 不当外挂加载，改走预览续传：
+            // 输出重定向到 sidecar 文件 + ASR 从上次前沿的 chunk 对齐点继续 + 译文按时间合并。
+            var resumeMeta = TryLoadIncompleteResume(path, existing);
+            if (resumeMeta is not null && existing is not null)
+            {
+                // 清除上次中断残留的 asr-done 标记，否则缓存加载分支会跳过续跑
+                PreviewPaths.ClearAsrDone(path);
+                _nextPreviewStartFrom = ComputeAsrChunkStart(resumeMeta.AsrFrontier);
+                _nextPreviewSeedCues = null;
+                existing = null;
+                // 续传不是"使用现有字幕"：重置 sync 的 usingExistingSub 状态，
+                // 否则 RefreshDisplaySub 会跳过所有显示应用（跨媒体残留）
+                UsingExistingSub = false;
+                _subs.SetUsingExistingSub(false);
+                _log("检测到未完成的字幕生成 · 从 "
+                     + MediaTimeFormat.Format(resumeMeta.AsrFrontier) + " 继续（原文 "
+                     + Path.GetFileName(resumeMeta.SourcePath) + "）");
+                PublishStatus(Loc.Format("Main.Status.ResumePreview",
+                    MediaTimeFormat.Format(resumeMeta.AsrFrontier)));
+            }
 
             if (existing is not null)
             {
@@ -1478,7 +1680,7 @@ internal sealed class PreviewController : IDisposable
             Directory.CreateDirectory(outDir);
             _subs.SetOutputPaths(
                 PreviewPaths.SourceSrt(mediaPath),
-                PreviewPaths.TranslatedPreviewSrt(mediaPath, _settings.TranslateTarget),
+                PreviewPaths.TranslatedPreviewSrt(mediaPath, EffectiveTranslateTarget),
                 PreviewPaths.DualSrt(mediaPath),
                 PreviewPaths.DisplaySrt(mediaPath));
 
@@ -1533,11 +1735,14 @@ internal sealed class PreviewController : IDisposable
 
             _subs.SetOutputPaths(
                 PreviewPaths.SourceSrt(mediaPath),
-                PreviewPaths.TranslatedPreviewSrt(mediaPath, _settings.TranslateTarget),
+                PreviewPaths.TranslatedPreviewSrt(mediaPath, EffectiveTranslateTarget),
                 PreviewPaths.DualSrt(mediaPath),
                 PreviewPaths.DisplaySrt(mediaPath));
             // Do not KickEnsureTranslate here — that would load llama on GPU then Demote kills it.
             _subs.WatchSource();
+            // 续传：WatchSource 不做初始解析，显式触发一次，从 sidecar 文件恢复已有 cues
+            if (_resumeOutputPaths is not null)
+                _subs.OnSourceChanged();
 
             // Start ASR before llama so status leaves「连接中」and source lines can appear.
             SetBootstrapPhase(BootstrapPhase.StartingAsr);
@@ -2423,7 +2628,7 @@ internal sealed class PreviewController : IDisposable
 
     private void MaybeOfferTranslateTargetEnTip()
     {
-        if (!TranslateTargets.IsEnglish(_settings)) return;
+        if (!TranslateTargets.IsEnglish(EffectiveTranslateTarget)) return;
         if (!UserTips.ShouldShow(_settings, UserTips.TranslateTargetEn)) return;
         UserTips.Dismiss(_settings, UserTips.TranslateTargetEn);
         ShowOsd(Loc.Get("Main.Osd.TranslateTargetEnTip"), 4500);
@@ -2917,6 +3122,7 @@ internal sealed class PreviewController : IDisposable
         if (Interlocked.Exchange(ref _disposed, 1) != 0) return;
         try { _lifetimeCts.Cancel(); } catch { /* ignore */ }
         try { SavePlaybackPosition(); } catch { /* ignore */ }
+        try { ExportGeneratedSidecars(); } catch { /* ignore */ }
         try { await StopStreamRecordSilentlyAsync().ConfigureAwait(false); } catch { /* ignore */ }
         // Silence video immediately before GPU/cache teardown (may take up to HttpBudget).
         StopPlaybackImmediate();
@@ -3433,13 +3639,13 @@ internal sealed class PreviewController : IDisposable
 
     private Task FinishWaitForFirstZhOnUiAsync(bool play, string? osdMessage = null)
     {
-        if (_host.Dispatcher.CheckAccess())
+        if (_host.DispatcherCheckAccess())
         {
             FinishWaitForFirstZh(play, osdMessage);
             return Task.CompletedTask;
         }
 
-        return _host.Dispatcher.InvokeAsync(() => FinishWaitForFirstZh(play, osdMessage)).Task;
+        return _host.DispatcherInvokeAsync(() => FinishWaitForFirstZh(play, osdMessage));
     }
 
     private void StartPlaybackAfterSubtitleReady()
@@ -3604,7 +3810,7 @@ internal sealed class PreviewController : IDisposable
         var mediaPath = MediaPath;
         _subs.SetOutputPaths(
             PreviewPaths.SourceSrt(mediaPath),
-            PreviewPaths.TranslatedPreviewSrt(mediaPath, _settings.TranslateTarget),
+            PreviewPaths.TranslatedPreviewSrt(mediaPath, EffectiveTranslateTarget),
             PreviewPaths.DualSrt(mediaPath),
             PreviewPaths.DisplaySrt(mediaPath));
     }
@@ -4054,7 +4260,7 @@ internal sealed class PreviewController : IDisposable
     private async Task MaybeOfferEnglishSourceChoiceAsync(int gen, CancellationToken ct)
     {
         if (!IsEnglishSource) return;
-        if (!TranslateTargets.IsChinese(_settings)) return;
+        if (!TranslateTargets.IsChinese(EffectiveTranslateTarget)) return;
         if (!string.Equals(Loc.CurrentTag, "en", StringComparison.OrdinalIgnoreCase)) return;
         if (!UserTips.ShouldShow(_settings, UserTips.OfferEnglishSource)) return;
         if (OfferEnglishSourceChoiceAsync is null) return;

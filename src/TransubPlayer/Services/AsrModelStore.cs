@@ -73,6 +73,13 @@ internal static class AsrModelStore
         if (IsTurboInstalled(modelsRoot))
             return;
 
+        if (string.IsNullOrWhiteSpace(modelsRoot))
+            throw new InvalidOperationException(
+                "模型目录未解析（诊断 cwd=" + Environment.CurrentDirectory
+                + " appData=" + AppPaths.AppDataDir + " modelsRoot=" + modelsRoot + "）");
+
+        // 先建全路径（相对路径会落在 CWD=/ 下 → "Read-only file system : '/asr'"）
+        Directory.CreateDirectory(modelsRoot);
         Directory.CreateDirectory(Path.Combine(modelsRoot, "asr"));
         var dest = TurboPath(modelsRoot);
         status?.Invoke(Loc.Format("Main.Bootstrap.DownloadingModelNamed", AsrModelCatalog.DisplayName(ModelPicker.Turbo)));

@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TransubPlayer.Mac.Dialogs.SettingsWindow"
+        Title="设置"
+        Width="520" Height="640"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#1E1E1E">
+  <Grid RowDefinitions="*,Auto" Margin="16">
+    <ScrollViewer Grid.Row="0">
+      <StackPanel Spacing="14">
+
+        <TextBlock Text="识别与翻译" FontWeight="SemiBold" Foreground="#9ACDFF" />
+        <Grid ColumnDefinitions="180,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="8">
+          <TextBlock Text="UI 语言" VerticalAlignment="Center" />
+          <ComboBox Grid.Column="1" x:Name="CmbUiLang" MinWidth="220" />
+          <TextBlock Grid.Row="1" Text="识别质量" VerticalAlignment="Center" />
+          <ComboBox Grid.Row="1" Grid.Column="1" x:Name="CmbAsrQuality" MinWidth="220" />
+          <TextBlock Grid.Row="2" Text="翻译模型" VerticalAlignment="Center" />
+          <ComboBox Grid.Row="2" Grid.Column="1" x:Name="CmbTranslateModel" MinWidth="220" />
+          <TextBlock Grid.Row="3" Text="翻译目标" VerticalAlignment="Center" />
+          <ComboBox Grid.Row="3" Grid.Column="1" x:Name="CmbTranslateTarget" MinWidth="220" />
+        </Grid>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Button x:Name="BtnModels" Content="组件与模型管理…" Click="OnModelsClick" />
+          <Button x:Name="BtnOpenModelDir" Content="打开模型目录" Click="OnOpenModelDirClick" />
+        </StackPanel>
+        <TextBlock x:Name="ModelStatus" FontSize="11" Foreground="#8A8A8A" TextWrapping="Wrap" />
+        <TextBlock FontSize="11" Foreground="#8A8A8A" TextWrapping="Wrap"
+                   Text="手动拷贝布局：识别模型 → models/asr/；翻译 GGUF → advanced-llm/models/；llama-server → advanced-llm/runtime/" />
+
+        <TextBlock Text="字幕外观" FontWeight="SemiBold" Foreground="#9ACDFF" Margin="0,4,0,0" />
+        <Grid ColumnDefinitions="180,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="8">
+          <TextBlock Text="字幕字体" VerticalAlignment="Center" />
+          <TextBox Grid.Column="1" x:Name="TxtSubFont" />
+          <TextBlock Grid.Row="1" Text="字号" VerticalAlignment="Center" />
+          <NumericUpDown Grid.Row="1" Grid.Column="1" x:Name="NumSubFontSize" Minimum="16" Maximum="96" Increment="2" />
+          <TextBlock Grid.Row="2" Text="描边宽度" VerticalAlignment="Center" />
+          <NumericUpDown Grid.Row="2" Grid.Column="1" x:Name="NumSubBorder" Minimum="0" Maximum="8" />
+          <TextBlock Grid.Row="3" Text="字幕边距" VerticalAlignment="Center" />
+          <NumericUpDown Grid.Row="3" Grid.Column="1" x:Name="NumSubMargin" Minimum="0" Maximum="200" Increment="4" />
+          <TextBlock Grid.Row="4" Text="默认字幕模式" VerticalAlignment="Center" />
+          <ComboBox Grid.Row="4" Grid.Column="1" x:Name="CmbSubtitleMode" MinWidth="220" />
+          <TextBlock Grid.Row="5" Text="字幕延迟（秒）" VerticalAlignment="Center" />
+          <NumericUpDown Grid.Row="5" Grid.Column="1" x:Name="NumSubDelay" Width="140" Minimum="-30" Maximum="30" Increment="0.1" />
+        </Grid>
+
+        <TextBlock Text="播放与视频" FontWeight="SemiBold" Foreground="#9ACDFF" Margin="0,4,0,0" />
+        <Grid ColumnDefinitions="180,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="8">
+          <TextBlock Text="硬件解码" VerticalAlignment="Center" />
+          <ComboBox Grid.Column="1" x:Name="CmbHwDec" MinWidth="220" />
+          <TextBlock Grid.Row="1" Text="画面适配" VerticalAlignment="Center" />
+          <ComboBox Grid.Row="1" Grid.Column="1" x:Name="CmbVideoFit" MinWidth="220" />
+          <TextBlock Grid.Row="2" Text="快进/快退步长（秒）" VerticalAlignment="Center" />
+          <NumericUpDown Grid.Row="2" Grid.Column="1" x:Name="NumSeekStep" Width="140" Minimum="1" Maximum="60" />
+        </Grid>
+        <StackPanel Orientation="Vertical" Spacing="6">
+          <CheckBox x:Name="ChkAutoPlayNext" Content="自动播放列表下一集" />
+          <CheckBox x:Name="ChkSameFolder" Content="打开单个文件时加入同目录其他视频" />
+          <CheckBox x:Name="ChkRememberPos" Content="记忆播放位置（断点续播）" />
+        </StackPanel>
+
+        <TextBlock Text="网络与数据" FontWeight="SemiBold" Foreground="#9ACDFF" Margin="0,4,0,0" />
+        <Grid ColumnDefinitions="180,*" ColumnSpacing="10">
+          <TextBlock Text="HuggingFace 端点" VerticalAlignment="Center" />
+          <TextBox Grid.Column="1" x:Name="TxtHfEndpoint" Watermark="https://huggingface.co" />
+        </Grid>
+        <TextBlock FontSize="11" Foreground="#8A8A8A" TextWrapping="Wrap"
+                   Text="国内网络可将端点改为 https://hf-mirror.com 以加速模型下载。" />
+        <StackPanel Orientation="Horizontal" Spacing="10">
+          <Button x:Name="BtnUpdate" Content="检查更新…" Click="OnCheckUpdateClick" />
+          <TextBlock x:Name="UpdateStatus" VerticalAlignment="Center" FontSize="12" Foreground="#BBBBBB" />
+        </StackPanel>
+
+      </StackPanel>
+    </ScrollViewer>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,14,0,0">
+      <Button x:Name="BtnCancel" Content="取消" Click="OnCancelClick" />
+      <Button x:Name="BtnSave" Content="保存" Click="OnSaveClick" />
+    </StackPanel>
+  </Grid>
+</Window>

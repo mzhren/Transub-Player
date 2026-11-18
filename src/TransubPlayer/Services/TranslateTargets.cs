@@ -5,6 +5,8 @@ namespace TransubPlayer.Services;
 /// <summary>Preview MT output language. Distinct from UI language and ASR source language.</summary>
 internal static class TranslateTargets
 {
+    /// <summary>按源语言自动定向：源为中文 → 译英语；其它 → 译中文（MtRoute.Resolve 落地）。</summary>
+    public const string Auto = "auto";
     public const string Zh = "zh";
     /// <summary>Traditional Chinese (written form). Distinct from <see cref="Zh"/> (Simplified).</summary>
     public const string ZhHant = "zh-Hant";
@@ -19,6 +21,7 @@ internal static class TranslateTargets
         var t = raw?.Trim() ?? "";
         if (t.Length == 0) return Zh;
         var lower = t.ToLowerInvariant();
+        if (lower == Auto) return Auto;
         return lower switch
         {
             En or "eng" or "english" => En,
@@ -33,6 +36,7 @@ internal static class TranslateTargets
     }
 
     public static bool IsEnglish(string? target) => Normalize(target) == En;
+    public static bool IsAuto(string? target) => string.Equals(Normalize(target), Auto, StringComparison.OrdinalIgnoreCase);
     public static bool IsChinese(string? target)
     {
         var t = Normalize(target);

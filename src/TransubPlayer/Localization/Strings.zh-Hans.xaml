@@ -772,6 +772,8 @@
     <sys:String x:Key="Str.Main.Status.SeekNoSubtitleYetPlain">字幕尚未生成 · 请稍候</sys:String>
     <sys:String x:Key="Str.Main.Status.FirstCueEtaSuffix">约 {0} 秒出第一句</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionRestored">已恢复上次观看 · {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.ResumePreview">检测到未完成的字幕生成 · 从 {0} 继续</sys:String>
+    <sys:String x:Key="Str.Main.Status.VolumeOsd">音量 {0}%</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionDelay">偏移 {0}{1:0.0}s</sys:String>
     <sys:String x:Key="Str.Main.Status.SessionSensed">感知 {0}</sys:String>
     <sys:String x:Key="Str.Main.Status.FallbackSource.Mt">已改用原文 · 翻译失败或未就绪（可再按 1 切回译文）</sys:String>
@@ -786,6 +788,7 @@
     <sys:String x:Key="Str.Main.Osd.SourceLangRemembered">沿用感知：{0}</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogIntro">当前设置需要额外组件才能达到预期效果。</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogFallback">识别需要 whisper turbo 与 GPU；未安装将无法提取字幕。翻译组件可稍后补齐。</sys:String>
+    <sys:String x:Key="Str.Main.Deps.Installed">安装完成</sys:String>
     <sys:String x:Key="Str.Main.Deps.DialogHint">可先安装识别组件开始出字幕；翻译模型装完后再出译文。</sys:String>
     <sys:String x:Key="Str.Main.Osd.UsingFastPreview">当前使用 {0} 极速原文提取</sys:String>
     <sys:String x:Key="Str.Main.Osd.AsrFallback.NotInstalled">「{0}」未就绪 · 已用 {1} 极速原文提取</sys:String>
@@ -983,6 +986,7 @@
     <sys:String x:Key="Str.Settings.TranslateTarget">译文语言</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Hint">默认可跟界面语言；也可单独改。简/繁/英/日/韩译文共用同一翻译模型，不进默认包。</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Zh">简体中文</sys:String>
+    <sys:String x:Key="Str.Settings.TranslateTarget.Auto">自动（源为中文→英，其他→中）</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.ZhHant">繁体中文</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.En">English</sys:String>
     <sys:String x:Key="Str.Settings.TranslateTarget.Ja">日语</sys:String>
