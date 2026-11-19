@@ -137,9 +137,14 @@
           <Button Grid.Column="7" x:Name="BtnSpeed" Content="1x" Classes="TextBtn" MinWidth="34"
                   Click="OnSpeedClick" />
 
-          <TextBlock Grid.Column="8" x:Name="PipelineLabel" VerticalAlignment="Center"
-                     FontSize="11" Foreground="#8A8A8A" TextTrimming="CharacterEllipsis"
-                     TextAlignment="Center" Text="…" />
+          <StackPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Center"
+                      VerticalAlignment="Center" Spacing="6">
+            <TextBlock x:Name="PipelineLabel" VerticalAlignment="Center"
+                       FontSize="11" Foreground="#8A8A8A" TextTrimming="CharacterEllipsis"
+                       TextAlignment="Center" Text="…" />
+            <Button x:Name="BtnReconnect" Content="重新连接" Classes="TextBtn" IsVisible="False"
+                    FontSize="11" Padding="6,2" MinWidth="0" Click="OnReconnectClick" />
+          </StackPanel>
 
           <ComboBox Grid.Column="9" x:Name="CmbSourceLang" MinWidth="96" FontSize="12"
                     SelectionChanged="OnSourceLangChanged" VerticalAlignment="Center" />

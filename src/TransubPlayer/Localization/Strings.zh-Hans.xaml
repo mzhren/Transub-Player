@@ -898,6 +898,7 @@
     <sys:String x:Key="Str.Main.Osd.SubVisibleOff">字幕：关</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubPos">字幕位置 {0}%</sys:String>
     <sys:String x:Key="Str.Main.Osd.MtModelSwap">翻译模型已按语言对自动切换 · {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.EngineReconnectFailed">识别引擎连接失败：{0}</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubDelayHint">Z / X 可微调字幕 ±0.5 秒</sys:String>
     <sys:String x:Key="Str.Main.Osd.WaitFirstZhOffer" xml:space="preserve">字幕会落后画面。
 

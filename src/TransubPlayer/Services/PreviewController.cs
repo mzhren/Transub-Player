@@ -334,6 +334,59 @@ internal sealed class PreviewController : IDisposable
     public bool Paused { get; private set; } = true;
     public string AsrModel { get; private set; } = "";
     public string EngineDetail { get; private set; } = "引擎未连接";
+
+    /// <summary>识别引擎（Whisper）是否已连接；状态栏据此显示「重新连接」按钮。</summary>
+    public bool EngineConnected => _engine.IsConnected;
+
+    /// <summary>外部字幕模式（现有字幕文件 / 本地字幕源）：不启动识别引擎，状态栏不应显示引擎详情与重连按钮。</summary>
+    public bool ExternalSubtitleMode => UsingExistingSub || IsLocalSubtitleSource;
+
+    /// <summary>
+    /// 手动重连识别引擎：EnsureReady → 探测模型包 → 刷新引擎详情；
+    /// 有依赖缺口时弹出模型配置对话框（OfferPresetSetupAsync）；
+    /// 媒体已打开、引导未在跑且还没有字幕时，重新启动预览管线。
+    /// </summary>
+    public async Task ReconnectEngineAsync(CancellationToken ct)
+    {
+        if (_disposed != 0) return;
+        PublishStatus(Loc.Get("Main.Bootstrap.ConnectingEngine"));
+        try
+        {
+            await _engine.EnsureReadyAsync(ct).ConfigureAwait(false);
+            var packs = await _engine.ProbePacksAsync(ct).ConfigureAwait(false);
+            PublishPacks(packs);
+            AsrModel = SceneProfiles.PickAsr(_settings.AsrModel, packs, ActiveScene.Language);
+            EngineDetail = $"{_engine.EngineLabel} · {AsrModel}";
+
+            var depsOk = await EnsureRuntimeDependenciesAsync(packs, ct, promptUi: true).ConfigureAwait(false);
+            if (!depsOk)
+            {
+                PublishStatus(Loc.Get("Main.Status.PresetCancelled"));
+                return;
+            }
+            _depsCheckedForStart = true;
+            PublishStatus(BuildStatusLine());
+
+            if (!string.IsNullOrWhiteSpace(MediaPath) && !_bootstrapActive && CueCount == 0
+                && ShowPreviewChrome && _settings.AutoStartPreview
+                && !IsLocalSubtitleSource && !UsingExistingSub)
+            {
+                await StartPreviewInBackgroundAsync(Volatile.Read(ref _mediaGeneration), ct).ConfigureAwait(false);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            PublishStatus(Loc.Format("Main.Status.EngineReconnectFailed", ex.Message));
+        }
+        finally
+        {
+            StateChanged?.Invoke();
+        }
+    }
     public SceneProfile ActiveScene { get; private set; } = SceneProfiles.Default;
     public SceneProfile? MatchedScene { get; private set; }
     /// <summary>Concrete lang from short-window audio LID this session; null if skipped or not adopted.</summary>

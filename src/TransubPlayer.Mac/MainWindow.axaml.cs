@@ -218,10 +218,18 @@ public partial class MainWindow : Window, IPreviewHost
 
     private void RefreshPipelineUi()
     {
-        // 未打开媒体时不展示管线引擎细节（EngineDetail 的初始值是"引擎未连接"，会误导）
-        var detail = string.IsNullOrEmpty(_preview.MediaPath)
-            ? "就绪 · 打开视频后自动生成字幕"
-            : _preview.EngineDetail;
+        // 状态栏文案：未开媒体 → 就绪提示；外部字幕模式 → 不涉及识别引擎；其余展示引擎详情
+        string detail;
+        if (string.IsNullOrEmpty(_preview.MediaPath))
+            detail = "就绪 · 打开视频后自动生成字幕";
+        else if (_preview.ExternalSubtitleMode)
+            detail = "外部字幕模式 · 未启用识别引擎";
+        else
+            detail = _preview.EngineDetail;
+        // 识别引擎未连上（管线模式）时给出重连入口
+        BtnReconnect.IsVisible = !string.IsNullOrEmpty(_preview.MediaPath)
+                                 && !_preview.ExternalSubtitleMode
+                                 && !_preview.EngineConnected;
         var counts = $"字幕 {_preview.CueCount} · 译文 {_preview.TranslatedCount}";
         var mode = _preview.DisplayMode switch
         {
@@ -685,6 +693,23 @@ public partial class MainWindow : Window, IPreviewHost
     }
 
     // ---- 播放列表 ----
+
+    private async void OnReconnectClick(object? sender, RoutedEventArgs e)
+    {
+        BtnReconnect.IsEnabled = false;
+        try
+        {
+            await _preview.ReconnectEngineAsync(CancellationToken.None);
+        }
+        catch
+        {
+            // 失败详情已由控制器发布到状态栏
+        }
+        finally
+        {
+            BtnReconnect.IsEnabled = true;
+        }
+    }
 
     private void OnSettingsClick(object? sender, RoutedEventArgs e)
     {

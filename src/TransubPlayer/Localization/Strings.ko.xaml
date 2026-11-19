@@ -898,6 +898,7 @@
     <sys:String x:Key="Str.Main.Osd.SubVisibleOff">자막: 끔</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubPos">자막 위치 {0}%</sys:String>
     <sys:String x:Key="Str.Main.Osd.MtModelSwap">언어 쌍에 맞춰 번역 모델 자동 전환 · {0}</sys:String>
+    <sys:String x:Key="Str.Main.Status.EngineReconnectFailed">인식 엔진 연결 실패: {0}</sys:String>
     <sys:String x:Key="Str.Main.Osd.SubDelayHint">Z / X로 자막 ±0.5초 조절</sys:String>
     <sys:String x:Key="Str.Main.Osd.WaitFirstZhOffer" xml:space="preserve">자막이 영상보다 늦습니다.
 
