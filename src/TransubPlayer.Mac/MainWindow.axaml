@@ -80,10 +80,12 @@
     <!-- ══ 视频区 ══ -->
     <Panel Grid.Row="1">
       <local:MpvVideoView x:Name="Video" />
-      <TextBlock x:Name="OsdLabel" IsVisible="False" HorizontalAlignment="Center"
+      <!-- 输入层：视频区指针事件统一由它接收（GL 控件命中测试不可靠，透明背景保证可命中） -->
+      <Border x:Name="VideoInputLayer" Background="Transparent" />
+      <TextBlock x:Name="OsdLabel" IsVisible="False" IsHitTestVisible="False" HorizontalAlignment="Center"
                  VerticalAlignment="Bottom" Margin="0,0,0,110"
                  Background="#B3101010" Padding="10,5" FontSize="14" />
-      <TextBlock x:Name="EmptyHint" HorizontalAlignment="Center" VerticalAlignment="Center"
+      <TextBlock x:Name="EmptyHint" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"
                  Foreground="#666666" FontSize="15" Text="点击此处或拖入视频文件开始播放 · Cmd+O 打开" />
 
       <!-- 引导卡片：生成中 / 等待首批译文 -->

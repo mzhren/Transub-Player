@@ -354,7 +354,15 @@ internal sealed class MpvLibPlayer : IMpvEngine
         => SetProperty("sub-delay", Math.Clamp(seconds, -30, 30));
 
     public void SetSubPos(int pos)
-        => SetProperty("sub-pos", (double)Math.Clamp(pos, 0, 100));
+    {
+        var v = (double)Math.Clamp(pos, 0, 100);
+        IntPtr mpv;
+        lock (_gate) mpv = _mpv;
+        if (mpv == IntPtr.Zero) return;
+        var rc = MpvNative.mpv_set_property(mpv, "sub-pos", MpvFormat.Double, ref v);
+        if (rc < 0)
+            Log?.Invoke("sub-pos 设置失败 rc=" + rc);
+    }
 
     public void ApplySubtitleSettings(AppSettings settings)
     {

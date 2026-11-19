@@ -42,7 +42,11 @@ public partial class MainWindow : Window, IPreviewHost
 
     public MainWindow()
     {
+        Console.Error.WriteLine("BOOT: MainWindow ctor enter");
+        PlayerLog.Write("启动: MainWindow ctor 进入");
         InitializeComponent();
+        Console.Error.WriteLine("BOOT: InitializeComponent done");
+        PlayerLog.Write("启动: InitializeComponent 完成");
 
         // 标题栏图标：AssemblyName(TransubPlayer) ≠ 命名空间(TransubPlayer.Mac)，XAML 里的
         // avares URI 运行时基 URI 会解析成不存在的程序集名导致启动崩溃，改为代码里显式加载
@@ -163,11 +167,12 @@ public partial class MainWindow : Window, IPreviewHost
         SeekSlider.AddHandler(InputElement.PointerCaptureLostEvent, OnSeekPointerDoneCapture,
             RoutingStrategies.Bubble, handledEventsToo: true);
         TitleBar.PointerPressed += OnTitleBarPointerPressed;
-        Video.PointerPressed += OnVideoPointerPressed;
-        Video.PointerMoved += OnVideoPointerMoved;
-        Video.PointerReleased += OnVideoPointerReleased;
-        Video.PointerCaptureLost += OnVideoPointerCaptureLost;
-        Video.DoubleTapped += OnVideoDoubleTapped;
+        VideoInputLayer.PointerPressed += OnVideoPointerPressed;
+        VideoInputLayer.PointerMoved += OnVideoPointerMoved;
+        VideoInputLayer.PointerWheelChanged += OnVideoPointerWheel;
+        VideoInputLayer.PointerReleased += OnVideoPointerReleased;
+        VideoInputLayer.PointerCaptureLost += OnVideoPointerCaptureLost;
+        VideoInputLayer.DoubleTapped += OnVideoDoubleTapped;
 
         DragDrop.SetAllowDrop(this, true);
         AddHandler(DragDrop.DragOverEvent, OnDragOver);
@@ -447,25 +452,30 @@ public partial class MainWindow : Window, IPreviewHost
     {
         if (string.IsNullOrEmpty(_preview.MediaPath) || _pickerOpen)
             return;
-        if (!e.GetCurrentPoint(Video).Properties.IsLeftButtonPressed)
+        if (!e.GetCurrentPoint(VideoInputLayer).Properties.IsLeftButtonPressed)
             return;
         _subDragActive = true;
         _subDragMoved = false;
-        _subDragStartY = e.GetCurrentPoint(Video).Position.Y;
+        _subDragStartY = e.GetCurrentPoint(VideoInputLayer).Position.Y;
         _subDragStartPos = _subDragLastPos = Math.Clamp(_settings.SubPos, 0, 100);
-        e.Pointer.Capture(Video);
-        Video.Cursor = new Cursor(StandardCursorType.SizeNorthSouth);
+        e.Pointer.Capture(VideoInputLayer);
+        VideoInputLayer.Cursor = new Cursor(StandardCursorType.SizeNorthSouth);
+        PlayerLog.Write($"字幕拖动: 按下 y={_subDragStartY:0} 起始pos={_subDragStartPos}");
     }
 
     private void OnVideoPointerMoved(object? sender, PointerEventArgs e)
     {
         if (!_subDragActive)
             return;
-        var dy = e.GetCurrentPoint(Video).Position.Y - _subDragStartY;
+        var dy = e.GetCurrentPoint(VideoInputLayer).Position.Y - _subDragStartY;
         if (!_subDragMoved && Math.Abs(dy) < 6)
             return;
-        _subDragMoved = true;
-        var h = Video.Bounds.Height;
+        if (!_subDragMoved)
+        {
+            _subDragMoved = true;
+            PlayerLog.Write("字幕拖动: 开始移动");
+        }
+        var h = VideoInputLayer.Bounds.Height;
         if (h <= 0)
             return;
         // 向上拖 → 字幕上移（sub-pos 变小），整个画面高度对应 0-100
@@ -475,6 +485,24 @@ public partial class MainWindow : Window, IPreviewHost
             _subDragLastPos = pos;
             _preview.Engine?.SetSubPos(pos);
         }
+    }
+
+    private void OnVideoPointerWheel(object? sender, PointerWheelEventArgs e)
+    {
+        if (string.IsNullOrEmpty(_preview.MediaPath) || _pickerOpen)
+            return;
+        if (Math.Abs(e.Delta.Y) < 0.01)
+            return;
+        // 滚轮上滚 → 字幕上移（pos 减小）；拖动之外的备用微调通道
+        var pos = Math.Clamp((int)Math.Round(_settings.SubPos - e.Delta.Y * 3), 0, 100);
+        if (pos == _settings.SubPos)
+            return;
+        _settings.SubPos = pos;
+        _settings.SaveSoon();
+        _preview.Engine?.SetSubPos(pos);
+        ShowOsd(Loc.Format("Main.Osd.SubPos", pos));
+        PlayerLog.Write("字幕滚轮: pos=" + pos);
+        e.Handled = true;
     }
 
     private void OnVideoPointerCaptureLost(object? sender, PointerCaptureLostEventArgs e)
@@ -500,7 +528,7 @@ public partial class MainWindow : Window, IPreviewHost
     /// <summary>结束字幕拖动：确实拖动过 → 持久化位置并 OSD 反馈，返回 true。</summary>
     private bool FinishSubDrag()
     {
-        Video.Cursor = Cursor.Default;
+        VideoInputLayer.Cursor = Cursor.Default;
         if (!_subDragActive)
             return false;
         _subDragActive = false;
@@ -510,6 +538,7 @@ public partial class MainWindow : Window, IPreviewHost
         _settings.SubPos = _subDragLastPos;
         _settings.SaveSoon();
         ShowOsd(Loc.Format("Main.Osd.SubPos", _subDragLastPos));
+        PlayerLog.Write("字幕拖动: 提交 pos=" + _subDragLastPos);
         return true;
     }
 

@@ -12,7 +12,14 @@ namespace TransubPlayer.Mac;
 
 public class App : Application
 {
-    public override void Initialize() => AvaloniaXamlLoader.Load(this);
+    public App() => Console.Error.WriteLine("BOOT: App ctor");
+
+    public override void Initialize()
+    {
+        Console.Error.WriteLine("BOOT: Initialize begin");
+        AvaloniaXamlLoader.Load(this);
+        Console.Error.WriteLine("BOOT: Initialize done");
+    }
 
     public override void OnFrameworkInitializationCompleted()
     {
@@ -30,7 +37,10 @@ public class App : Application
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            Console.Error.WriteLine("BOOT: OFIC begin");
+            PlayerLog.Write("启动: OnFrameworkInitializationCompleted 创建 MainWindow 前");
             desktop.MainWindow = new MainWindow();
+            PlayerLog.Write("启动: MainWindow 创建完成");
 
             // macOS 菜单栏托盘：常驻入口 + 唤起主窗口
             var tray = new TrayIcon
