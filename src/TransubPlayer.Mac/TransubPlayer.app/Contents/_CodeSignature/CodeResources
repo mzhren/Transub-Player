@@ -2220,19 +2220,19 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			myGLWZ3us+yXoBtguU/qTIMnqDM=
+			xweN5jga4Ab4DWR5SE/hgBGRK/8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"9b218b599deeb3ec97a01b60b94fea4c8327a833"</string>
+			<string>cdhash H"c7078de6381ae006f80d6479484fe18011912bff"</string>
 		</dict>
 		<key>MacOS/TransubPlayer.Core.pdb</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			VY+sbCeaUtORBRpZ4STcsiqYD9U=
+			g8D/np/UvuONRlR8ULaQz20I4QU=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"558fac6c279a52d391051a59e124dcb22a980fd5"</string>
+			<string>cdhash H"83c0ff9e9fd4bee38d46547c50b690cf6d08e105"</string>
 		</dict>
 		<key>MacOS/TransubPlayer.bin</key>
 		<dict>
@@ -2256,19 +2256,19 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			eDGFRvhqtNBR3SFex5WRlTGrHGM=
+			21T39eZZKNQOAtToSFT8BMiYf+s=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"78318546f86ab4d051dd215ec795919531ab1c63"</string>
+			<string>cdhash H"db54f7f5e65928d40e02d4e84854fc04c8987feb"</string>
 		</dict>
 		<key>MacOS/TransubPlayer.pdb</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			lVcthZAfg+TwqEXJCgJERbjwKJk=
+			CgZOTq+VoC32WS+zrvtNQkkxvUM=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"95572d85901f83e4f0a845c90a024445b8f02899"</string>
+			<string>cdhash H"0a064e4eaf95a02df6592fb3aefb4d424931bd43"</string>
 		</dict>
 		<key>MacOS/TransubPlayer.runtimeconfig.json</key>
 		<dict>

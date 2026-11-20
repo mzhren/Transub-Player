@@ -231,6 +231,8 @@ public partial class MainWindow : Window, IPreviewHost
                                  && !_preview.ExternalSubtitleMode
                                  && !_preview.EngineConnected;
         var counts = $"字幕 {_preview.CueCount} · 译文 {_preview.TranslatedCount}";
+        // 静音图标跟随引擎实际状态（点击 / M 键 / mpv 事件改静音都能覆盖）
+        BtnMute.Content = _preview.Engine.Muted ? "🔇" : "🔊";
         var mode = _preview.DisplayMode switch
         {
             SubtitleDisplayMode.Zh => "译文",
@@ -590,6 +592,8 @@ public partial class MainWindow : Window, IPreviewHost
     private void OnMuteClick(object? sender, RoutedEventArgs e)
     {
         _preview.Engine.ToggleMute();
+        _settings.Muted = _preview.Engine.Muted;
+        _settings.SaveSoon();
     }
 
     private void OnPlayPauseClick(object? sender, RoutedEventArgs e) => _preview.TogglePause();
