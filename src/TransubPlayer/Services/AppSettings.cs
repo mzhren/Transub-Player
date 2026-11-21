@@ -117,6 +117,8 @@ public sealed class AppSettings
     public int SubMarginY { get; set; } = 36;
     /// <summary>mpv sub-pos：0=顶部，100=底部。在画面上垂直拖动字幕会更新此值。</summary>
     public int SubPos { get; set; } = 100;
+    /// <summary>Whisper 幻觉过滤词文本文件路径（每行一个短语；# 为注释）；空 = 仅内置黑名单。</summary>
+    public string FilterWordsPath { get; set; } = "";
     /// <summary>Positive = subtitles appear later (mpv sub-delay).</summary>
     public double SubDelaySec { get; set; }
     /// <summary>Kept in sync with <see cref="SubtitleMode"/> ≠ off. Visibility is owned by display mode.</summary>
@@ -328,6 +330,7 @@ public sealed class AppSettings
         SubBorderSize = copy.SubBorderSize;
         SubMarginY = copy.SubMarginY;
         SubPos = copy.SubPos;
+        FilterWordsPath = copy.FilterWordsPath;
         SubDelaySec = copy.SubDelaySec;
         SubVisibleOnStart = copy.SubVisibleOnStart;
         SubtitleSource = copy.SubtitleSource;

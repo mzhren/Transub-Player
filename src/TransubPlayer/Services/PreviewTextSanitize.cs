@@ -180,9 +180,110 @@ internal static class PreviewTextSanitize
         return MultiWs.Replace(cur, " ").Trim();
     }
 
+    // ---- Whisper 幻觉黑名单 ----
+
+    /// <summary>
+    /// Whisper 在静音/噪声段会吐出训练数据里的字幕组口号等幻觉文本（如「请不吝点赞、订阅、
+    /// 转发、打赏支持明镜与点点栏目」）。匹配前对 cue 文本与短语统一剥离空白和标点再精确
+    /// 子串比对；命中即整条移除。列表只收录几乎不可能出现在真实语音里的短语。
+    /// </summary>
+    private static readonly string[] HallucinationPhrases =
+    [
+        "明镜与点点",
+        "请不吝点赞",
+        "点赞订阅转发打赏",
+        "amara.org",
+    ];
+
+    private static readonly string[] HallucinationKeys =
+        HallucinationPhrases.Select(NormHallucinationKey).ToArray();
+
+    private static readonly object CustomFilterGate = new();
+    private static string[] _customHallucinationKeys = [];
+
+    private static string NormHallucinationKey(string text)
+        => Regex.Replace(text, @"[\s\p{P}\p{S}]+", "").ToLowerInvariant();
+
+    /// <summary>
+    /// 加载用户自定义过滤词文件（每行一个短语；# 开头为注释；空白与标点在匹配时忽略）。
+    /// 返回生效短语数；路径为空返回 0；文件不存在/读取失败返回 -1（内置黑名单不受影响）。
+    /// </summary>
+    public static int ApplyFilterWordsFile(string? path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            lock (CustomFilterGate) _customHallucinationKeys = [];
+            return 0;
+        }
+        if (!File.Exists(path))
+            return -1;
+        try
+        {
+            var phrases = File.ReadAllLines(path)
+                .Select(l => l.Trim())
+                .Where(l => l.Length > 0 && !l.StartsWith("#", StringComparison.Ordinal));
+            return SetCustomFilterWords(phrases);
+        }
+        catch
+        {
+            lock (CustomFilterGate) _customHallucinationKeys = [];
+            return -1;
+        }
+    }
+
+    /// <summary>设置自定义过滤词（与内置黑名单合并生效），返回生效短语数。</summary>
+    public static int SetCustomFilterWords(IEnumerable<string> phrases)
+    {
+        var keys = phrases
+            .Select(NormHallucinationKey)
+            .Where(k => k.Length > 0)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        lock (CustomFilterGate) _customHallucinationKeys = keys;
+        return keys.Length;
+    }
+
+    /// <summary>移除命中幻觉黑名单的 cue，返回移除条数（用于日志）。</summary>
+    public static int RemoveHallucinationCues(IList<Cue> cues, int startIndex = 0)
+    {
+        string[] custom;
+        lock (CustomFilterGate) custom = _customHallucinationKeys;
+        var removed = 0;
+        for (var i = cues.Count - 1; i >= Math.Clamp(startIndex, 0, cues.Count); i--)
+        {
+            var key = NormHallucinationKey(cues[i].Text);
+            if (key.Length == 0)
+                continue;
+            var hit = false;
+            foreach (var phrase in HallucinationKeys)
+            {
+                if (!key.Contains(phrase, StringComparison.Ordinal)) continue;
+                hit = true;
+                break;
+            }
+            if (!hit)
+            {
+                foreach (var phrase in custom)
+                {
+                    if (!key.Contains(phrase, StringComparison.Ordinal)) continue;
+                    hit = true;
+                    break;
+                }
+            }
+            if (!hit)
+                continue;
+            PlayerLog.Write("幻觉黑名单过滤 · " + cues[i].Text[..Math.Min(40, cues[i].Text.Length)]);
+            cues.RemoveAt(i);
+            removed++;
+        }
+        return removed;
+    }
+
     public static void CleanAsrCues(IList<Cue> cues, AppSettings settings, string? contentProfile = null, int startIndex = 0)
     {
         startIndex = Math.Clamp(startIndex, 0, cues.Count);
+        // Whisper 幻觉黑名单：与风格清洗开关无关，始终过滤（静音段吐出的字幕组口号等）
+        RemoveHallucinationCues(cues, startIndex);
         if (settings.TextSanitizeEnabled)
         {
             for (var i = cues.Count - 1; i >= startIndex; i--)

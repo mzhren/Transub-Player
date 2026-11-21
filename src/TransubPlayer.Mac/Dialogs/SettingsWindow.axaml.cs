@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
 using TransubPlayer.Localization;
 using TransubPlayer.Services;
 
@@ -105,6 +106,51 @@ internal sealed partial class SettingsWindow : Window
         BtnUpdate.IsEnabled = false;
         _ = CheckUpdateAsync();
         RefreshModelStatus();
+        _filterWordsCount = PreviewTextSanitize.ApplyFilterWordsFile(settings.FilterWordsPath);
+        RefreshFilterStatus();
+    }
+
+    private int _filterWordsCount;
+
+    private void RefreshFilterStatus()
+    {
+        if (string.IsNullOrWhiteSpace(_settings.FilterWordsPath))
+            FilterStatus.Text = "未导入（内置 Whisper 幻觉黑名单始终生效）";
+        else if (_filterWordsCount < 0)
+            FilterStatus.Text = $"文件不存在或无法读取：{_settings.FilterWordsPath}";
+        else
+            FilterStatus.Text = $"{Path.GetFileName(_settings.FilterWordsPath)} · 自定义短语 {_filterWordsCount} 条\n每行一个短语，# 开头为注释；匹配时忽略空白与标点";
+    }
+
+    private async void OnImportFilterClick(object? sender, RoutedEventArgs e)
+    {
+        var files = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+        {
+            Title = "选择过滤词文本文件",
+            AllowMultiple = false,
+            FileTypeFilter = [new FilePickerFileType("文本文件") { Patterns = ["*.txt"], MimeTypes = ["text/plain"] }],
+        });
+        if (files.Count == 0)
+            return;
+        var path = files[0].TryGetLocalPath();
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            FilterStatus.Text = "无法读取所选文件";
+            return;
+        }
+
+        _settings.FilterWordsPath = path;
+        _filterWordsCount = PreviewTextSanitize.ApplyFilterWordsFile(path);
+        _settings.Save();
+        RefreshFilterStatus();
+    }
+
+    private void OnClearFilterClick(object? sender, RoutedEventArgs e)
+    {
+        _settings.FilterWordsPath = "";
+        _filterWordsCount = PreviewTextSanitize.ApplyFilterWordsFile("");
+        _settings.Save();
+        RefreshFilterStatus();
     }
 
     private sealed record ComboItem(string Id, string Label)

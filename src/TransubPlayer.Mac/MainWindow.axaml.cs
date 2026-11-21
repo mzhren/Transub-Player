@@ -60,6 +60,8 @@ public partial class MainWindow : Window, IPreviewHost
 
         _settings = AppSettings.Load();
         Loc.Apply(_settings.UiLanguage);
+        // 用户自定义过滤词（Whisper 幻觉黑名单扩展）随设置加载
+        PreviewTextSanitize.ApplyFilterWordsFile(_settings.FilterWordsPath);
 
         // IPreviewHost：进程内渲染无 HWND；dispatcher 用 Avalonia UI 线程
         _preview = new PreviewController(_settings, this, PublishPipelineStatus, PlayerLog.Write);
