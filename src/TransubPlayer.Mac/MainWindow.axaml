@@ -148,7 +148,7 @@
 
         <!-- 行2：走带控制 / 状态 / 右侧功能 -->
         <Grid Grid.Row="1" Grid.ColumnSpan="3"
-              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="6">
+              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="6">
           <Button x:Name="BtnPrev" Grid.Column="0" Content="⏮" Classes="TextBtn" MinWidth="30"
                   Click="OnPrevClick" />
           <Button x:Name="BtnPlay" Grid.Column="1" Content="▶" Classes="TextBtn" MinWidth="34"
@@ -175,16 +175,18 @@
                     FontSize="11" Padding="6,2" MinWidth="0" Click="OnReconnectClick" />
           </StackPanel>
 
-          <ComboBox Grid.Column="9" x:Name="CmbSourceLang" MinWidth="96" FontSize="12"
+          <ComboBox Grid.Column="9" x:Name="CmbSubSource" MinWidth="92" FontSize="12"
+                    SelectionChanged="OnSubSourceChanged" VerticalAlignment="Center" />
+          <ComboBox Grid.Column="10" x:Name="CmbSourceLang" MinWidth="96" FontSize="12"
                     SelectionChanged="OnSourceLangChanged" VerticalAlignment="Center" />
-          <ComboBox Grid.Column="10" x:Name="CmbTranslateTarget" MinWidth="84" FontSize="12"
+          <ComboBox Grid.Column="11" x:Name="CmbTranslateTarget" MinWidth="84" FontSize="12"
                     SelectionChanged="OnTargetChanged" VerticalAlignment="Center" />
-          <Button Grid.Column="11" x:Name="BtnModeZh" Content="译文" Classes="TextBtn" Click="OnModeZhClick" />
-          <Button Grid.Column="12" x:Name="BtnModeSource" Content="原文" Classes="TextBtn" Click="OnModeSourceClick" />
-          <Button Grid.Column="13" x:Name="BtnModeDual" Content="双语" Classes="TextBtn" Click="OnModeDualClick" />
-          <Button Grid.Column="14" x:Name="BtnShot" Content="📷" Classes="TextBtn" MinWidth="32"
+          <Button Grid.Column="12" x:Name="BtnModeZh" Content="译文" Classes="TextBtn" Click="OnModeZhClick" />
+          <Button Grid.Column="13" x:Name="BtnModeSource" Content="原文" Classes="TextBtn" Click="OnModeSourceClick" />
+          <Button Grid.Column="14" x:Name="BtnModeDual" Content="双语" Classes="TextBtn" Click="OnModeDualClick" />
+          <Button Grid.Column="15" x:Name="BtnShot" Content="📷" Classes="TextBtn" MinWidth="32"
                   Click="OnScreenshotClick" />
-          <Button Grid.Column="15" x:Name="BtnFullscreen" Content="⛶" Classes="TextBtn" MinWidth="32"
+          <Button Grid.Column="16" x:Name="BtnFullscreen" Content="⛶" Classes="TextBtn" MinWidth="32"
                   Click="OnFullscreenClick" />
         </Grid>
       </Grid>

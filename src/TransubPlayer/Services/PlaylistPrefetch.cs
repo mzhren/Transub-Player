@@ -341,7 +341,7 @@ internal sealed class PlaylistPrefetch
     {
         var source = PreviewPaths.SourceSrt(mediaPath);
         var cues = SubtitleFile.ParseSrt(source);
-        PreviewTextSanitize.CleanAsrCues(cues, _settings, scene.ContentProfile);
+        PreviewTextSanitize.CleanAsrCues(cues, _settings, scene.ContentProfile, 0, scene.Language);
         if (cues.Count == 0) return;
 
         await _ensureTranslate(ct).ConfigureAwait(false);

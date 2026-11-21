@@ -1411,6 +1411,10 @@ internal sealed class PreviewController : IDisposable
 
     private async Task UseLiveSubtitleAsync(CancellationToken ct, bool pauseForWait = false)
     {
+        // 实际切到实时的所有路径（含本地字幕无文件的回退）都要把来源状态落为 Live，
+        // 否则 ActiveSource 停留在旧值，控制条会出现"选什么都不切换"的假死。
+        SaveSubtitleSource(SubtitleSourceKind.Live);
+
         // Mid-playback switch from Off/Local/Online: honor wait-for-translation like open.
         if (pauseForWait && ShouldArmWaitOnLiveSwitch())
         {

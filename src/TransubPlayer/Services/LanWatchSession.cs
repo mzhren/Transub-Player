@@ -470,7 +470,7 @@ internal sealed class LanWatchSession : IDisposable
     {
         if (_sourceSrt is null || _mediaPath is null) return;
         var incoming = SubtitleFile.ParseSrt(_sourceSrt);
-        PreviewTextSanitize.CleanAsrCues(incoming, _settings, _scene.ContentProfile);
+        PreviewTextSanitize.CleanAsrCues(incoming, _settings, _scene.ContentProfile, 0, _scene.Language);
         PlaylistPrefetch.ApplyTranslationCache(incoming, _mediaPath, _settings.TranslateTarget);
         lock (_cueLock)
         {

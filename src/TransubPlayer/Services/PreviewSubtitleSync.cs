@@ -907,7 +907,7 @@ internal sealed class PreviewSubtitleSync : IDisposable
         if (incoming.Count == 0) return;
         var profile = _getContentProfile();
         var route = _getMtRoute();
-        PreviewTextSanitize.CleanAsrCues(incoming, _settings, profile);
+        PreviewTextSanitize.CleanAsrCues(incoming, _settings, profile, 0, route.Source ?? _settings.SourceLanguage);
         if (incoming.Count == 0) return;
         lock (_cueLock)
         {

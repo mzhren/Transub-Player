@@ -61,8 +61,19 @@ internal static class PreviewTextSanitize
         @"[\s…⋅・.。，,！!？?～〜\-ー'""\u3000]+",
         RegexOptions.Compiled);
 
+    /// <summary>
+    /// 日语域纠错词库只允许作用于日语内容。语言未知（旧调用）时沿用旧行为（应用），
+    /// 显式传语言后即按语言门控——中文/英语被 remap 会把正常文本「纠」成日文。
+    /// </summary>
+    private static bool IsJapaneseSource(string? sourceLanguage)
+    {
+        if (string.IsNullOrWhiteSpace(sourceLanguage))
+            return true;
+        return SourceLanguages.Normalize(sourceLanguage) == SourceLanguages.Ja;
+    }
+
     /// <summary>Clean ASR source text before display / MT.</summary>
-    public static string CleanAsr(string text, AppSettings settings, string? contentProfile = null)
+    public static string CleanAsr(string text, AppSettings settings, string? contentProfile = null, string? sourceLanguage = null)
     {
         if (!settings.TextSanitizeEnabled) return text ?? "";
         var cur = (text ?? "").Trim();
@@ -74,7 +85,9 @@ internal static class PreviewTextSanitize
         cur = StripHallucinationLoops(cur);
         if (cur.Length == 0) return "";
 
-        cur = JaAsrDomainLexicon.Apply(cur);
+        // 日语域纠错只对日语内容生效：中文等其它语言被 remap 会把正常文本「纠」成日文
+        if (IsJapaneseSource(sourceLanguage))
+            cur = JaAsrDomainLexicon.Apply(cur);
         cur = AvGlossaryLexicon.Apply(cur, contentProfile);
         cur = MultiWs.Replace(cur, " ").Trim();
 
@@ -279,7 +292,7 @@ internal static class PreviewTextSanitize
         return removed;
     }
 
-    public static void CleanAsrCues(IList<Cue> cues, AppSettings settings, string? contentProfile = null, int startIndex = 0)
+    public static void CleanAsrCues(IList<Cue> cues, AppSettings settings, string? contentProfile = null, int startIndex = 0, string? sourceLanguage = null)
     {
         startIndex = Math.Clamp(startIndex, 0, cues.Count);
         // Whisper 幻觉黑名单：与风格清洗开关无关，始终过滤（静音段吐出的字幕组口号等）
@@ -288,7 +301,7 @@ internal static class PreviewTextSanitize
         {
             for (var i = cues.Count - 1; i >= startIndex; i--)
             {
-                var cleaned = CleanAsr(cues[i].Text, settings, contentProfile);
+                var cleaned = CleanAsr(cues[i].Text, settings, contentProfile, sourceLanguage);
                 if (string.IsNullOrWhiteSpace(cleaned))
                 {
                     cues.RemoveAt(i);

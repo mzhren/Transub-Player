@@ -430,12 +430,12 @@ internal sealed class AsrPipeline : IDisposable
         {
             if (incremental)
             {
-                PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile, incrementalSanitizeFrom);
+                PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile, incrementalSanitizeFrom, job.Language);
                 incrementalSanitizeFrom = cues.Count;
             }
             else
             {
-                PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile, cleanFrom);
+                PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile, cleanFrom, job.Language);
                 cleanFrom = cues.Count;
                 incrementalSanitizeFrom = cues.Count;
             }
@@ -583,7 +583,7 @@ internal sealed class AsrPipeline : IDisposable
                 }
             }
 
-            PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile);
+            PreviewTextSanitize.CleanAsrCues(cues, _settings, job.ContentProfile, 0, job.Language);
             await FlushSourceAsync(incremental: false).ConfigureAwait(false);
 
             _log(Loc.Get("Main.Status.AsrJobDone"));

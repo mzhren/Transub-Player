@@ -31,6 +31,7 @@ public partial class MainWindow : Window, IPreviewHost
     private DispatcherTimer? _uiTimer;
     private DispatcherTimer? _chromeHideTimer;
     private bool _seekDragging;
+    private bool _subSourceSync;
     private bool _subDragActive;
     private bool _subDragMoved;
     private double _subDragStartY;
@@ -149,6 +150,16 @@ public partial class MainWindow : Window, IPreviewHost
             (TranslateTargets.ZhHant, "繁體中文"),
             (TranslateTargets.En, "English"),
         }, id => id == TranslateTargets.Normalize(_settings.TranslateTarget));
+
+        // 条目只在此构建一次、之后永不重建：Avalonia ComboBox 在有选中项时清空/重加条目
+        // 会击穿内部 SelectionModel（越界异常被 UI 兜底吞掉但选择状态中毒，之后无法切换）
+        Fill(CmbSubSource, new[]
+        {
+            (SubtitleSourceKind.Off.ToString(), Loc.Get("Main.SubSource.Off")),
+            (SubtitleSourceKind.Online.ToString(), Loc.Get("Main.SubSource.Online")),
+            (SubtitleSourceKind.Local.ToString(), Loc.Get("Main.SubSource.Local")),
+            (SubtitleSourceKind.Live.ToString(), Loc.Get("Main.SubSource.Live")),
+        }, id => string.Equals(id, _settings.SubtitleSource, StringComparison.OrdinalIgnoreCase));
     }
 
     private void ApplyStartupSettings()
@@ -235,6 +246,7 @@ public partial class MainWindow : Window, IPreviewHost
         var counts = $"字幕 {_preview.CueCount} · 译文 {_preview.TranslatedCount}";
         // 静音图标跟随引擎实际状态（点击 / M 键 / mpv 事件改静音都能覆盖）
         BtnMute.Content = _preview.Engine.Muted ? "🔇" : "🔊";
+        RefreshSubSourceUi();
         var mode = _preview.DisplayMode switch
         {
             SubtitleDisplayMode.Zh => "译文",
@@ -656,6 +668,63 @@ public partial class MainWindow : Window, IPreviewHost
     {
         if (!_uiReady || CmbSourceLang.SelectedItem is not ComboItem item) return;
         _ = _preview.SetSourceLanguageAsync(item.Id, CancellationToken.None);
+    }
+
+    // ---- 字幕来源（关闭 / 在线 / 本地 / 实时）----
+
+    private async void OnSubSourceChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (!_uiReady || _subSourceSync || string.IsNullOrEmpty(_preview.MediaPath)) return;
+        if (CmbSubSource.SelectedItem is not ComboItem item) return;
+        if (!Enum.TryParse<SubtitleSourceKind>(item.Id, ignoreCase: true, out var kind)) return;
+        if (kind == _preview.ActiveSource)
+        {
+            // UI 与实际来源不同步时（如本地字幕回退到实时后），强制把下拉拉回实际来源
+            RefreshSubSourceUi();
+            return;
+        }
+        PlayerLog.Write($"字幕来源切换 · {kind}（当前 {_preview.ActiveSource}）");
+
+        try
+        {
+            await _preview.SelectSubtitleSourceAsync(kind, CancellationToken.None);
+        }
+        catch (Exception ex)
+        {
+            ShowOsd(ex.Message);
+            PlayerLog.Write("字幕来源切换失败 · " + ex.Message);
+        }
+        finally
+        {
+            RefreshSubSourceUi();
+            RefreshModeButtons();
+        }
+    }
+
+    /// <summary>字幕来源下拉跟随实际来源刷新（条目静态，只改选中项与可见性）。</summary>
+    private void RefreshSubSourceUi()
+    {
+        var show = !string.IsNullOrEmpty(_preview.MediaPath) && !_preview.IsStreamPlayback;
+        CmbSubSource.IsVisible = show;
+        CmbSubSource.IsEnabled = show;
+        if (!show)
+            return;
+
+        var ids = new[] { SubtitleSourceKind.Off, SubtitleSourceKind.Online, SubtitleSourceKind.Local, SubtitleSourceKind.Live };
+        var sel = Array.IndexOf(ids, _preview.ActiveSource);
+        if (sel < 0)
+            sel = Array.IndexOf(ids, SubtitleSourceKind.Live);
+        if (CmbSubSource.SelectedIndex == sel || _subSourceSync)
+            return;
+        _subSourceSync = true;
+        try
+        {
+            CmbSubSource.SelectedIndex = sel;
+        }
+        finally
+        {
+            _subSourceSync = false;
+        }
     }
 
     private void OnTargetChanged(object? sender, SelectionChangedEventArgs e)
