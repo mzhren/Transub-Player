@@ -717,6 +717,12 @@ public partial class MainWindow : Window, IPreviewHost
         }
     }
 
+    private void OnDonateClick(object? sender, RoutedEventArgs e)
+    {
+        var dlg = new Dialogs.DonateWindow();
+        dlg.ShowDialog(this);
+    }
+
     private void OnSettingsClick(object? sender, RoutedEventArgs e)
     {
         var dlg = new Dialogs.SettingsWindow(_settings);

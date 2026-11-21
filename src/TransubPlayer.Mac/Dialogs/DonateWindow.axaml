@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TransubPlayer.Mac.Dialogs.DonateWindow"
+        Title="支持 Transub Player"
+        Width="460" Height="470"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#1E1E1E">
+  <StackPanel Margin="22,20" Spacing="12">
+    <TextBlock Text="请作者喝杯咖啡" FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" />
+    <TextBlock Text="Transub Player Mac 版会免费更新，你的捐赠是继续开发的动力。"
+               FontSize="12" Foreground="#8A8A8A" TextWrapping="Wrap"
+               HorizontalAlignment="Center" TextAlignment="Center" />
+    <Grid ColumnDefinitions="*,*" Margin="0,6">
+      <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="8">
+        <Border Background="#FFFFFF" CornerRadius="10" Padding="10" Width="184" Height="184">
+          <Image x:Name="QrWeChat" Width="164" Height="164" />
+        </Border>
+        <TextBlock Text="微信支付" HorizontalAlignment="Center" FontWeight="SemiBold" />
+      </StackPanel>
+      <StackPanel Grid.Column="1" HorizontalAlignment="Center" Spacing="8">
+        <Border Background="#FFFFFF" CornerRadius="10" Padding="10" Width="184" Height="184">
+          <Image x:Name="QrAliPay" Width="164" Height="164" />
+        </Border>
+        <TextBlock Text="支付宝" HorizontalAlignment="Center" FontWeight="SemiBold" />
+      </StackPanel>
+    </Grid>
+    <Button Content="关闭" Click="OnCloseClick" HorizontalAlignment="Center" Padding="22,6" Margin="0,8,0,0" />
+  </StackPanel>
+</Window>
