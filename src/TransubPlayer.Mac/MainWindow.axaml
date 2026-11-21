@@ -77,8 +77,9 @@
       </Grid>
     </Border>
 
-    <!-- ══ 视频区 ══ -->
-    <Panel Grid.Row="1">
+    <!-- ══ 视频区（右列 = 播放列表侧栏，打开时视频区收缩）══ -->
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+      <Panel Grid.Column="0">
       <local:MpvVideoView x:Name="Video" />
       <!-- 输入层：视频区指针事件统一由它接收（GL 控件命中测试不可靠，透明背景保证可命中） -->
       <Border x:Name="VideoInputLayer" Background="Transparent" />
@@ -103,7 +104,22 @@
                   HorizontalAlignment="Center" Click="OnSkipWaitClick" />
         </StackPanel>
       </Border>
-    </Panel>
+      </Panel>
+
+      <!-- ══ 播放列表（右侧停靠）══ -->
+      <Border x:Name="PlaylistPanel" Grid.Column="1" Width="280" IsVisible="False"
+              Background="#141414" BorderBrush="#242424" BorderThickness="1,0,0,0">
+        <Grid RowDefinitions="Auto,*,Auto" Margin="8,6">
+          <TextBlock Grid.Row="0" Text="播放列表" FontWeight="SemiBold" Margin="4,4,0,8" />
+          <ListBox x:Name="PlaylistList" Grid.Row="1"
+                   DoubleTapped="OnPlaylistItemActivate" />
+          <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,6,0,0" Spacing="6">
+            <Button Content="清空" Click="OnPlaylistClearClick" />
+            <Button Content="移除" Click="OnPlaylistRemoveClick" />
+          </StackPanel>
+        </Grid>
+      </Border>
+    </Grid>
 
     <!-- ══ 控制条 ══ -->
     <Border Grid.Row="2" Background="#161616" BorderBrush="#242424" BorderThickness="0,1,0,0"
@@ -158,20 +174,6 @@
           <Button Grid.Column="15" x:Name="BtnFullscreen" Content="⛶" Classes="TextBtn" MinWidth="32"
                   Click="OnFullscreenClick" />
         </Grid>
-      </Grid>
-    </Border>
-
-    <!-- ══ 播放列表 ══ -->
-    <Border x:Name="PlaylistPanel" Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Width="280" IsVisible="False"
-            Background="#141414" BorderBrush="#242424" BorderThickness="1,0,0,0">
-      <Grid RowDefinitions="Auto,*,Auto" Margin="8,6">
-        <TextBlock Grid.Row="0" Text="播放列表" FontWeight="SemiBold" Margin="4,4,0,8" />
-        <ListBox x:Name="PlaylistList" Grid.Row="1"
-                 DoubleTapped="OnPlaylistItemActivate" />
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,6,0,0" Spacing="6">
-          <Button Content="清空" Click="OnPlaylistClearClick" />
-          <Button Content="移除" Click="OnPlaylistRemoveClick" />
-        </StackPanel>
       </Grid>
     </Border>
   </Grid>
